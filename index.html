@@ -145,6 +145,68 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/22/Go-%E8%AF%AD%E8%A8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="罗子建">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寒冰小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/22/Go-%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">Go 语言</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-22 20:31:58 / 修改时间：20:33:04" itemprop="dateCreated datePublished" datetime="2020-09-22T20:31:58+08:00">2020-09-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Go学习笔记"><a href="#Go学习笔记" class="headerlink" title="Go学习笔记"></a>Go学习笔记</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//print,printf,println的区别</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入语句</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	name <span class="keyword">string</span></span><br><span class="line">	age  <span class="keyword">int</span></span><br><span class="line">	isok <span class="keyword">bool</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//程序的入口函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    name=<span class="string">&quot;luozijian&quot;</span></span><br><span class="line">    age=<span class="number">22</span></span><br><span class="line">    isok=<span class="literal">true</span></span><br><span class="line">    </span><br><span class="line">	fmt.Print(isok)                    <span class="comment">//在终端中输出要打印的内容</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;name:%s&quot;</span>,name)         <span class="comment">//%s:占位符，使用name这个变量的值去替代占位符</span></span><br><span class="line">    fmt.Println(age)                   <span class="comment">//打印完指定的内容之后会在后面一个换行符</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//申明变量同时赋值</span></span><br><span class="line">    <span class="keyword">var</span> s1 <span class="keyword">string</span> <span class="string">&quot;heihei&quot;</span></span><br><span class="line">    fmt.Prtinln(s1)</span><br><span class="line">    <span class="comment">// 类型推导（根据值判断该变量是什么类型</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> s2=<span class="string">&quot;20&quot;</span></span><br><span class="line">    fmt.Println(s2)</span><br><span class="line">    <span class="comment">//简短变量申明(只能在函数中使用)</span></span><br><span class="line">    s3 :=<span class="string">&#x27;hei&#x27;</span></span><br><span class="line">    fmt.Println(s3)</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//同一个作用域中不能重复申明同名的变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">//常量</span></span><br><span class="line"><span class="comment">//定义了常量之后不能改变</span></span><br><span class="line"><span class="comment">//在程序运行期间不会改变的值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pi=<span class="number">3.1415926</span></span><br><span class="line"><span class="comment">//批量申明常量</span></span><br><span class="line"><span class="keyword">const</span>(</span><br><span class="line">	statusok=<span class="number">200</span></span><br><span class="line">    notfound=<span class="number">404</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">//批量申明常量时，如果某一行申明后没有赋值，默认就和上一行一致</span></span><br><span class="line"><span class="keyword">const</span>(</span><br><span class="line">	n1=<span class="number">100</span></span><br><span class="line">    n2</span><br><span class="line">    n3</span><br><span class="line">)</span><br><span class="line"><span class="comment">//iota:类似枚举</span></span><br><span class="line"><span class="keyword">const</span>(</span><br><span class="line">    a1=<span class="literal">iota</span>   <span class="comment">//0</span></span><br><span class="line">    a2        <span class="comment">//1</span></span><br><span class="line">    a3        <span class="comment">//2</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">(</span></span></span><br><span class="line">    fmt.Println(&quot;n1:&quot;,n1)</span><br><span class="line">    fmt.Println(<span class="string">&quot;n2:&quot;</span>,n2)</span><br><span class="line">    fmt.Println(<span class="string">&quot;n3:&quot;</span>,n3)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -898,7 +960,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
