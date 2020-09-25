@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="介绍本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。 知识点 字符串的基本概念 正则表达式 KMP 算法 编辑距离 manacher 算法  基本概念字符串是 Python 中最常见的数据类型。我们可以使用引号 (‘ 或 “)来创建字符串。 创建字符串很简单，只要为变量分配一个值即可。例如： 1var1&#x3D;&amp;#x27;Hello sh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="string in python">
+<meta property="og:url" content="http://example.com/2019/03/29/string-in-python/index.html">
+<meta property="og:site_name" content="寒冰小站">
+<meta property="og:description" content="介绍本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。 知识点 字符串的基本概念 正则表达式 KMP 算法 编辑距离 manacher 算法  基本概念字符串是 Python 中最常见的数据类型。我们可以使用引号 (‘ 或 “)来创建字符串。 创建字符串很简单，只要为变量分配一个值即可。例如： 1var1&#x3D;&amp;#x27;Hello sh">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">
+<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/3450331248.gif">
+<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/1315438945.png">
+<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/3535294664.png">
+<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/1017039786.png">
+<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/56582860.png">
+<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/1332232394.png">
+<meta property="article:published_time" content="2019-03-29T06:39:41.000Z">
+<meta property="article:modified_time" content="2020-09-25T06:40:09.426Z">
+<meta property="article:author" content="罗子建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">
+
+<link rel="canonical" href="http://example.com/2019/03/29/string-in-python/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>string in python | 寒冰小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">寒冰小站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/29/string-in-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="罗子建">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寒冰小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          string in python
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-29 14:39:41" itemprop="dateCreated datePublished" datetime="2019-03-29T14:39:41+08:00">2019-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-25 14:40:09" itemprop="dateModified" datetime="2020-09-25T14:40:09+08:00">2020-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg" alt="123.jpg"></p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。</p>
+<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ul>
+<li>字符串的基本概念</li>
+<li>正则表达式</li>
+<li>KMP 算法</li>
+<li>编辑距离</li>
+<li>manacher 算法</li>
+</ul>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>字符串是 Python 中最常见的数据类型。我们可以使用引号 (‘ 或 “)来创建字符串。</p>
+<p>创建字符串很简单，只要为变量分配一个值即可。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var1=<span class="string">&#x27;Hello shiyanlou&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Python 访问字符串中的值</strong>使用方括号来截取字符串，如下示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var2=<span class="string">&#x27;Hello shiyanlou!&#x27;</span></span><br><span class="line">print(<span class="string">&quot;var2[1:5]:&quot;</span>,var2[<span class="number">1</span>:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<p><strong>Python 字符串更新</strong></p>
+<p>可以截取字符串的一部分并与其他字段拼接</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var3=<span class="string">&#x27;Hello user!&#x27;</span></span><br><span class="line">print(<span class="string">&quot;已更新字符串：&quot;</span>,var3[:<span class="number">6</span>],<span class="string">&#x27;user!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果: 已更新字符串：Hello user!</p>
+<p><strong>Python 转义字符</strong></p>
+<p>在需要在字符中使用特殊字符时，Python 用反斜杠(\) 转义字符。</p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\(在行尾时)</td>
+<td>续行符</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\‘’</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(Backspace)</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+</tbody></table>
+<p><strong>Python 字符串运算符</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>字符串连接</td>
+</tr>
+<tr>
+<td>*</td>
+<td>重复输出字符串</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>通过索引获取字符串中字符</td>
+</tr>
+<tr>
+<td>[:]</td>
+<td>截取字符串中的一部分，遵循<strong>左闭右开</strong>原则，str[0,2] 是不包含第 3 个字符的</td>
+</tr>
+<tr>
+<td>in</td>
+<td>如果字符串中包含给定的字符返回 True</td>
+</tr>
+<tr>
+<td>not in</td>
+<td>如果字符串中不包含给定的字符返回 True</td>
+</tr>
+</tbody></table>
+<p><strong>Python 字符串格式化</strong></p>
+<p>Python 支持格式化字符串的输出。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个值插入到一个有字符串格式符 %s 的字符串中</p>
+<p>示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;Hello user %d,Welcome to %s&quot;</span>%(<span class="number">34291615</span>,<span class="string">&quot;shiyanlou&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：Hello user 34291615,Welcome to shiyanlou</p>
+<p><strong>Python 字符串格式化符号</strong></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%c</td>
+<td>格式化字符及其 ASCII 码</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>格式化整数</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>用科学计数法格式化浮点数</td>
+</tr>
+</tbody></table>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p>正则表达式是一个特殊的字符序列，它能帮助你方便的检查一个字符串是否与某种模式匹配。re 模块使 Python 语言拥有全部的正则表达式功能。</p>
+<h4 id="re-match-函数"><a href="#re-match-函数" class="headerlink" title="re.match 函数"></a>re.match 函数</h4><p>re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回 None</p>
+<p>函数语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(pattern,string,flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+</tbody></table>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.match(<span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;www.shiyanlou.com&#x27;</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.match(<span class="string">&#x27;com&#x27;</span>, <span class="string">&#x27;www.shiyanlou.com&#x27;</span>))         <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
+
+<p>以上实例运行输出结果为：</p>
+<p>(0,3)<br>None</p>
+<h4 id="re-search-方法"><a href="#re-search-方法" class="headerlink" title="re.search 方法"></a>re.search 方法</h4><p>re.search 扫描整个字符串并返回第一个成功的匹配</p>
+<p>函数语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.search(pattern,string,flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>要匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等</td>
+</tr>
+</tbody></table>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.search(<span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;www.shiyanlou.com&#x27;</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.search(<span class="string">&#x27;com&#x27;</span>, <span class="string">&#x27;www.shiyanlou.com&#x27;</span>).span())   <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
+
+<p>以上实例运行输出结果为：</p>
+<p>(0,3)<br>(11,14)</p>
+<h4 id="re-match-与-re-search-的区别"><a href="#re-match-与-re-search-的区别" class="headerlink" title="re.match 与 re.search 的区别"></a>re.match 与 re.search 的区别</h4><p>re.match 只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回 None；而 re.search 匹配整个字符串，直到找到一个匹配</p>
+<h4 id="检索和替换"><a href="#检索和替换" class="headerlink" title="检索和替换"></a>检索和替换</h4><p>Python 的 re 模块提供了 re.sub 用于替换字符串中的匹配项。</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.sub(pattern,repl,string,count=<span class="number">0</span>,flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pattern:正则表达式中模式字符串</li>
+<li>repl:替换的字符串，也可为一个函数</li>
+<li>string:要被查找替换的原始字符串</li>
+<li>count:模式匹配后替换的最大次数,默认 0 表示替换所有的匹配</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">phone=<span class="string">&quot;2004-959-559 # 这是一个国外电话号码&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除字符串中的 Python注释</span></span><br><span class="line">num=re.sub(<span class="string">r&#x27;#.*$&#x27;</span>,<span class="string">&quot;&quot;</span>,phone) <span class="comment">#r代表正则表达式,将在后面介绍具体规则</span></span><br><span class="line">print(<span class="string">&quot;电话号码是：&quot;</span>,num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除非数字(-)的字符串 </span></span><br><span class="line">num = re.sub(<span class="string">r&#x27;\D&#x27;</span>, <span class="string">&quot;&quot;</span>, phone)</span><br><span class="line">print(<span class="string">&quot;电话号码是：&quot;</span>,num)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下：<br>电话号码是:  2004-959-559<br>电话号码是 :  200495955</p>
+<h4 id="recompile-函数"><a href="#recompile-函数" class="headerlink" title="recompile 函数"></a>recompile 函数</h4><p>compile 函数用于编译正则表达式，生成一个正则表达（Pattern）对象，供 match() 和 search() 这两个函数使用。</p>
+<p>语法格式为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.compile(pattern[,flags])</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>pattern: 一个字符串形式的正则表达式</li>
+<li>flags:可选，表示匹配模式，比如忽略大小写，多行模式，具体参数为：<ul>
+<li>re.l 忽略大小写</li>
+<li>re.L 表示特殊字符集 \w, \W, \b, \B, \s, \S 依赖于当前环境</li>
+<li>re.M 多行模式</li>
+<li>re.S . 并且包括换行符在内的任意字符（. 不包括换行符)</li>
+<li>re.X 为了增加可读性，忽略空格和 # 后面的注释</li>
+</ul>
+</li>
+</ul>
+<h4 id="findall"><a href="#findall" class="headerlink" title="findall"></a>findall</h4><p>在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findall(string[,pos[,endpos]])</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>string:待匹配的字符串</li>
+<li>pos:可选参数，指定字符串的起始位置，默认为 0。</li>
+<li>endpos:可选参数，指定字符串的结束位置，默认为字符串的长度。</li>
+</ul>
+<p>查找字符串中的所有数字：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern=re.compile(<span class="string">r&#x27;\d+&#x27;</span>) <span class="comment">#查找数字</span></span><br><span class="line">result1 = pattern.findall(<span class="string">&#x27;runoob 123 google 456&#x27;</span>)</span><br><span class="line">result2 = pattern.findall(<span class="string">&#x27;run88oob123google456&#x27;</span>, <span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：<br>[‘123’,’456’]<br>[‘88’,’12’]</p>
+<h4 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h4><p>split 方法按照能够匹配的子串将字符串分割后返回列表</p>
+<p>语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.split(pattern, string[, maxsplit=<span class="number">0</span>, flags=<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串</td>
+</tr>
+<tr>
+<td>maxsplit</td>
+<td>分隔次数，maxsplit =1 分隔一次，默认为 0，不限制次数</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等</td>
+</tr>
+</tbody></table>
+<h4 id="正则表达式实例"><a href="#正则表达式实例" class="headerlink" title="正则表达式实例"></a>正则表达式实例</h4><p>字符类</p>
+<table>
+<thead>
+<tr>
+<th>实例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rub[ye]</td>
+<td>匹配 “ruby” 或 “rube”</td>
+</tr>
+<tr>
+<td>[aeiou]</td>
+<td>匹配中括号内的任意一个字母</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>匹配任何数字。类似于 [0123456789]</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>匹配任何小写字母</td>
+</tr>
+<tr>
+<td>[A-Z]</td>
+<td>匹配任何大写字母</td>
+</tr>
+<tr>
+<td>[a-zA-Z0-9]</td>
+<td>匹配任何字母及数字</td>
+</tr>
+<tr>
+<td>[^aeious]</td>
+<td>除了 aeiou 字母以外的所有字符</td>
+</tr>
+<tr>
+<td>[^0-9]</td>
+<td>匹配除了数字外的字符</td>
+</tr>
+</tbody></table>
+<p>特殊字符类</p>
+<table>
+<thead>
+<tr>
+<th>实例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\d</td>
+<td>匹配一个数字字符。等价于 [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字字符。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何非空白字符。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配包括下划线的任何单词字符。等价于’[A-Za-z0-9_]’</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配任何非单词字符。</td>
+</tr>
+</tbody></table>
+<h1 id="KMP-算法"><a href="#KMP-算法" class="headerlink" title="KMP 算法"></a>KMP 算法</h1><p>字符串匹配是极为常见的一种模式匹配。简单地说，就是判断主串 T 中是否出现模式串 P，即 P 为 T 的子串。特别地，定义主串 T[0…n-1],模式串为 P [0…p-1],则主串与模式串的长度各为 n 与 p</p>
+<h4 id="暴力匹配"><a href="#暴力匹配" class="headerlink" title="暴力匹配"></a>暴力匹配</h4><p>暴力匹配方法的思想非常朴素：</p>
+<ol>
+<li>依次从主串的首字符开始，与模式串逐一进行匹配</li>
+<li>遇到失配时，则移到主串的第二个字符，将其与模式串首字符比较，逐一进行匹配</li>
+<li>重复上述步骤，直至能匹配上，或剩下主串的长度不足以进行匹配</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">brute_force_match</span>(<span class="params">t,p</span>):</span></span><br><span class="line">    tlen=len(t)</span><br><span class="line">    plen=len(p)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(tlen):</span><br><span class="line">        j=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> t[i+j]==p[j] <span class="keyword">and</span> j &lt;plen:</span><br><span class="line">            j=j+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> j==plen:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+
+<p>算法复杂度分析：i 在主串上移动 (n-p)次，匹配失败时，j 移动次数最多有 p-1 次。因此复杂度为 O(n*p)</p>
+<p>对于暴力匹配而言，就存在重复匹配的现象。比如，第一次匹配失败时，主串，模式串失败匹配的位置的字符分别为 a 与 c ,下一次匹配时主串，模式串的起始位置分别为 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">1</a> 与 P[0];而在模式串中 c 之前是 ab ,未有重复结构，因此 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">1</a>与 P[0]肯定不能匹配上，这样造成了重复匹配。直观上，下一次匹配应从 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/3450331248.gif">2</a> 与 P[0] 开始。</p>
+<p>那么如何提高匹配效率呢？那就考虑下 KMP 算法</p>
+<h4 id="KMP-算法原理"><a href="#KMP-算法原理" class="headerlink" title="KMP 算法原理"></a>KMP 算法原理</h4><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">KMP 详细证明</a></p>
+<p>KMP 算法思想归纳如下：将主串 T 的第一个字符与模式串 P 的第一个字符进行匹配。如果相等，则依次比较 T 和 P 的下一个字符。如果不相等，则 主串 T 移动(已匹配字符数-对应的部分匹配值)位，继续匹配。</p>
+<p>关于移动位数的解释：已匹配字符数，即当前已完成匹配的字符数量。<strong>部分匹配值</strong>就是前缀和后缀的最长的共有元素的长度。</p>
+<p><strong>前缀</strong>指除了最后一个字符以外，一个字符串的全部头部组合</p>
+<p><strong>后缀</strong>指除了第一个字符以外，一个字符串的全部尾部组合</p>
+<p>举个例子：以”ABCDABD”为例</p>
+<ul>
+<li>“A”的前缀和后缀都为空集，共有元素的长度为 0；</li>
+<li>“AB”的前缀为[A]，后缀为[B]，共有元素的长度为 0；</li>
+<li>“ABC”的前缀为[A, AB]，后缀为[BC, C]，共有元素的长度 0；</li>
+<li>“ABCD”的前缀为[A, AB, ABC]，后缀为[BCD, CD, D]，共有元素的长度为 0；</li>
+<li>“ABCDA”的前缀为[A, AB, ABC, ABCD]，后缀为[BCDA, CDA, DA, A]，共有元素为”A”，长度为 1；</li>
+<li>“ABCDAB”的前缀为[A, AB, ABC, ABCD, ABCDA]，后缀为[BCDAB, CDAB, DAB, AB, B]，共有元素为”AB”，长度为 2；</li>
+<li>“ABCDABD”的前缀为[A, AB, ABC, ABCD, ABCDA, ABCDAB]，后缀为[BCDABD, CDABD, DABD, ABD, BD, D]，共有元素的长度为 0。</li>
+</ul>
+<p><strong>部分匹配表如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th>搜索值</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>A</th>
+<th>B</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>部分匹配值</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/3450331248.gif" alt="kmp.gif"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_failure_array</span>(<span class="params">pattern</span>):</span> <span class="comment">#制作部分匹配表</span></span><br><span class="line">    failure = [<span class="number">0</span>]</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    j = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> j &lt; len(pattern):</span><br><span class="line">        <span class="keyword">if</span> pattern[i] == pattern[j]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> i &gt; <span class="number">0</span>:</span><br><span class="line">            i = failure[i<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">        failure.append(i)</span><br><span class="line">    <span class="keyword">return</span> failure</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kmp</span>(<span class="params">pattern, text</span>):</span></span><br><span class="line">    failure = get_failure_array(pattern) <span class="comment">#得到部分匹配表</span></span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    j=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(text):</span><br><span class="line">        <span class="keyword">if</span> pattern[j] == text[i]:</span><br><span class="line">            <span class="keyword">if</span> j == (len(pattern) - <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> j &gt; <span class="number">0</span>:</span><br><span class="line">            j = failure[j - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print(kmp(<span class="string">&#x27;123456&#x27;</span>,<span class="string">&#x27;123123456&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h1 id="编辑距离"><a href="#编辑距离" class="headerlink" title="编辑距离"></a>编辑距离</h1><p>编辑距离(levenshtein distance)是针对二个字符串（例如英文字）的差异程度的量化量测，量测方式是看至少需要多少次的处理才能将一个字符串变成另一个字符串。编辑距离可以用在自然语言处理中，例如拼写检查可以根据一个拼错的字和其他正确的字的编辑距离，判断哪一个（或哪几个）是比较可能的字。DNA 也可以视为用 A、C、G 和 T 组成的字符串，因此编辑距离也用在生物信息学中，判断二个 DNA 的类似程度。Unix 下的 diff 及 patch 即是利用编辑距离来进行文本编辑对比的例子。</p>
+<p>注：定义来自百度百科</p>
+<h4 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h4><p>编辑距离允许的编辑操作有三种，如果字符相等，我们还可以选择不操作。我们可以列举一下这四种操作的情况。</p>
+<ol>
+<li><p><strong>不操作：</strong>对于”ay”与”day”的 “y”字符，可以选择不操作。即”ay”与”day”之间的利文斯顿距离等于”a”和”da”之间的利文斯顿距离。</p>
+</li>
+<li><p><strong>替换操作：</strong>对于”day”与”dae”的最后一位字符”y”和”e”字符,可以选择进行替换操作。即”day”与”dae”之间的利文斯顿距离等于”da”和”da”之间的利文斯顿距离加上一。</p>
+</li>
+<li><p><strong>插入操作：</strong>对于”dae”与”da”的最后一位字符”e”和”a”字符,可以选择进行插入操作。即”dae”与”da”之间的利文斯顿距离等于”da”和”da”之间的利文斯顿距离加上一。</p>
+</li>
+<li><p><strong>删除操作：</strong>对于”dae”与”daey”的最后一位字符”e”和”a”字符,可以选择进行删除操作。即”dae”与”daey”之间的利文斯顿距离等于”dae”和”dae”之间的利文斯顿距离加上一。</p>
+</li>
+</ol>
+<p>参考代码如下：</p>
+<p>注意：请务必自己独立思考解决问题之后再对照参考答案，一开始直接看参考答案收获不大。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">levenshtein_distance</span>(<span class="params">first_word,second_word</span>):</span></span><br><span class="line">    <span class="keyword">if</span> len(first_word)&lt;len(second_word):</span><br><span class="line">        <span class="keyword">return</span> levenshtein_distance(second_word,first_world)</span><br><span class="line">    <span class="keyword">if</span> len(second_word)==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> len(first_word)</span><br><span class="line">    previous_row=range(len(second_word)+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i,c1 <span class="keyword">in</span> enumerate(first_word):</span><br><span class="line">        current_row=[i+<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> j,c2 <span class="keyword">in</span> enumerate(second_word):</span><br><span class="line">            <span class="comment"># 计算增加，删除，修改次数</span></span><br><span class="line">            insertions = previous_row[j + <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            deletions = current_row[j] + <span class="number">1</span></span><br><span class="line">            substitutions = previous_row[j] + (c1 != c2)</span><br><span class="line">            <span class="comment"># 得到最小值，添加到current_row</span></span><br><span class="line">            current_row.append(min(insertions, deletions, substitutions))</span><br><span class="line">        <span class="comment"># 储存previous_row</span></span><br><span class="line">        previous_row = current_row</span><br><span class="line">    <span class="comment">#返回最后的编辑距离</span></span><br><span class="line">    <span class="keyword">return</span> previous_row[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="最长回文字串"><a href="#最长回文字串" class="headerlink" title="最长回文字串"></a>最长回文字串</h1><p>所谓回文字串，即正着读和倒着读结果都一样的字符串,比如:a, aba, abccba 都是回文串,ab, abb, abca 都不是回文串。</p>
+<p>暴力求解的思路：找到字符串的所有子串，遍历每一个子串以验证它们是否为回文串。一个子串由子串的起点和终点确定，因此对于一个长度为 n 的字符串，共有 n^2 个子串。这些子串的平均长度大约是 n/2，因此这个解法的时间复杂度是 O(n^3)。我们能不能提高效率呢，当然可以。这里给大家介绍马拉车算法。</p>
+<p>求解回文串的问题，有很多巧妙的求解算法，这里仅介绍马拉车算法，其他求解算法无法一一介绍，感兴趣的同学请自行探索。</p>
+<h4 id="马拉车算法"><a href="#马拉车算法" class="headerlink" title="马拉车算法"></a>马拉车算法</h4><p>马拉车算法(Manacher)由一个叫 Manacher 的人在 1975 年发明的，这个方法的最大贡献是在于将时间复杂度提升到了线性，这是非常了不起的。让我们来看下马拉车算法的优越性在哪。</p>
+<p>**(1) 解决长度奇偶性带来的对称轴位置问题:**Manacher 算法首先对字符串做一个预处理，在所有的空隙位置(包括首尾)插入同样的符号，要求这个符号是不会在原串中出现的。这样会使得所有的串都是奇数长度的。以插入#号为例：</p>
+<p>aba-&gt;#a#b#a#<br>abba-&gt;#a#b#b#a#</p>
+<p>插入的是同样的符号，且符号不存在于原串，因此子串的回文性不受影响，原来是回文的串，插完之后还是回文的，原来不是回文的，依然不会是回文的。</p>
+<p>**(2) 解决重复访问的问题:**我们把一个回文串中最左或最右位置的字符与其对称轴的距离称为回文半径。Manacher 定义了一个回文半径数组 RL，用 RL[i]表示以第 i 个字符为对称轴的回文串的回文半径。我们一般对字符串从左往右处理，因此这里定义 RL[i]为第 i 个字符为对称轴的回文串的最右一个字符与字符 i 的距离。对于上面插入分隔符之后的两个串，可以得到 RL 数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">char:    # a # b # a #</span><br><span class="line">RL  :    1 2 1 4 1 2 1</span><br><span class="line">RL-1:    0 1 0 3 0 1 0</span><br><span class="line">i   :    0 1 2 3 4 5 6</span><br><span class="line"></span><br><span class="line">char:    # a # b # b # a #</span><br><span class="line">RL  :    1 2 1 2 5 2 1 2 1</span><br><span class="line">RL-1:    0 1 0 1 4 1 0 1 0</span><br><span class="line">i   :    0 1 2 3 4 5 6 7 8</span><br></pre></td></tr></table></figure>
+
+<p>上面我们还求了一下 RL[i]-1。通过观察可以发现，RL[i]-1 的值，正是在原本那个没有插入过分隔符的串中，以位置 i 为对称轴的最长回文串的长度。那么只要我们求出了 RL 数组，就能得到最长回文子串的长度。</p>
+<p>于是问题变成了，怎样高效地求的 RL 数组。基本思路是利用回文串的对称性，扩展回文串。</p>
+<p>我们再引入一个辅助变量 MaxRight，表示当前访问到的所有回文子串，所能触及的最右一个字符的位置。另外还要记录下 MaxRight 对应的回文串的对称轴所在的位置，记为 pos，它们的位置关系如下。<img src="https://www.luozijian.com/usr/uploads/2019/03/1315438945.png" alt="manacher1.png"></p>
+<p>我们从左往右地访问字符串来求 RL，假设当前访问到的位置为 i，即要求 RL[i]，在对应上图，i 必然是在 po 右边的(obviously)。但我们更关注的是，i 是在 MaxRight 的左边还是右边。我们分情况来讨论。</p>
+<p>1） 当 i 在 MaxRight 的左边</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/3535294664.png" alt="manacher2.png"></p>
+<p>我们知道，图中两个红色块之间（包括红色块）的串是回文的；并且以 i 为对称轴的回文串，是与红色块间的回文串有所重叠的。我们找到 i 关于 pos 的对称位置 j，这个 j 对应的 RL[j]我们是已经算过的。根据回文串的对称性，以 i 为对称轴的回文串和以 j 为对称轴的回文串，有一部分是相同的。这里又有两种细分的情况。</p>
+<p>a.以 j 为对称轴的回文串比较短</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/1017039786.png" alt="manacher3.png"></p>
+<p>这时我们知道 RL[i]至少不会小于 RL[j]，并且已经知道了部分的以 i 为中心的回文串，于是可以令 RL[i]=RL[j]。但是以 i 为对称轴的回文串可能实际上更长，因此我们试着以 i 为对称轴，继续往左右两边扩展，直到左右两边字符不同，或者到达边界。</p>
+<p>b.以 j 为对称轴的回文串比较长</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/56582860.png" alt="manacher4.png"></p>
+<p>这时，我们只能确定，两条蓝线之间的部分（即不超过 MaxRight 的部分）是回文的，于是从这个长度开始，尝试以 i 为中心向左右两边扩展，，直到左右两边字符不同，或者到达边界。</p>
+<p>不论以上哪种情况，之后都要尝试更新 MaxRight 和 pos，因为有可能得到更大的 MaxRight。</p>
+<p>具体操作如下：</p>
+<ol>
+<li>令 RL[i]=min(RL[2*pos-i], MaxRight-i)</li>
+<li>以 i 为中心扩展回文串，直到左右两边字符不同，或者到达边界</li>
+<li>更新 MaxRight 和 pos</li>
+</ol>
+<ol start="2">
+<li>当 i 在 MaxRight 的右边</li>
+</ol>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/1332232394.png" alt="manacher5.png"></p>
+<p>遇到这种情况，说明以 i 为对称轴的回文串还没有任何一个部分被访问过，于是只能从 i 的左右两边开始尝试扩展了，当左右两边字符不同，或者到达字符串边界时停止。然后更新 MaxRight 和 pos</p>
+<p>参考代码如下；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">manacher</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="comment">#预处理</span></span><br><span class="line">    s=<span class="string">&#x27;#&#x27;</span>+<span class="string">&#x27;#&#x27;</span>.join(s)+<span class="string">&#x27;#&#x27;</span></span><br><span class="line"></span><br><span class="line">    RL=[<span class="number">0</span>]*len(s)</span><br><span class="line">    MaxRight=<span class="number">0</span></span><br><span class="line">    pos=<span class="number">0</span></span><br><span class="line">    MaxLen=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="keyword">if</span> i&lt;MaxRight:</span><br><span class="line">            RL[i]=min(RL[<span class="number">2</span>*pos-i], MaxRight-i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            RL[i]=<span class="number">1</span></span><br><span class="line">        <span class="comment">#尝试扩展，注意处理边界</span></span><br><span class="line">        <span class="keyword">while</span> i-RL[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+RL[i]&lt;len(s) <span class="keyword">and</span> s[i-RL[i]]==s[i+RL[i]]:</span><br><span class="line">            RL[i]+=<span class="number">1</span></span><br><span class="line">        <span class="comment">#更新MaxRight,pos</span></span><br><span class="line">        <span class="keyword">if</span> RL[i]+i<span class="number">-1</span>&gt;MaxRight:</span><br><span class="line">            MaxRight=RL[i]+i<span class="number">-1</span></span><br><span class="line">            pos=i</span><br><span class="line">        <span class="comment">#更新最长回文串的长度</span></span><br><span class="line">        MaxLen=max(MaxLen, RL[i])</span><br><span class="line">    <span class="keyword">return</span> MaxLen<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/26/sort-in-python/" rel="prev" title="sort in python">
+      <i class="fa fa-chevron-left"></i> sort in python
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/15/Blockchain/" rel="next" title="Blockchain">
+      Blockchain <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">知识点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#re-match-%E5%87%BD%E6%95%B0"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">re.match 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#re-search-%E6%96%B9%E6%B3%95"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">re.search 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#re-match-%E4%B8%8E-re-search-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">re.match 与 re.search 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A3%80%E7%B4%A2%E5%92%8C%E6%9B%BF%E6%8D%A2"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">检索和替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#recompile-%E5%87%BD%E6%95%B0"><span class="nav-number">3.0.0.5.</span> <span class="nav-text">recompile 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#findall"><span class="nav-number">3.0.0.6.</span> <span class="nav-text">findall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#re-split"><span class="nav-number">3.0.0.7.</span> <span class="nav-text">re.split</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.0.0.8.</span> <span class="nav-text">正则表达式实例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KMP-%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">KMP 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E5%8C%B9%E9%85%8D"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">暴力匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP-%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">KMP 算法原理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB"><span class="nav-number">5.</span> <span class="nav-text">编辑距离</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">算法原理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%97%E4%B8%B2"><span class="nav-number">6.</span> <span class="nav-text">最长回文字串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A9%AC%E6%8B%89%E8%BD%A6%E7%AE%97%E6%B3%95"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">马拉车算法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="罗子建"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">罗子建</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wannain" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wannain" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1519327048@qq.com" title="E-Mail → mailto:1519327048@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">罗子建</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

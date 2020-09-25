@@ -296,6 +296,994 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/15/Blockchain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="罗子建">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寒冰小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/15/Blockchain/" class="post-title-link" itemprop="url">Blockchain</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-15 14:41:48" itemprop="dateCreated datePublished" datetime="2020-09-15T14:41:48+08:00">2020-09-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-25 14:42:16" itemprop="dateModified" datetime="2020-09-25T14:42:16+08:00">2020-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://www.luozijian.com/usr/uploads/2019/07/988771085.jpg" alt="blockchain.jpg"></p>
+<h2 id="区块链是什么"><a href="#区块链是什么" class="headerlink" title="区块链是什么"></a>区块链是什么</h2><p>区块链是一种在对等环境下，通过透明和可信规则，构建不可伪造、不可篡改和可追溯的块链式数据结构，实现和管理事务处理的模式。简单理解就是它是一个特殊的分布式数据库，通过在区块链网络上的共识算法，每个节点共享数据，保证了区块链的一致性以及安全性。</p>
+<p>区块链技术经历了如下的发展：</p>
+<p>(1)区块链 1.0</p>
+<p>以比特币为代表的加密货币。</p>
+<p>(2)区块链 2.0</p>
+<p>以智能合约为依托的以太坊作为典型代表，也就是可编程区块链。</p>
+<p>(3)区块链 3.0</p>
+<p>到目前为止，区块链 3.0 还是有争议的，又说是 DAG 技术，也有说是超越货币和金融范围的其他应用。</p>
+<h2 id="区块链的优缺点"><a href="#区块链的优缺点" class="headerlink" title="区块链的优缺点"></a>区块链的优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li><h4 id="分布式的去中心化"><a href="#分布式的去中心化" class="headerlink" title="分布式的去中心化"></a>分布式的去中心化</h4></li>
+</ul>
+<p>目前我们看到的绝大部分网络应用都是中心化网络，而这种过于集中的中心化网络有一个致命的缺陷，就是一旦出现故障，会导致整个系统都受到影响破坏。</p>
+<p>而区块链网络是基于 P2P 技术实现的，并不存在中央服务器的概念，网络中每个节点都是对等的，都可以提供独立的服务。这样即使一部分节点出现故障，也不会影响到整个区块链网络的运行。</p>
+<ul>
+<li><h4 id="无需信任系统"><a href="#无需信任系统" class="headerlink" title="无需信任系统"></a>无需信任系统</h4></li>
+</ul>
+<p>在一个中心化的网络中，我们是通过信任一个作为中介的第三方机构(如银行、支付宝、淘宝等)，由它来背书保证，然后我们才可以放心进行各种交易。而区块链则通过现代密码学技术和共识算法（POW 工作量证明），让我们可以实现去中心化，将信任从第三方机构转移到区块链网络。</p>
+<ul>
+<li><h4 id="不可篡改"><a href="#不可篡改" class="headerlink" title="不可篡改"></a>不可篡改</h4></li>
+</ul>
+<p>区块链是一个基于密码学的分布式账本，每个区块按照时间线性顺序推进。同时通过共识算法，节点之间最终会对共享账本达成一致性。要想要篡改区块链网络中的数据，就需要掌握全网 50%以上的算力才可以控制整个网络，也就是我们常说的”51%攻击”。而在区块链网络中，要想掌握全网 50%以上的算力是要付出巨大的成本的，区块链中每个区块的产生是需要付出算力成本，而且随着区块链的高度越来越高，巨大的算力成本使得篡改的可能性就几乎为零。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li><h4 id="交易账本必须公开"><a href="#交易账本必须公开" class="headerlink" title="交易账本必须公开"></a>交易账本必须公开</h4></li>
+</ul>
+<p>在公有链上，每个节点都可以存储一份完整的账本数据，同时交易数据也是公开透明，账本中的每一笔交易都可以进行追随。</p>
+<ul>
+<li><h4 id="延迟性"><a href="#延迟性" class="headerlink" title="延迟性"></a>延迟性</h4></li>
+</ul>
+<p>区块链的交易是存在一定的延迟性的，以比特币为例。它是每 10 分钟将自上一个区块以后的交易打包生成一个新区块，也就是说我们进行一笔比特币交易后，需要大概 10 分钟进行确认。而由于考虑到可能存在一些节点可能篡改区块数据，最好是在生成 6 个区块后以后才可以确认数据几乎不会被篡改，也就是要将近一个小时。</p>
+<ul>
+<li><h4 id="占用空间"><a href="#占用空间" class="headerlink" title="占用空间"></a>占用空间</h4></li>
+</ul>
+<p>我们知道区块链网络中，每一个节点都可以存储共享一份全网的账本数据，但是随着交易数量的增加，每个节点存储的数据就会非常大。目前比特币要想同步完整的账本数据，需要至少上百 G 的空间。</p>
+<h2 id="区块链关键技术"><a href="#区块链关键技术" class="headerlink" title="区块链关键技术"></a>区块链关键技术</h2><h3 id="区块结构-链式结构"><a href="#区块结构-链式结构" class="headerlink" title="区块结构+链式结构"></a>区块结构+链式结构</h3><p>区块链中每一个区块的结构如下图所示，由区块头和区块体构成。</p>
+<p>区块头中包含以下信息：</p>
+<ul>
+<li><h4 id="版本号：用于跟踪软件-协议的更新"><a href="#版本号：用于跟踪软件-协议的更新" class="headerlink" title="版本号：用于跟踪软件/协议的更新"></a>版本号：用于跟踪软件/协议的更新</h4></li>
+<li><h4 id="父区块的哈希：引用区块链中父区块的哈希值"><a href="#父区块的哈希：引用区块链中父区块的哈希值" class="headerlink" title="父区块的哈希：引用区块链中父区块的哈希值"></a>父区块的哈希：引用区块链中父区块的哈希值</h4></li>
+<li><h4 id="时间戳：该区块产生的时间"><a href="#时间戳：该区块产生的时间" class="headerlink" title="时间戳：该区块产生的时间"></a>时间戳：该区块产生的时间</h4></li>
+<li><h4 id="目标哈希：当前区块的哈希值"><a href="#目标哈希：当前区块的哈希值" class="headerlink" title="目标哈希：当前区块的哈希值"></a>目标哈希：当前区块的哈希值</h4></li>
+<li><h4 id="随机数-Nonce-：用于工作量证明算法的技术器"><a href="#随机数-Nonce-：用于工作量证明算法的技术器" class="headerlink" title="随机数(Nonce)：用于工作量证明算法的技术器"></a>随机数(Nonce)：用于工作量证明算法的技术器</h4></li>
+<li><h4 id="Merkle-根：该区块中交易的-merkle-树根的哈希值"><a href="#Merkle-根：该区块中交易的-merkle-树根的哈希值" class="headerlink" title="Merkle 根：该区块中交易的 merkle 树根的哈希值"></a>Merkle 根：该区块中交易的 merkle 树根的哈希值</h4></li>
+<li><h4 id="区块高度：记录该区块在区块链中位置"><a href="#区块高度：记录该区块在区块链中位置" class="headerlink" title="区块高度：记录该区块在区块链中位置"></a>区块高度：记录该区块在区块链中位置</h4></li>
+</ul>
+<p>区块体中保存的是来自上一个区块以来的交易数据。</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/07/1700728701.png" alt="区块体_1.png"></p>
+<p>然后每个区块通过连接上一个区块，最终形成一条长链，如下图所示：</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/07/4049226392.png" alt="链式结构_2.png"></p>
+<h3 id="Merkle-树"><a href="#Merkle-树" class="headerlink" title="Merkle 树"></a>Merkle 树</h3><p>区块链中每一个区块都包含了该区块的所有交易数据，并且以如下图所示的 Merkle 树表示。</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/07/3663635000.png" alt="Merkle_3.png"></p>
+<p>Merkle 树由一个根节点、一组中间节点和一组叶节点组成。最下面的叶子节点可以存储哈希值或者数据，每个中间节点是两个子节点的内容的哈希值，而根节点同样也是由两个子节点的内容的哈希值组成。</p>
+<p>我们可以发现，只要存储数据的叶子节点有任何的变动，都会传递到相应的父节点，最终其 Merkle 树的根节点都会发生变化。</p>
+<h3 id="P2P-网络"><a href="#P2P-网络" class="headerlink" title="P2P 网络"></a>P2P 网络</h3><p>区块链作为分布式网络，其实现的关键就是基于 P2P 网络。P2P 技术发展到现在，已经经历了3代的发展。</p>
+<p>第1代：采用中央服务器的模式，每个节点都需要先连接中央服务器才能知道其他节点的位置，这种技术有个致命缺陷—单点故障。典型代表是：Napster。</p>
+<p>第2代：采用广播的模式，每个节点在定位资源或节点的时候，会向自己相连的所有节点进行询问，被问到的节点如果不知道结果也执行同样操作，直到找到资源或节点位置。这种技术的一个问题是会引发”广播风暴”并严重占用网络带宽。典型代表是：Gnutella的早期版本。</p>
+<p>第3代：也是目前广泛使用的分布式哈希表（简称 DHT）技术，解决了前两代中出现的单点故障问题和广播风暴问题。<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av57785743/">DHT 技术简介</a></p>
+<h3 id="挖矿与共识"><a href="#挖矿与共识" class="headerlink" title="挖矿与共识"></a>挖矿与共识</h3><p>在区块链网络中，每一笔交易的产生都会广播到网络中其他节点。挖矿实际上是对当前节点上所接收到的交易进行验证打包，并将产生的区块通过区块链网络广播出去，同时奖励产生该区块的矿工一定的奖励（加密货币）。然后区块链网络通过共识算法最终会决定是否将该区块的数据写入到共享账本中。而区块链网络中，区块产生的速度是一个常量，例如比特币是每10分钟产生一个区块。</p>
+<p>那么，这里面有4个关键问题：</p>
+<ul>
+<li><h4 id="为什么需要挖矿这个过程？"><a href="#为什么需要挖矿这个过程？" class="headerlink" title="为什么需要挖矿这个过程？"></a>为什么需要挖矿这个过程？</h4></li>
+<li><h4 id="如何挖矿，也就是挖矿过程是怎样的？"><a href="#如何挖矿，也就是挖矿过程是怎样的？" class="headerlink" title="如何挖矿，也就是挖矿过程是怎样的？"></a>如何挖矿，也就是挖矿过程是怎样的？</h4></li>
+<li><h4 id="如何调整区块的产生速度，例如比特币如何保证每10分钟产生一个区块？"><a href="#如何调整区块的产生速度，例如比特币如何保证每10分钟产生一个区块？" class="headerlink" title="如何调整区块的产生速度，例如比特币如何保证每10分钟产生一个区块？"></a>如何调整区块的产生速度，例如比特币如何保证每10分钟产生一个区块？</h4></li>
+<li><h4 id="如何达成共识，区块链网络中如何对新产生的区块进行确认？"><a href="#如何达成共识，区块链网络中如何对新产生的区块进行确认？" class="headerlink" title="如何达成共识，区块链网络中如何对新产生的区块进行确认？"></a>如何达成共识，区块链网络中如何对新产生的区块进行确认？</h4></li>
+</ul>
+<p>下面我们一个个来分析。</p>
+<p><strong>(1)为什么需要挖矿这个过程？</strong></p>
+<p>挖矿在区块链网络中不仅能增加货币，同时它还能保障区块链安全。挖矿会对区块中的每一笔交易进行校验，防止出现欺诈交易。</p>
+<p>挖矿中每产生的一个区块，都对对应奖励矿工一定的货币，这实际上就类似于央行的发行货币的功能。同时，在该区块上产生的交易需要支付一定的交易费用给产生该区块的矿工（这也是后期货币发行完以后，矿工的主要收入），这会激励更多的矿工参与挖矿，从而保证了区块链网络中产生的交易能被记录到共享账本中。</p>
+<p>同时，挖矿产生一个有效区块是需要工作量证明，也就是需要付出一定的算力成本。如果某个黑客想要篡改某个交易，它不仅要重新计算该交易所在区块之后所有区块的Hash数据，同时还需要保证全网50%以上的算力才能保证自己篡改的数据可以被全网接收。这使得对攻击者来需要付出巨大的经济成本，通过经济惩罚来保障区块链的安全。</p>
+<p><strong>(2)如何挖矿？</strong></p>
+<p>区块链网络中，每个节点时刻监听着网络中产生的新的交易和区块。同时，每个节点会接收区块链网络中产生的交易，并对这些交易数据进行各种校验，防止出现欺诈交易出现。并把这些有效的交易打包成一个候选区块。</p>
+<p>在得到一个候选区块之后，接下来要做的事情就是通过工作量证明机制（POW）证明这个区块有效。简单地说就是重复计算区块头的哈希值，通过不断修区块头中的参数（nonce），直到产生一个哈希值小于某一个目标值为止。由此证明了该区块的有效性，之后就可以将该区块广播出去，告诉其它节点一个新的区块已经产生了，其它节点在得知当前高度的区块已经被挖掘出来以后，就结束当前正在挖掘的区块，开始进入下一个区块的挖掘。</p>
+<p><strong>(3)如何调整区块的产生速度？</strong></p>
+<p>我们知道比特币是每10分钟产生一个区块，即使全网算力增加或者减少，它也能保证产生一个区块的时间在10分钟左右，那它是怎么做到的呢？</p>
+<p>在比特币网络中，每个区块头都会包含一个难度系数。在(2)中我们提到，挖矿证明一个区块有效，实际上就是不停地对区块头进行哈希，直到找到某一个哈希值小于目标值为止。</p>
+<p>这里目标值就根这个难度系数是有关联的。</p>
+<p>在区块链协议中，规定使用一个常量除以难度系数就可以得到目标值。可见，难度系数越大，则相应目标值就越小，那么挖矿需要运算的次数更多。</p>
+<p><strong>target=target_max/difficulty</strong></p>
+<p>而比特币怎么知道自己的算力是提高了还是降低了呢？</p>
+<p>比特币每发现2016个区块时，会根据前2016个区块完成的时间对难度进行调整，如果之前2016个区块所花时间变少了，也就是全网算力提升了，则提高难度系数，则目标值变小；如果所花时间变多，则就是出现全网算力下降了，则降低难度系数，则目标值变大。</p>
+<p><strong>(4)如何达成共识？</strong></p>
+<p>共识机制在区块链中扮演者核心的地位，共识机制决定了谁拥有记账的权利。</p>
+<p>POW，工作量证明机制，通过一个竞争机制（计算猜测一个nonce随机值，得以解决规定的哈希问题），让计算工作完成最出色的节点获得记账的权利。这样可以保证一段时间内，只会出现少数几个同一高度的合法区块。而POW通过这种算力消耗的经济惩罚限制了恶意的参与，因为它需要付出大量的经济成本。</p>
+<p>同时，这些合法的区块会在区块链网络中进行广播，收到的节点会将区块添加到自己维护的最长链上。所以这时候有可能当前节点同时收到两个同一高度的合法区块，也就会出现分叉，但是最终随着挖矿的继续运行，最终会有一条链成为最长链。</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/07/3362694310.jpg" alt="共识机制_4.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/29/string-in-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="罗子建">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寒冰小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/29/string-in-python/" class="post-title-link" itemprop="url">string in python</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-29 14:39:41" itemprop="dateCreated datePublished" datetime="2019-03-29T14:39:41+08:00">2019-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-25 14:40:09" itemprop="dateModified" datetime="2020-09-25T14:40:09+08:00">2020-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg" alt="123.jpg"></p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。</p>
+<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ul>
+<li>字符串的基本概念</li>
+<li>正则表达式</li>
+<li>KMP 算法</li>
+<li>编辑距离</li>
+<li>manacher 算法</li>
+</ul>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>字符串是 Python 中最常见的数据类型。我们可以使用引号 (‘ 或 “)来创建字符串。</p>
+<p>创建字符串很简单，只要为变量分配一个值即可。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var1=<span class="string">&#x27;Hello shiyanlou&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Python 访问字符串中的值</strong>使用方括号来截取字符串，如下示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var2=<span class="string">&#x27;Hello shiyanlou!&#x27;</span></span><br><span class="line">print(<span class="string">&quot;var2[1:5]:&quot;</span>,var2[<span class="number">1</span>:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<p><strong>Python 字符串更新</strong></p>
+<p>可以截取字符串的一部分并与其他字段拼接</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var3=<span class="string">&#x27;Hello user!&#x27;</span></span><br><span class="line">print(<span class="string">&quot;已更新字符串：&quot;</span>,var3[:<span class="number">6</span>],<span class="string">&#x27;user!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果: 已更新字符串：Hello user!</p>
+<p><strong>Python 转义字符</strong></p>
+<p>在需要在字符中使用特殊字符时，Python 用反斜杠(\) 转义字符。</p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\(在行尾时)</td>
+<td>续行符</td>
+</tr>
+<tr>
+<td>\‘</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\‘’</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(Backspace)</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+</tbody></table>
+<p><strong>Python 字符串运算符</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>字符串连接</td>
+</tr>
+<tr>
+<td>*</td>
+<td>重复输出字符串</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>通过索引获取字符串中字符</td>
+</tr>
+<tr>
+<td>[:]</td>
+<td>截取字符串中的一部分，遵循<strong>左闭右开</strong>原则，str[0,2] 是不包含第 3 个字符的</td>
+</tr>
+<tr>
+<td>in</td>
+<td>如果字符串中包含给定的字符返回 True</td>
+</tr>
+<tr>
+<td>not in</td>
+<td>如果字符串中不包含给定的字符返回 True</td>
+</tr>
+</tbody></table>
+<p><strong>Python 字符串格式化</strong></p>
+<p>Python 支持格式化字符串的输出。尽管这样可能会用到非常复杂的表达式，但最基本的用法是将一个值插入到一个有字符串格式符 %s 的字符串中</p>
+<p>示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;Hello user %d,Welcome to %s&quot;</span>%(<span class="number">34291615</span>,<span class="string">&quot;shiyanlou&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：Hello user 34291615,Welcome to shiyanlou</p>
+<p><strong>Python 字符串格式化符号</strong></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%c</td>
+<td>格式化字符及其 ASCII 码</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>格式化整数</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>用科学计数法格式化浮点数</td>
+</tr>
+</tbody></table>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p>正则表达式是一个特殊的字符序列，它能帮助你方便的检查一个字符串是否与某种模式匹配。re 模块使 Python 语言拥有全部的正则表达式功能。</p>
+<h4 id="re-match-函数"><a href="#re-match-函数" class="headerlink" title="re.match 函数"></a>re.match 函数</h4><p>re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回 None</p>
+<p>函数语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.match(pattern,string,flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等。</td>
+</tr>
+</tbody></table>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.match(<span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;www.shiyanlou.com&#x27;</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.match(<span class="string">&#x27;com&#x27;</span>, <span class="string">&#x27;www.shiyanlou.com&#x27;</span>))         <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
+
+<p>以上实例运行输出结果为：</p>
+<p>(0,3)<br>None</p>
+<h4 id="re-search-方法"><a href="#re-search-方法" class="headerlink" title="re.search 方法"></a>re.search 方法</h4><p>re.search 扫描整个字符串并返回第一个成功的匹配</p>
+<p>函数语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.search(pattern,string,flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>函数参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>要匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等</td>
+</tr>
+</tbody></table>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.search(<span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;www.shiyanlou.com&#x27;</span>).span())  <span class="comment"># 在起始位置匹配</span></span><br><span class="line">print(re.search(<span class="string">&#x27;com&#x27;</span>, <span class="string">&#x27;www.shiyanlou.com&#x27;</span>).span())   <span class="comment"># 不在起始位置匹配</span></span><br></pre></td></tr></table></figure>
+
+<p>以上实例运行输出结果为：</p>
+<p>(0,3)<br>(11,14)</p>
+<h4 id="re-match-与-re-search-的区别"><a href="#re-match-与-re-search-的区别" class="headerlink" title="re.match 与 re.search 的区别"></a>re.match 与 re.search 的区别</h4><p>re.match 只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回 None；而 re.search 匹配整个字符串，直到找到一个匹配</p>
+<h4 id="检索和替换"><a href="#检索和替换" class="headerlink" title="检索和替换"></a>检索和替换</h4><p>Python 的 re 模块提供了 re.sub 用于替换字符串中的匹配项。</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.sub(pattern,repl,string,count=<span class="number">0</span>,flags=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pattern:正则表达式中模式字符串</li>
+<li>repl:替换的字符串，也可为一个函数</li>
+<li>string:要被查找替换的原始字符串</li>
+<li>count:模式匹配后替换的最大次数,默认 0 表示替换所有的匹配</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">phone=<span class="string">&quot;2004-959-559 # 这是一个国外电话号码&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除字符串中的 Python注释</span></span><br><span class="line">num=re.sub(<span class="string">r&#x27;#.*$&#x27;</span>,<span class="string">&quot;&quot;</span>,phone) <span class="comment">#r代表正则表达式,将在后面介绍具体规则</span></span><br><span class="line">print(<span class="string">&quot;电话号码是：&quot;</span>,num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除非数字(-)的字符串 </span></span><br><span class="line">num = re.sub(<span class="string">r&#x27;\D&#x27;</span>, <span class="string">&quot;&quot;</span>, phone)</span><br><span class="line">print(<span class="string">&quot;电话号码是：&quot;</span>,num)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下：<br>电话号码是:  2004-959-559<br>电话号码是 :  200495955</p>
+<h4 id="recompile-函数"><a href="#recompile-函数" class="headerlink" title="recompile 函数"></a>recompile 函数</h4><p>compile 函数用于编译正则表达式，生成一个正则表达（Pattern）对象，供 match() 和 search() 这两个函数使用。</p>
+<p>语法格式为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.compile(pattern[,flags])</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>pattern: 一个字符串形式的正则表达式</li>
+<li>flags:可选，表示匹配模式，比如忽略大小写，多行模式，具体参数为：<ul>
+<li>re.l 忽略大小写</li>
+<li>re.L 表示特殊字符集 \w, \W, \b, \B, \s, \S 依赖于当前环境</li>
+<li>re.M 多行模式</li>
+<li>re.S . 并且包括换行符在内的任意字符（. 不包括换行符)</li>
+<li>re.X 为了增加可读性，忽略空格和 # 后面的注释</li>
+</ul>
+</li>
+</ul>
+<h4 id="findall"><a href="#findall" class="headerlink" title="findall"></a>findall</h4><p>在字符串中找到正则表达式所匹配的所有子串，并返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<p>语法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findall(string[,pos[,endpos]])</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<ul>
+<li>string:待匹配的字符串</li>
+<li>pos:可选参数，指定字符串的起始位置，默认为 0。</li>
+<li>endpos:可选参数，指定字符串的结束位置，默认为字符串的长度。</li>
+</ul>
+<p>查找字符串中的所有数字：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern=re.compile(<span class="string">r&#x27;\d+&#x27;</span>) <span class="comment">#查找数字</span></span><br><span class="line">result1 = pattern.findall(<span class="string">&#x27;runoob 123 google 456&#x27;</span>)</span><br><span class="line">result2 = pattern.findall(<span class="string">&#x27;run88oob123google456&#x27;</span>, <span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line">print(result1)</span><br><span class="line">print(result2)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：<br>[‘123’,’456’]<br>[‘88’,’12’]</p>
+<h4 id="re-split"><a href="#re-split" class="headerlink" title="re.split"></a>re.split</h4><p>split 方法按照能够匹配的子串将字符串分割后返回列表</p>
+<p>语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.split(pattern, string[, maxsplit=<span class="number">0</span>, flags=<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern</td>
+<td>匹配的正则表达式</td>
+</tr>
+<tr>
+<td>string</td>
+<td>要匹配的字符串</td>
+</tr>
+<tr>
+<td>maxsplit</td>
+<td>分隔次数，maxsplit =1 分隔一次，默认为 0，不限制次数</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等</td>
+</tr>
+</tbody></table>
+<h4 id="正则表达式实例"><a href="#正则表达式实例" class="headerlink" title="正则表达式实例"></a>正则表达式实例</h4><p>字符类</p>
+<table>
+<thead>
+<tr>
+<th>实例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rub[ye]</td>
+<td>匹配 “ruby” 或 “rube”</td>
+</tr>
+<tr>
+<td>[aeiou]</td>
+<td>匹配中括号内的任意一个字母</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>匹配任何数字。类似于 [0123456789]</td>
+</tr>
+<tr>
+<td>[a-z]</td>
+<td>匹配任何小写字母</td>
+</tr>
+<tr>
+<td>[A-Z]</td>
+<td>匹配任何大写字母</td>
+</tr>
+<tr>
+<td>[a-zA-Z0-9]</td>
+<td>匹配任何字母及数字</td>
+</tr>
+<tr>
+<td>[^aeious]</td>
+<td>除了 aeiou 字母以外的所有字符</td>
+</tr>
+<tr>
+<td>[^0-9]</td>
+<td>匹配除了数字外的字符</td>
+</tr>
+</tbody></table>
+<p>特殊字符类</p>
+<table>
+<thead>
+<tr>
+<th>实例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\d</td>
+<td>匹配一个数字字符。等价于 [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一个非数字字符。</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任何非空白字符。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配包括下划线的任何单词字符。等价于’[A-Za-z0-9_]’</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配任何非单词字符。</td>
+</tr>
+</tbody></table>
+<h1 id="KMP-算法"><a href="#KMP-算法" class="headerlink" title="KMP 算法"></a>KMP 算法</h1><p>字符串匹配是极为常见的一种模式匹配。简单地说，就是判断主串 T 中是否出现模式串 P，即 P 为 T 的子串。特别地，定义主串 T[0…n-1],模式串为 P [0…p-1],则主串与模式串的长度各为 n 与 p</p>
+<h4 id="暴力匹配"><a href="#暴力匹配" class="headerlink" title="暴力匹配"></a>暴力匹配</h4><p>暴力匹配方法的思想非常朴素：</p>
+<ol>
+<li>依次从主串的首字符开始，与模式串逐一进行匹配</li>
+<li>遇到失配时，则移到主串的第二个字符，将其与模式串首字符比较，逐一进行匹配</li>
+<li>重复上述步骤，直至能匹配上，或剩下主串的长度不足以进行匹配</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">brute_force_match</span>(<span class="params">t,p</span>):</span></span><br><span class="line">    tlen=len(t)</span><br><span class="line">    plen=len(p)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(tlen):</span><br><span class="line">        j=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> t[i+j]==p[j] <span class="keyword">and</span> j &lt;plen:</span><br><span class="line">            j=j+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> j==plen:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+
+<p>算法复杂度分析：i 在主串上移动 (n-p)次，匹配失败时，j 移动次数最多有 p-1 次。因此复杂度为 O(n*p)</p>
+<p>对于暴力匹配而言，就存在重复匹配的现象。比如，第一次匹配失败时，主串，模式串失败匹配的位置的字符分别为 a 与 c ,下一次匹配时主串，模式串的起始位置分别为 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">1</a> 与 P[0];而在模式串中 c 之前是 ab ,未有重复结构，因此 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">1</a>与 P[0]肯定不能匹配上，这样造成了重复匹配。直观上，下一次匹配应从 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/3450331248.gif">2</a> 与 P[0] 开始。</p>
+<p>那么如何提高匹配效率呢？那就考虑下 KMP 算法</p>
+<h4 id="KMP-算法原理"><a href="#KMP-算法原理" class="headerlink" title="KMP 算法原理"></a>KMP 算法原理</h4><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">KMP 详细证明</a></p>
+<p>KMP 算法思想归纳如下：将主串 T 的第一个字符与模式串 P 的第一个字符进行匹配。如果相等，则依次比较 T 和 P 的下一个字符。如果不相等，则 主串 T 移动(已匹配字符数-对应的部分匹配值)位，继续匹配。</p>
+<p>关于移动位数的解释：已匹配字符数，即当前已完成匹配的字符数量。<strong>部分匹配值</strong>就是前缀和后缀的最长的共有元素的长度。</p>
+<p><strong>前缀</strong>指除了最后一个字符以外，一个字符串的全部头部组合</p>
+<p><strong>后缀</strong>指除了第一个字符以外，一个字符串的全部尾部组合</p>
+<p>举个例子：以”ABCDABD”为例</p>
+<ul>
+<li>“A”的前缀和后缀都为空集，共有元素的长度为 0；</li>
+<li>“AB”的前缀为[A]，后缀为[B]，共有元素的长度为 0；</li>
+<li>“ABC”的前缀为[A, AB]，后缀为[BC, C]，共有元素的长度 0；</li>
+<li>“ABCD”的前缀为[A, AB, ABC]，后缀为[BCD, CD, D]，共有元素的长度为 0；</li>
+<li>“ABCDA”的前缀为[A, AB, ABC, ABCD]，后缀为[BCDA, CDA, DA, A]，共有元素为”A”，长度为 1；</li>
+<li>“ABCDAB”的前缀为[A, AB, ABC, ABCD, ABCDA]，后缀为[BCDAB, CDAB, DAB, AB, B]，共有元素为”AB”，长度为 2；</li>
+<li>“ABCDABD”的前缀为[A, AB, ABC, ABCD, ABCDA, ABCDAB]，后缀为[BCDABD, CDABD, DABD, ABD, BD, D]，共有元素的长度为 0。</li>
+</ul>
+<p><strong>部分匹配表如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th>搜索值</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>A</th>
+<th>B</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>部分匹配值</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/3450331248.gif" alt="kmp.gif"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_failure_array</span>(<span class="params">pattern</span>):</span> <span class="comment">#制作部分匹配表</span></span><br><span class="line">    failure = [<span class="number">0</span>]</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    j = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> j &lt; len(pattern):</span><br><span class="line">        <span class="keyword">if</span> pattern[i] == pattern[j]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> i &gt; <span class="number">0</span>:</span><br><span class="line">            i = failure[i<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">        failure.append(i)</span><br><span class="line">    <span class="keyword">return</span> failure</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kmp</span>(<span class="params">pattern, text</span>):</span></span><br><span class="line">    failure = get_failure_array(pattern) <span class="comment">#得到部分匹配表</span></span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    j=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(text):</span><br><span class="line">        <span class="keyword">if</span> pattern[j] == text[i]:</span><br><span class="line">            <span class="keyword">if</span> j == (len(pattern) - <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> j &gt; <span class="number">0</span>:</span><br><span class="line">            j = failure[j - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print(kmp(<span class="string">&#x27;123456&#x27;</span>,<span class="string">&#x27;123123456&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h1 id="编辑距离"><a href="#编辑距离" class="headerlink" title="编辑距离"></a>编辑距离</h1><p>编辑距离(levenshtein distance)是针对二个字符串（例如英文字）的差异程度的量化量测，量测方式是看至少需要多少次的处理才能将一个字符串变成另一个字符串。编辑距离可以用在自然语言处理中，例如拼写检查可以根据一个拼错的字和其他正确的字的编辑距离，判断哪一个（或哪几个）是比较可能的字。DNA 也可以视为用 A、C、G 和 T 组成的字符串，因此编辑距离也用在生物信息学中，判断二个 DNA 的类似程度。Unix 下的 diff 及 patch 即是利用编辑距离来进行文本编辑对比的例子。</p>
+<p>注：定义来自百度百科</p>
+<h4 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h4><p>编辑距离允许的编辑操作有三种，如果字符相等，我们还可以选择不操作。我们可以列举一下这四种操作的情况。</p>
+<ol>
+<li><p><strong>不操作：</strong>对于”ay”与”day”的 “y”字符，可以选择不操作。即”ay”与”day”之间的利文斯顿距离等于”a”和”da”之间的利文斯顿距离。</p>
+</li>
+<li><p><strong>替换操作：</strong>对于”day”与”dae”的最后一位字符”y”和”e”字符,可以选择进行替换操作。即”day”与”dae”之间的利文斯顿距离等于”da”和”da”之间的利文斯顿距离加上一。</p>
+</li>
+<li><p><strong>插入操作：</strong>对于”dae”与”da”的最后一位字符”e”和”a”字符,可以选择进行插入操作。即”dae”与”da”之间的利文斯顿距离等于”da”和”da”之间的利文斯顿距离加上一。</p>
+</li>
+<li><p><strong>删除操作：</strong>对于”dae”与”daey”的最后一位字符”e”和”a”字符,可以选择进行删除操作。即”dae”与”daey”之间的利文斯顿距离等于”dae”和”dae”之间的利文斯顿距离加上一。</p>
+</li>
+</ol>
+<p>参考代码如下：</p>
+<p>注意：请务必自己独立思考解决问题之后再对照参考答案，一开始直接看参考答案收获不大。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">levenshtein_distance</span>(<span class="params">first_word,second_word</span>):</span></span><br><span class="line">    <span class="keyword">if</span> len(first_word)&lt;len(second_word):</span><br><span class="line">        <span class="keyword">return</span> levenshtein_distance(second_word,first_world)</span><br><span class="line">    <span class="keyword">if</span> len(second_word)==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> len(first_word)</span><br><span class="line">    previous_row=range(len(second_word)+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i,c1 <span class="keyword">in</span> enumerate(first_word):</span><br><span class="line">        current_row=[i+<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> j,c2 <span class="keyword">in</span> enumerate(second_word):</span><br><span class="line">            <span class="comment"># 计算增加，删除，修改次数</span></span><br><span class="line">            insertions = previous_row[j + <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            deletions = current_row[j] + <span class="number">1</span></span><br><span class="line">            substitutions = previous_row[j] + (c1 != c2)</span><br><span class="line">            <span class="comment"># 得到最小值，添加到current_row</span></span><br><span class="line">            current_row.append(min(insertions, deletions, substitutions))</span><br><span class="line">        <span class="comment"># 储存previous_row</span></span><br><span class="line">        previous_row = current_row</span><br><span class="line">    <span class="comment">#返回最后的编辑距离</span></span><br><span class="line">    <span class="keyword">return</span> previous_row[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="最长回文字串"><a href="#最长回文字串" class="headerlink" title="最长回文字串"></a>最长回文字串</h1><p>所谓回文字串，即正着读和倒着读结果都一样的字符串,比如:a, aba, abccba 都是回文串,ab, abb, abca 都不是回文串。</p>
+<p>暴力求解的思路：找到字符串的所有子串，遍历每一个子串以验证它们是否为回文串。一个子串由子串的起点和终点确定，因此对于一个长度为 n 的字符串，共有 n^2 个子串。这些子串的平均长度大约是 n/2，因此这个解法的时间复杂度是 O(n^3)。我们能不能提高效率呢，当然可以。这里给大家介绍马拉车算法。</p>
+<p>求解回文串的问题，有很多巧妙的求解算法，这里仅介绍马拉车算法，其他求解算法无法一一介绍，感兴趣的同学请自行探索。</p>
+<h4 id="马拉车算法"><a href="#马拉车算法" class="headerlink" title="马拉车算法"></a>马拉车算法</h4><p>马拉车算法(Manacher)由一个叫 Manacher 的人在 1975 年发明的，这个方法的最大贡献是在于将时间复杂度提升到了线性，这是非常了不起的。让我们来看下马拉车算法的优越性在哪。</p>
+<p>**(1) 解决长度奇偶性带来的对称轴位置问题:**Manacher 算法首先对字符串做一个预处理，在所有的空隙位置(包括首尾)插入同样的符号，要求这个符号是不会在原串中出现的。这样会使得所有的串都是奇数长度的。以插入#号为例：</p>
+<p>aba-&gt;#a#b#a#<br>abba-&gt;#a#b#b#a#</p>
+<p>插入的是同样的符号，且符号不存在于原串，因此子串的回文性不受影响，原来是回文的串，插完之后还是回文的，原来不是回文的，依然不会是回文的。</p>
+<p>**(2) 解决重复访问的问题:**我们把一个回文串中最左或最右位置的字符与其对称轴的距离称为回文半径。Manacher 定义了一个回文半径数组 RL，用 RL[i]表示以第 i 个字符为对称轴的回文串的回文半径。我们一般对字符串从左往右处理，因此这里定义 RL[i]为第 i 个字符为对称轴的回文串的最右一个字符与字符 i 的距离。对于上面插入分隔符之后的两个串，可以得到 RL 数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">char:    # a # b # a #</span><br><span class="line">RL  :    1 2 1 4 1 2 1</span><br><span class="line">RL-1:    0 1 0 3 0 1 0</span><br><span class="line">i   :    0 1 2 3 4 5 6</span><br><span class="line"></span><br><span class="line">char:    # a # b # b # a #</span><br><span class="line">RL  :    1 2 1 2 5 2 1 2 1</span><br><span class="line">RL-1:    0 1 0 1 4 1 0 1 0</span><br><span class="line">i   :    0 1 2 3 4 5 6 7 8</span><br></pre></td></tr></table></figure>
+
+<p>上面我们还求了一下 RL[i]-1。通过观察可以发现，RL[i]-1 的值，正是在原本那个没有插入过分隔符的串中，以位置 i 为对称轴的最长回文串的长度。那么只要我们求出了 RL 数组，就能得到最长回文子串的长度。</p>
+<p>于是问题变成了，怎样高效地求的 RL 数组。基本思路是利用回文串的对称性，扩展回文串。</p>
+<p>我们再引入一个辅助变量 MaxRight，表示当前访问到的所有回文子串，所能触及的最右一个字符的位置。另外还要记录下 MaxRight 对应的回文串的对称轴所在的位置，记为 pos，它们的位置关系如下。<img src="https://www.luozijian.com/usr/uploads/2019/03/1315438945.png" alt="manacher1.png"></p>
+<p>我们从左往右地访问字符串来求 RL，假设当前访问到的位置为 i，即要求 RL[i]，在对应上图，i 必然是在 po 右边的(obviously)。但我们更关注的是，i 是在 MaxRight 的左边还是右边。我们分情况来讨论。</p>
+<p>1） 当 i 在 MaxRight 的左边</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/3535294664.png" alt="manacher2.png"></p>
+<p>我们知道，图中两个红色块之间（包括红色块）的串是回文的；并且以 i 为对称轴的回文串，是与红色块间的回文串有所重叠的。我们找到 i 关于 pos 的对称位置 j，这个 j 对应的 RL[j]我们是已经算过的。根据回文串的对称性，以 i 为对称轴的回文串和以 j 为对称轴的回文串，有一部分是相同的。这里又有两种细分的情况。</p>
+<p>a.以 j 为对称轴的回文串比较短</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/1017039786.png" alt="manacher3.png"></p>
+<p>这时我们知道 RL[i]至少不会小于 RL[j]，并且已经知道了部分的以 i 为中心的回文串，于是可以令 RL[i]=RL[j]。但是以 i 为对称轴的回文串可能实际上更长，因此我们试着以 i 为对称轴，继续往左右两边扩展，直到左右两边字符不同，或者到达边界。</p>
+<p>b.以 j 为对称轴的回文串比较长</p>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/56582860.png" alt="manacher4.png"></p>
+<p>这时，我们只能确定，两条蓝线之间的部分（即不超过 MaxRight 的部分）是回文的，于是从这个长度开始，尝试以 i 为中心向左右两边扩展，，直到左右两边字符不同，或者到达边界。</p>
+<p>不论以上哪种情况，之后都要尝试更新 MaxRight 和 pos，因为有可能得到更大的 MaxRight。</p>
+<p>具体操作如下：</p>
+<ol>
+<li>令 RL[i]=min(RL[2*pos-i], MaxRight-i)</li>
+<li>以 i 为中心扩展回文串，直到左右两边字符不同，或者到达边界</li>
+<li>更新 MaxRight 和 pos</li>
+</ol>
+<ol start="2">
+<li>当 i 在 MaxRight 的右边</li>
+</ol>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/1332232394.png" alt="manacher5.png"></p>
+<p>遇到这种情况，说明以 i 为对称轴的回文串还没有任何一个部分被访问过，于是只能从 i 的左右两边开始尝试扩展了，当左右两边字符不同，或者到达字符串边界时停止。然后更新 MaxRight 和 pos</p>
+<p>参考代码如下；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">manacher</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="comment">#预处理</span></span><br><span class="line">    s=<span class="string">&#x27;#&#x27;</span>+<span class="string">&#x27;#&#x27;</span>.join(s)+<span class="string">&#x27;#&#x27;</span></span><br><span class="line"></span><br><span class="line">    RL=[<span class="number">0</span>]*len(s)</span><br><span class="line">    MaxRight=<span class="number">0</span></span><br><span class="line">    pos=<span class="number">0</span></span><br><span class="line">    MaxLen=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="keyword">if</span> i&lt;MaxRight:</span><br><span class="line">            RL[i]=min(RL[<span class="number">2</span>*pos-i], MaxRight-i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            RL[i]=<span class="number">1</span></span><br><span class="line">        <span class="comment">#尝试扩展，注意处理边界</span></span><br><span class="line">        <span class="keyword">while</span> i-RL[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+RL[i]&lt;len(s) <span class="keyword">and</span> s[i-RL[i]]==s[i+RL[i]]:</span><br><span class="line">            RL[i]+=<span class="number">1</span></span><br><span class="line">        <span class="comment">#更新MaxRight,pos</span></span><br><span class="line">        <span class="keyword">if</span> RL[i]+i<span class="number">-1</span>&gt;MaxRight:</span><br><span class="line">            MaxRight=RL[i]+i<span class="number">-1</span></span><br><span class="line">            pos=i</span><br><span class="line">        <span class="comment">#更新最长回文串的长度</span></span><br><span class="line">        MaxLen=max(MaxLen, RL[i])</span><br><span class="line">    <span class="keyword">return</span> MaxLen<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/26/sort-in-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="罗子建">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寒冰小站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/26/sort-in-python/" class="post-title-link" itemprop="url">sort in python</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-26 14:38:24" itemprop="dateCreated datePublished" datetime="2019-03-26T14:38:24+08:00">2019-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-25 14:38:53" itemprop="dateModified" datetime="2020-09-25T14:38:53+08:00">2020-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://www.luozijian.com/usr/uploads/2019/03/3022273881.jpg" alt="2.jpg"></p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>本节内容将介绍几种常见的排序算法（主要包含冒泡排序，选择排序，插入排序，希尔排序，归并排序，快速排序，堆排序，桶排序）的算法原理，算法复杂度的分析，以及如何实现。</p>
+<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ul>
+<li>冒泡排序</li>
+<li>选择排序</li>
+<li>插入排序</li>
+<li>希尔排序</li>
+<li>归并排序</li>
+<li>快速排序</li>
+<li>堆排序</li>
+<li>计数排序</li>
+<li>桶排序</li>
+</ul>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><p>所谓排序，就是使一串记录，按照其中的某个或某些关键字的大小，递增或递减的排列起来的操作。排序算法，就是如何使得记录按照要求排列的方法。排序算法在很多领域得到相当地重视，尤其是在大量数据的处理方面。一个优秀的算法可以节省大量的资源。</p>
+<p>注：定义来自百度百科。</p>
+<p>在学习算法的时候，需要学会理解算法是如何实现的，掌握其算法的原理，以及如何判断算法的优越性。</p>
+<p>我们将在接下来的内容，逐步理解这些简单的搜索算法。</p>
+<h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p>
+<h4 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h4><ol>
+<li><p>比较相邻的元素。如果第一个比第二个大，就交换他们</p>
+</li>
+<li><p>对每一对相邻元素做同样的工作，从开始第一对到结尾的最后一对，这样在最后的元素应该会是最大的数</p>
+</li>
+<li><p>针对所有的元素重复以上步骤，除了最后一个</p>
+</li>
+<li><p>重复步骤 1~3,直到排序完成</p>
+</li>
+</ol>
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(n^2)</p>
+<p>最好复杂度：时间复杂度为 O(n)</p>
+<p>平均复杂度: 时间复杂度为 O(n^2)</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(sequence)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,len(sequence)-i):</span><br><span class="line">            <span class="keyword">if</span> sequence[j]&gt;sequence[j+<span class="number">1</span>]:</span><br><span class="line">                sequence[j],sequence[j+<span class="number">1</span>]=sequence[j+<span class="number">1</span>],sequence[j]</span><br><span class="line">    <span class="keyword">return</span> sequence</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/2944475009.gif" alt="bubble_sort1.gif"></p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>注意：请务必自己独立思考解决问题之后再对照参考答案，一开始直接看参考答案收获不大。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(sequence)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,len(sequence)-i):</span><br><span class="line">            <span class="keyword">if</span> sequence[j]&gt;sequence[j+<span class="number">1</span>]:</span><br><span class="line">                sequence[j],sequence[j+<span class="number">1</span>]=sequence[j+<span class="number">1</span>],sequence[j]</span><br><span class="line">    <span class="keyword">return</span> sequence</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    sequence= [<span class="number">12</span>, <span class="number">27</span>, <span class="number">46</span>, <span class="number">16</span>, <span class="number">25</span>, <span class="number">37</span>, <span class="number">22</span>, <span class="number">29</span>, <span class="number">15</span>, <span class="number">47</span>, <span class="number">48</span>, <span class="number">34</span>]</span><br><span class="line">    print(sequence)</span><br><span class="line">    print(bubble_sort(sequence))</span><br></pre></td></tr></table></figure>
+
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p>选择排序是一种简单直观的排序算法，无论什么数据进去都是 O(n^2) 的时间复杂度。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧</p>
+<h4 id="算法原理-1"><a href="#算法原理-1" class="headerlink" title="算法原理"></a>算法原理</h4><ol>
+<li><p>首先在未排序序列中找到最小(大)元素，存放到排序序列的起始位置</p>
+</li>
+<li><p>再从剩余未排序元素中继续寻找最小(大)元素，然后放到已排序序列的末尾</p>
+</li>
+<li><p>重复第二步，直到所有元素均排序完毕</p>
+</li>
+</ol>
+<h4 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(n^2)</p>
+<p>最好复杂度：时间复杂度为 O(n^2)</p>
+<p>平均复杂度: 时间复杂度为 O(n^2)</p>
+<h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(sequence)<span class="number">-1</span>):</span><br><span class="line">        minIndex=i <span class="comment">#记录最小数的索引</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>,len(sequence)):</span><br><span class="line">            <span class="keyword">if</span> sequence[j]&lt;sequence[minIndex]:</span><br><span class="line">                minIndex=j</span><br><span class="line">        sequence[minIndex],sequence[i]=sequence[i],sequence[minIndex] <span class="comment">#将该数放到已排序序列的末尾</span></span><br><span class="line">    <span class="keyword">return</span> sequence</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/73203927.gif" alt="select_sort.gif"></p>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p>插入排序（Insertion Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
+<h4 id="算法原理-2"><a href="#算法原理-2" class="headerlink" title="算法原理"></a>算法原理</h4><ol>
+<li><p>从第一个元素开始，该元素可以认为已经被排序</p>
+</li>
+<li><p>取出下一个元素，在已经排序的元素序列中从后向前扫描</p>
+</li>
+<li><p>如果该元素(已排序)大于新元素，将该元素移到下一位置</p>
+</li>
+<li><p>重复步骤 3，直到找到已排序的元素小于或者等于新元素的位置</p>
+</li>
+<li><p>将新元素插入到该位置后</p>
+</li>
+<li><p>重复步骤 2-5</p>
+</li>
+</ol>
+<h4 id="复杂度分析-2"><a href="#复杂度分析-2" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(n^2)</p>
+<p>最好复杂度：时间复杂度为 O(n^2)</p>
+<p>平均复杂度: 时间复杂度为 O(n^2)</p>
+<h4 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">1</span>,len(sequence)):</span><br><span class="line">        <span class="keyword">while</span>(index&gt;<span class="number">0</span> <span class="keyword">and</span> sequence[index<span class="number">-1</span>]&gt;sequence[index]):</span><br><span class="line">            sequence[index],sequence[index<span class="number">-1</span>]=sequence[index<span class="number">-1</span>],sequence[index]</span><br><span class="line">            index=index<span class="number">-1</span></span><br><span class="line">    <span class="keyword">return</span> sequence</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/2227313426.gif" alt="insertion_sort.gif"></p>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><p>希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。</p>
+<p>希尔排序是基于插入排序的以下两点性质而提出改进方法的：</p>
+<ul>
+<li><p>插入排序在对几乎已经排好序的数据操作时，效率高，既可以达到线性排序的效率</p>
+</li>
+<li><p>但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位。</p>
+</li>
+</ul>
+<h4 id="算法原理-3"><a href="#算法原理-3" class="headerlink" title="算法原理"></a>算法原理</h4><p>基尔排序基本思想是：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序。</p>
+<ol>
+<li><p>选择一个增量序列 t1,t2,…,tk,其中 ti&gt;tj,tk=1</p>
+</li>
+<li><p>按增量序列的个数 k，对序列进行 k 趟排序</p>
+</li>
+<li><p>每趟排序，根据对应的增量 ti,将待排序序列分割成若干长度为 m 的子序列，分别对各子表进行直接插入排序。仅增量因子为 1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
+</li>
+</ol>
+<h4 id="复杂度分析-3"><a href="#复杂度分析-3" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(n(logn)^2)</p>
+<p>最好复杂度：时间复杂度为 O(nlogn)</p>
+<p>平均复杂度: 取决于间隔序列</p>
+<h4 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shell_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    gap=len(sequence)</span><br><span class="line">    <span class="keyword">while</span> gap &gt;<span class="number">1</span>:</span><br><span class="line">        gap=gap//<span class="number">2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(gap,len(sequence)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i%gap,i,gap):</span><br><span class="line">                <span class="keyword">if</span> sequence[i]&lt;sequence[j]:</span><br><span class="line">                    sequence[i],sequence[j]=sequence[j],sequence[i]</span><br><span class="line">    <span class="keyword">return</span> sequence</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/865292067.gif" alt="shell_sort.gif"></p>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为 2-路归并</p>
+<h4 id="算法原理-4"><a href="#算法原理-4" class="headerlink" title="算法原理"></a>算法原理</h4><p>归并排序基本思想是：</p>
+<ol>
+<li><p>把长度为 n 的输入序列分成两个长度为 n/2 的子序列</p>
+</li>
+<li><p>对这两个子序列分别采用归并排序</p>
+</li>
+<li><p>将两个排序好的子序列合并成一个最终的排序序列</p>
+</li>
+</ol>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/1710691003.gif" alt="merge_sort.gif"></p>
+<h4 id="复杂度分析-4"><a href="#复杂度分析-4" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(nlogn)</p>
+<p>最好复杂度：时间复杂度为 O(nlogn)</p>
+<p>平均复杂度: 时间复杂度为 O(nlogn)</p>
+<h4 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="keyword">if</span>(len(sequence)&lt;<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">return</span> sequence</span><br><span class="line">    mid=math.floor(len(sequence)/<span class="number">2</span>)</span><br><span class="line">    left,right=sequence[<span class="number">0</span>:mid],sequence[mid:]</span><br><span class="line">    <span class="keyword">return</span> merge(merge_sort(left),merge_sort(right))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span>(<span class="params">left,right</span>):</span></span><br><span class="line">    result=[]</span><br><span class="line">    <span class="keyword">while</span> left <span class="keyword">and</span> right:</span><br><span class="line">        <span class="keyword">if</span> left[<span class="number">0</span>] &lt;=right[<span class="number">0</span>]:</span><br><span class="line">            result.append(left.pop(<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(right.pop(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">while</span> left:</span><br><span class="line">        result.append(left.pop(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">while</span> right:</span><br><span class="line">        result.append(right.pop(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。</p>
+<h4 id="算法原理-5"><a href="#算法原理-5" class="headerlink" title="算法原理"></a>算法原理</h4><p>归并排序基本思想是：使用分治法来把一个串（list）分为两个子串（sub-lists）</p>
+<ol>
+<li><p>从数列中挑出一个元素，称为”基准”(pivot)</p>
+</li>
+<li><p>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作</p>
+</li>
+<li><p>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序</p>
+</li>
+</ol>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/728075565.gif" alt="merge_sort1.gif"></p>
+<h4 id="复杂度分析-5"><a href="#复杂度分析-5" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(n^2)</p>
+<p>最好复杂度：时间复杂度在 O(n) 和 O(nlogn)中间</p>
+<p>平均复杂度: 时间复杂度为 O(nlogn)</p>
+<h4 id="实现-5"><a href="#实现-5" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_select</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">recursive</span>(<span class="params">begin,end</span>):</span></span><br><span class="line">        <span class="keyword">if</span> begin&gt;end:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        left,right=begin,end</span><br><span class="line">        pivot=sequence[left]</span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">while</span> left&lt;right <span class="keyword">and</span> sequence[right]&gt;pivot:</span><br><span class="line">                right=right<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> left&lt;right <span class="keyword">and</span> sequence[left]&lt;=pivot:</span><br><span class="line">                left=left+<span class="number">1</span></span><br><span class="line">            sequence[left], sequence[right] = sequence[right], sequence[left]</span><br><span class="line">        sequence[left], sequence[begin] = pivot, sequence[left]</span><br><span class="line">        recursive(begin, left - <span class="number">1</span>)</span><br><span class="line">        recursive(right + <span class="number">1</span>, end)</span><br><span class="line"></span><br><span class="line">    recursive(<span class="number">0</span>, len(sequence) - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> sequence</span><br></pre></td></tr></table></figure>
+
+<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><p>堆排序（Heapsort）的基本思想：是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。</p>
+<h4 id="算法原理-6"><a href="#算法原理-6" class="headerlink" title="算法原理"></a>算法原理</h4><p>堆排序基本思想是：</p>
+<ol>
+<li><p>将初始待排序关键字序列(R1,R2…Rn)构建成大顶堆，此堆为初始的无序区。</p>
+</li>
+<li><p>将堆顶元素 R<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/3022273881.jpg">1</a>与最后一个元素 R[n]交换，此时得到新的无序区(R1,R2,…Rn-1)和新的有序区(Rn),且满足 R[1,2…n-1]&lt;=R[n]。</p>
+</li>
+<li><p>由于交换后新的堆顶 R<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/3022273881.jpg">1</a>可能违反堆的性质，因此需要对当前无序区(R1,R2,…Rn-1)调整为新堆，然后再次将 R<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/3022273881.jpg">1</a>与无序区最后一个元素交换，得到新的无序区(R1,R2…Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为 n-1，则整个排序过程完成。</p>
+</li>
+</ol>
+<h4 id="复杂度分析-6"><a href="#复杂度分析-6" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(nlogn)</p>
+<p>最好复杂度：时间复杂度在 O(nlogn)</p>
+<p>平均复杂度: 时间复杂度为 O(nlogn)</p>
+<h4 id="实现-6"><a href="#实现-6" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heap_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">heap_adjust</span>(<span class="params">parent</span>):</span></span><br><span class="line">        child = <span class="number">2</span> * parent + <span class="number">1</span>  <span class="comment"># left child</span></span><br><span class="line">        <span class="keyword">while</span> child &lt; len(heap):</span><br><span class="line">            <span class="keyword">if</span> child + <span class="number">1</span> &lt; len(heap):</span><br><span class="line">                <span class="keyword">if</span> heap[child + <span class="number">1</span>] &gt; heap[child]:</span><br><span class="line">                    child =child+ <span class="number">1</span>  <span class="comment"># right child</span></span><br><span class="line">            <span class="keyword">if</span> heap[parent] &gt;= heap[child]:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            heap[parent], heap[child] = \</span><br><span class="line">                heap[child], heap[parent]</span><br><span class="line">            parent, child = child, <span class="number">2</span> * child + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    heap, sequence = sequence.copy(), []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(heap) // <span class="number">2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        heap_adjust(i)</span><br><span class="line">    <span class="keyword">while</span> len(heap) != <span class="number">0</span>:</span><br><span class="line">        heap[<span class="number">0</span>], heap[<span class="number">-1</span>] = heap[<span class="number">-1</span>], heap[<span class="number">0</span>]</span><br><span class="line">        sequence.insert(<span class="number">0</span>, heap.pop())</span><br><span class="line">        heap_adjust(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> sequence</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    sequence= [random.randint(<span class="number">1</span>,<span class="number">10000</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">50</span>)]</span><br><span class="line">    print(sequence)</span><br><span class="line">    print(heap_sort(sequence))</span><br></pre></td></tr></table></figure>
+
+<h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><p>计数排序(Counting Sort)不是基于比较的排序算法，其核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。 作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数</p>
+<h4 id="算法原理-7"><a href="#算法原理-7" class="headerlink" title="算法原理"></a>算法原理</h4><p>计数排序基本思想是：</p>
+<ol>
+<li><p>找出待排序的数组中最大和最小的元素</p>
+</li>
+<li><p>统计数组中每个值为 i 的元素出现的次数，存入数组 C 的第 i 项</p>
+</li>
+<li><p>对所有的计数累加（从 C 中的第一个元素开始，每一项和前一项相加）</p>
+</li>
+<li><p>反向填充目标数组：将每个元素 i 放在新数组的第 C(i)项，每放一个元素就将 C(i)减去 1</p>
+</li>
+</ol>
+<p><img src="https://www.luozijian.com/usr/uploads/2019/03/2565196021.gif" alt="counting_sort.gif"></p>
+<h4 id="复杂度分析-7"><a href="#复杂度分析-7" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(n+k)</p>
+<p>最好复杂度：时间复杂度在 O(n+k)</p>
+<p>平均复杂度: 时间复杂度为 O(n+k)</p>
+<h4 id="实现-7"><a href="#实现-7" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">counting_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="keyword">if</span> sequence == []:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    sequence_len=len(sequence)</span><br><span class="line">    sequence_max=max(sequence) <span class="comment">#找出待排序的数组中最大的元素</span></span><br><span class="line">    sequence_min=min(sequence) <span class="comment">#找出待排序的数组中最小的元素</span></span><br><span class="line">    counting_arr_length=sequence_max-sequence_min+<span class="number">1</span></span><br><span class="line">    counting_arr=[<span class="number">0</span>]*counting_arr_length</span><br><span class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> sequence:</span><br><span class="line">        counting_arr[number-sequence_min]+=<span class="number">1</span> <span class="comment">#统计数组中元素出现次数</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,counting_arr_length): <span class="comment">#计数累加</span></span><br><span class="line">        counting_arr[i]=counting_arr[i]+counting_arr[i<span class="number">-1</span>]</span><br><span class="line">    ordered=[<span class="number">0</span>]*sequence_len</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(sequence_len<span class="number">-1</span>,<span class="number">0</span>,<span class="number">-1</span>): <span class="comment">#反向填充目标数组</span></span><br><span class="line">        ordered[counting_arr[sequence[i]-sequence_min]<span class="number">-1</span>]=sequence[i]</span><br><span class="line">        counting_arr[sequence[i]-sequence_min]-=<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ordered</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    sequence=[random.randint(<span class="number">1</span>,<span class="number">10000</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>)]</span><br><span class="line">    print(sequence)</span><br><span class="line">    print(counting_sort(sequence))</span><br></pre></td></tr></table></figure>
+
+<h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排）</p>
+<h4 id="算法原理-8"><a href="#算法原理-8" class="headerlink" title="算法原理"></a>算法原理</h4><p>计数排序基本思想是：</p>
+<ol>
+<li><p>设置一个定量的数组当作空桶</p>
+</li>
+<li><p>遍历输入数据，并且把数据一个一个放到对应的桶里去</p>
+</li>
+<li><p>对每个不是空的桶进行排序</p>
+</li>
+<li><p>从不是空的桶里把排好序的数据拼接起来</p>
+</li>
+</ol>
+<h4 id="复杂度分析-8"><a href="#复杂度分析-8" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>最坏复杂度: 时间复杂度为 O(n+k)</p>
+<p>最好复杂度：时间复杂度在 O(n)</p>
+<p>平均复杂度: 时间复杂度为 O(n)</p>
+<h4 id="实现-8"><a href="#实现-8" class="headerlink" title="实现"></a>实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">DEFAULT_BUCKET_SIZE = <span class="number">5</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertion_sort</span>(<span class="params">sequence</span>):</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">1</span>,len(sequence)):</span><br><span class="line">        <span class="keyword">while</span>(index&gt;<span class="number">0</span> <span class="keyword">and</span> sequence[index<span class="number">-1</span>]&gt;sequence[index]):</span><br><span class="line">            sequence[index],sequence[index<span class="number">-1</span>]=sequence[index<span class="number">-1</span>],sequence[index]</span><br><span class="line">            index=index<span class="number">-1</span></span><br><span class="line">    <span class="keyword">return</span> sequence</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bucket_sort</span>(<span class="params">sequence, bucketSize=DEFAULT_BUCKET_SIZE</span>):</span></span><br><span class="line">    <span class="keyword">if</span>(len(sequence) == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    minValue = sequence[<span class="number">0</span>]</span><br><span class="line">    maxValue = sequence[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(sequence)):</span><br><span class="line">        <span class="keyword">if</span> sequence[i] &lt; minValue:</span><br><span class="line">            minValue = sequence[i] <span class="comment">#寻找最小值</span></span><br><span class="line">        <span class="keyword">elif</span> sequence[i] &gt; maxValue:</span><br><span class="line">            maxValue = sequence[i] <span class="comment">#寻找最大值</span></span><br><span class="line">    bucketCount = math.floor((maxValue - minValue) / bucketSize) + <span class="number">1</span> <span class="comment">#桶的初始化</span></span><br><span class="line">    buckets = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, bucketCount):</span><br><span class="line">        buckets.append([])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(sequence)): <span class="comment">#遍历数据，将数据依次放进桶中</span></span><br><span class="line">        buckets[math.floor((sequence[i] - minValue) / bucketSize)].append(sequence[i])</span><br><span class="line">    sortedArray = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(buckets)): <span class="comment">#将每一个不是空的桶进行排序</span></span><br><span class="line">        insertion_sort(buckets[i])</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, len(buckets[i])):</span><br><span class="line">            sortedArray.append(buckets[i][j])</span><br><span class="line">    <span class="keyword">return</span> sortedArray</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    sequence=[random.randint(<span class="number">1</span>,<span class="number">10000</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">50</span>)]</span><br><span class="line">    print(sequence)</span><br><span class="line">    print(bucket_sort(sequence))</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>排序算法在计算机应用中，排序是常用的基本运算，尤其是在大量数据的处理方面。本节内容依次介绍几种常见排序算法的算法原理和实现过程，以及对应的复杂度分析。回顾下本节内容主要包含了以下内容：</p>
+<ul>
+<li>冒泡排序</li>
+<li>选择排序</li>
+<li>插入排序</li>
+<li>希尔排序</li>
+<li>归并排序</li>
+<li>快速排序</li>
+<li>堆排序</li>
+<li>计数排序</li>
+<li>桶排序</li>
+</ul>
+<p>几种常见排序算法复杂度总结如下:</p>
+<table>
+<thead>
+<tr>
+<th>排序方法</th>
+<th>时间复杂度(平均)</th>
+<th>时间复杂度(最坏)</th>
+<th>时间复杂度(最好)</th>
+<th>空间复杂度</th>
+<th>稳定性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>冒泡排序</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>选择排序</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>O(n^1.3)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>O(n)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>O(nlog2n)</td>
+<td>O(n^2)</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>O(1)</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>计数排序</td>
+<td>O(n+k)</td>
+<td>O(n+k)</td>
+<td>O(n+k)</td>
+<td>O(n+k)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td>O(n+k)</td>
+<td>O(n^2)</td>
+<td>O(n)</td>
+<td>O(n+k)</td>
+<td>稳定</td>
+</tr>
+</tbody></table>
+<p>请把文档中所有的示例代码都手动完成并运行对比结果，只有这样才能更加熟练的掌握对应的相关知识。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/23/search-in-python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1299,383 +2287,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/02/23/git-%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="罗子建">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="寒冰小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/23/git-%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">git基本操作</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-23 18:43:40" itemprop="dateCreated datePublished" datetime="2019-02-23T18:43:40+08:00">2019-02-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 20:17:46" itemprop="dateModified" datetime="2020-09-22T20:17:46+08:00">2020-09-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="http://www.luozijian.com/usr/uploads/2019/02/1820493284.jpg" alt="Github_logo.jpg"></p>
-<h1 id="Git-基本操作命令汇总"><a href="#Git-基本操作命令汇总" class="headerlink" title="Git 基本操作命令汇总"></a>Git 基本操作命令汇总</h1><p>Github 被誉为最大的同性交往社区，当然要学习下基本操作。接下来将介绍一些关于提交上传同步文件的常见命令。</p>
-<h2 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h2><p>执行 <code>git clone</code> 命令实现克隆 github 仓库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/wannain/test.git</span><br></pre></td></tr></table></figure>
-
-<p>执行 <code>git remote -v</code> 命令可以查看本地仓库所关联的远程仓库信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-<p>执行 <code>git status</code> 查看整个仓库的状态</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加修改到暂存区"><a href="#添加修改到暂存区" class="headerlink" title="添加修改到暂存区"></a>添加修改到暂存区</h2><p>对多个文件或目录进行了增删改，可以使用 <code>git add .</code> 命令全部添加到暂存区</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-
-<p>要撤销暂存区的修改怎么办？根据上图的提示，执行 <code>git reset -- [文件名]</code> 或者 <code>git rm --cached [文件名]</code> 命令即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset -- a.txt</span><br></pre></td></tr></table></figure>
-
-<p>执行 <code>git commit -m</code> 命令生成一个新的提交</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;how do you do &quot;</span><br></pre></td></tr></table></figure>
-
-
-<p>命令 <code>git diff</code>，它可以用来查看工作区被跟踪的文件的修改详情。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
-
-<p>这里有一个比较：<br>git diff #是工作区(work dict)和暂存区(stage)的比较<br>git diff –cached #是暂存区(stage)和版本库的比较</p>
-<p>git add 命令只是把工作区当前的修改提交到暂存区中，git commit 一次将暂存区中的内容提交到版本库中。为了防止工作区的修改没有被提交到暂存区中，或则查看工作区和暂存区之间的差异，可以使用 git diff 指令。</p>
-<p>命令 <code>git log</code>，它用来查看版本区的提交历史记录</p>
-<ul>
-<li><code>git log [分支名]</code> 查看某分支的提交历史，不写分支名查看当前所在分支</li>
-<li><code>git log --oneline</code> 一行显示提交历史</li>
-<li><code>git log -n</code> 其中 n 是数字，查看最近 n 个提交</li>
-<li><code>git log --author [贡献者名字]</code> 查看指定贡献者的提交记录</li>
-<li><code>git log --graph</code> 图示法显示提交历史</li>
-</ul>
-<h2 id="git-的本地设置"><a href="#git-的本地设置" class="headerlink" title="git 的本地设置"></a>git 的本地设置</h2><p>命令是 <code>git config --global alias.[别名] [原命令]</code>，如果原命令中有选项，需要加引号</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;your_email@qq.com&quot;</span><br><span class="line">git config __global user.name &quot;your_github_name&quot;</span><br></pre></td></tr></table></figure>
-
-<p><code>git config -l</code> 可以查看配置信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
-
-<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>对于版本回退，可以采取两种办法</p>
-<ul>
-<li>撤销最近一次提交，修改文件后重新提交推送</li>
-<li>在工作区修改，然后再提交</li>
-</ul>
-<p>执行 <code>git reset --soft HEAD^</code> 撤销最近的一次提交，将修改还原到暂存区。<code>--soft</code> 表示软退回，对应的还有 <code>--hard</code> 硬退回，<code>HEAD^</code> 表示撤销一次提交，<code>HEAD^^</code> 表示撤销两次提交，撤销 n 次可以简写为 <code>HEAD~n</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^`</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-分支操作"><a href="#git-分支操作" class="headerlink" title="git 分支操作"></a>git 分支操作</h2><p>命令 <code>git branch -avv</code>，它用来查看全部分支信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -avv</span><br></pre></td></tr></table></figure>
-
-<p><code>git reflog</code> 命令，它会记录本地仓库所有分支的每一次版本变化</p>
-<p>执行 <code>git branch [分支名]</code> 可以创建新的分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch luozijian</span><br></pre></td></tr></table></figure>
-
-<p>执行 <code>git checkout [分支名]</code> 切换分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout luozijian</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-推送到版本库"><a href="#git-推送到版本库" class="headerlink" title="git 推送到版本库"></a>git 推送到版本库</h2><p>执行 <code>git push [主机名] [本地分支名]:[远程分支名]</code> 即可将本地分支推送到远程仓库的分支中，通常冒号前后的分支名是相同的，如果是相同的，可以省略 <code>:[远程分支名]</code>，如果远程分支不存在，会自动创建。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin luozijian:luozijian</span><br></pre></td></tr></table></figure>
-
-<p>执行这个命令 <code>git branch -u [主机名/远程分支名] [本地分支名]</code> 将本地分支与远程分支关联</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -u origin/luozijian luozijian</span><br></pre></td></tr></table></figure>
-
-<p>执行 <code>git branch --unset-upstream [分支名]</code> 即可撤销该分支对远程分支的跟踪，同样地，如果撤销当前所在的分支的跟踪，分支名可以省略不写</p>
-<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p>使用 <code>git push [主机名] :[远程分支名]</code> 删除远程分支</p>
-<p>另一个删除远程分支的命令：<code>git push [主机名] --delete [远程分支名]</code></p>
-<p>使用 <code>git branch -D [分支名]</code> 删除本地分支</p>
-<p>使用 <code>git branch -m [原分支名] [新分支名]</code> 本地分支改名</p>
-<h2 id="git-同步主仓库"><a href="#git-同步主仓库" class="headerlink" title="git 同步主仓库"></a>git 同步主仓库</h2><p>执行 <code>git remote add [主机名] [主仓库的地址]</code>来增加一个关联主机，<br>注意，主仓库的地址使用 https 开头的</p>
-<p>使用 <code>git remote -v</code> 命令查看关联的主机情况</p>
-<p>执行 <code>git pull --rebase origin master</code> 拉取</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/02/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="罗子建">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="寒冰小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/23/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-23 18:43:40" itemprop="dateCreated datePublished" datetime="2019-02-23T18:43:40+08:00">2019-02-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 20:24:44" itemprop="dateModified" datetime="2020-09-22T20:24:44+08:00">2020-09-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/01/19/Flask/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="罗子建">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="寒冰小站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/01/19/Flask/" class="post-title-link" itemprop="url">Flask</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-19 18:38:24" itemprop="dateCreated datePublished" datetime="2019-01-19T18:38:24+08:00">2019-01-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 20:15:41" itemprop="dateModified" datetime="2020-09-22T20:15:41+08:00">2020-09-22</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="http://www.luozijian.com/usr/uploads/2019/02/263337729.jpg" alt="flask.jpg"></p>
-<h1 id="Flask基础介绍"><a href="#Flask基础介绍" class="headerlink" title="Flask基础介绍"></a>Flask基础介绍</h1><p>Flask 是一个轻量级的 Web 应用框架, 使用 Python 编写。基于 <a target="_blank" rel="noopener" href="http://werkzeug.pocoo.org/">WerkzeugWSGI</a> 工具箱和 <a target="_blank" rel="noopener" href="http://jinja.pocoo.org/">Jinja2</a> 模板引擎。使用 BSD 授权。Flask 也被称为 <code>microframework</code> ，因为它使用简单的核心，用 extension 增加其它功能。Flask 没有默认使用的数据库、窗体验证工具。然而，Flask 保留了扩增的弹性，可以用 Flask-extension 加入这些功能：ORM、窗体验证工具、文件上传、各种开放式身份验证技术。</p>
-<h1 id="Flask搭建博客步骤"><a href="#Flask搭建博客步骤" class="headerlink" title="Flask搭建博客步骤"></a>Flask搭建博客步骤</h1><h2 id="博客功能"><a href="#博客功能" class="headerlink" title="博客功能"></a>博客功能</h2><ol>
-<li>根据配置文件中的认证允许用户登录以及注销。仅仅支持一个用户。</li>
-<li>当用户登录后，他们可以添加新的条目，这些条目是由纯文本的标题和 HTML 的正文构成。因为我们信任用户这里的 HTML 是安全的。</li>
-<li>页面倒序显示所有条目（新的条目在前），并且用户登入后可以在此添加新条目。</li>
-</ol>
-<hr>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-创建文件夹"><a href="#1-创建文件夹" class="headerlink" title="1.创建文件夹"></a>1.创建文件夹</h3><p>在开始之前，让我们为这个应用创建需要的文件夹:</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/flaskr</span><br><span class="line">    /static</span><br><span class="line">    /templates</span><br></pre></td></tr></table></figure>
-
-<p>其中：</p>
-<ul>
-<li>flaskr：项目总文件夹。其中会存放数据库代码文件 <code>schema.sql</code> 和 主代码文件 <code>flaskr.py</code>。</li>
-<li>static：项目的资源文件。用于存放 <code>css</code> 和 <code>javascript</code> 文件。</li>
-<li>templates：项目前端页面文件。用于存放前端页面模板。</li>
-</ul>
-<h3 id="2-数据库模式"><a href="#2-数据库模式" class="headerlink" title="2.数据库模式"></a>2.数据库模式</h3><p>首先我们要创建数据库模式。对于这个应用仅一张表就足够了，而且我们只想支持 SQLite ，所以很简单。在 <code>Code/flaskr</code> 目录下新建 <code>schema.sql</code> 文件并向其中写入如下代码：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">exists</span> entries;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> entries (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">integer</span> primary <span class="keyword">key</span> autoincrement,</span><br><span class="line">  title <span class="keyword">string</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">  <span class="built_in">text</span> <span class="keyword">string</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>这个模式由一个称为 <code>entries</code> 的单表构成，在这个表中每行包含一个 <code>id</code> ，一个 <code>title</code> 和一个 <code>text</code>。<code>id</code> 是一个自增的整数而且是主键，其余两个为非空的字符串。</p>
-<h3 id="3-应用设置代码"><a href="#3-应用设置代码" class="headerlink" title="3.应用设置代码"></a>3.应用设置代码</h3><p>现在我们已经有了数据库模式了，可以创建应用的模块了。<br>在 <code>Code/flaskr</code> 目录下新建 <code>flaskr.py</code> 文件。对于小应用，直接把配置放在主模块里，正如我们现在要做的一样，这是可行的。然而一个更干净的解决方案就是单独创建<code>.ini</code>或者<code>.py</code>文件接着加载或者导入里面的值。<br>在 <code>flaskr.py</code> 文件中写入如下代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入所有的模块</span></span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, session, g, redirect, url_for, abort, render_template, flash</span><br><span class="line"><span class="comment"># 配置文件</span></span><br><span class="line">DATABASE = <span class="string">&#x27;/tmp/flaskr.db&#x27;</span></span><br><span class="line">ENV = <span class="string">&#x27;development&#x27;</span></span><br><span class="line">DEBUG = <span class="literal">True</span></span><br><span class="line">SECRET_KEY = <span class="string">&#x27;development key&#x27;</span></span><br><span class="line">USERNAME = <span class="string">&#x27;admin&#x27;</span></span><br><span class="line">PASSWORD = <span class="string">&#x27;default&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>下一步我们能够创建真正的应用，修改 <code>flaskr.py</code> 文件在其中配置初始化:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建应用</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config.from_object(__name__)</span><br></pre></td></tr></table></figure>
-
-<p><code>from_object()</code> 将会寻找给定的对象(如果它是一个字符串，则会导入它)，搜寻里面定义的全部大写的变量。在我们的这种情况中，配置文件就是我们上面写的几行代码。 你也可以将他们分别存储到多个文件。<br>通常从配置文件中加载配置是一个好的主意。这时可以使用 <code>from_envvar()</code> 来实现，可以用它替换上面的 <code>from_object()</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.config.from_envvar(<span class="string">&#x27;FLASKR_SETTINGS&#x27;</span>, silent=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这种方法我们可以设置一个名为 <code>FLASKR_SETTINGS</code> 的环境变量来设定一个配置文件载入后是否覆盖默认值。静默开关 <code>silent=True</code> 告诉 Flask 不去关心这个环境变量键值是否存在。<br><code>SECRET_KEY</code> 是为了保持客户端的会话安全。明智地选择该键，使得它难以猜测，最好是尽可能复杂。</p>
-<p>DEBUG 调试标志启用或禁用交互式调试。决不让调试模式在生产系统中启动，因为它将允许用户在服务器上执行代码！</p>
-<p>我们还添加了一个轻松地连接到指定数据库的方法，这个方法用于在请求时打开一个连接，并且在交互式 Python shell 和脚本中也能使用，这将方便后面的使用。</p>
-<p>在 <code>Code/flaskr.py</code> 文件中继续添加如下代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">connect_db</span>():</span></span><br><span class="line">    <span class="keyword">return</span> sqlite3.connect(app.config[<span class="string">&#x27;DATABASE&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<p>最后如果我们想要把这个文件当做独立应用来运行，只需在服务器启动文件也就是 <code>Code/flaskr.py</code> 文件的末尾添加这一行:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-创建数据库"><a href="#4-创建数据库" class="headerlink" title="4.创建数据库"></a>4.创建数据库</h3><p>如前面所述，Flaskr 是一个数据库驱动的应用程序，准确地来说，Flaskr 是一个使用关系数据库系统的应用程序。这样的系统需要一个模式告诉它们如何存储信息。因此在首次启动服务器之前，创建数据库模式是很重要的。</p>
-<p>在 <code>Code/flaskr.py</code> 文件中添加如下代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> closing</span><br></pre></td></tr></table></figure>
-
-<p>接着我们可以创建一个称为 init_db 函数，该函数用来初始化数据库。为此我们可以使用之前定义的 connect_db 函数。 只要在 <code>Code/flaskr.py</code> 文件中的 connect_db 函数下添加这样的函数:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_db</span>():</span></span><br><span class="line">    <span class="keyword">with</span> closing(connect_db()) <span class="keyword">as</span> db:</span><br><span class="line">        <span class="keyword">with</span> app.open_resource(<span class="string">&#x27;schema.sql&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            db.cursor().executescript(f.read().decode())</span><br><span class="line">        db.commit()</span><br></pre></td></tr></table></figure>
-<p><code>closing()</code>函数允许我们在 <code>with</code> 块中保持数据库连接可用。应用对象的 <code>open_resource()</code> 方法在其方框外也支持这个功能，因此可以在 <code>with</code> 块中直接使用。这个函数从当前位置（你的flaskr 文件夹）中打开一个文件，并且允许你读取它。我们在这里用它在数据库连接上执行一个脚本。</p>
-<p>当我们连接到数据库时会得到一个数据库连接对象（这里命名它为 <code>db</code>），这个对象提供给我们一个数据库指针。指针上有一个可以执行完整脚本的方法。最后我们不显式地提交更改， SQLite 3 或者其它事务数据库不会这么做。</p>
-<p>现在可以在 Python shell 里创建数据库，导入并调用刚才的函数:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> flaskr <span class="keyword">import</span> init_db</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>init_db()</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-请求数据库连接"><a href="#5-请求数据库连接" class="headerlink" title="5.请求数据库连接"></a>5.请求数据库连接</h3><p>所有我们的函数中都需要数据库连接，因此在请求之前初始化它们，在请求结束后自动关闭它们就很有意义。</p>
-<p>Flask 允许我们使用 <code>before_request()</code> ，<code>after_request()</code> 和 <code>teardown_request()</code> 装饰器来实现这个功能，在 <code>Code/flaskr.py</code> 文件中添加如下代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.before_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">before_request</span>():</span></span><br><span class="line">    g.db = connect_db()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.teardown_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">teardown_request</span>(<span class="params">exception</span>):</span></span><br><span class="line">    g.db.close()</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>before_request()</code> 装饰器的函数会在请求之前被调用而且不带参数。使用 <code>after_request()</code> 装饰器的函数会在请求之后被调用且传入将要发给客户端的响应。</p>
-<p>它们必须返回那个响应对象或是不同的响应对象。但当异常抛出时，它们不一定会被执行，这时可以使用 <code>teardown_request()</code> 装饰器。它装饰的函数将在响应构造后执行，并不允许修改请求，返回的值会被忽略。如果在请求已经被处理的时候抛出异常，它会被传递到每个函数，否则会传入一个 <code>None</code>。</p>
-<p>我们把当前的数据库连接保存在 Flask 提供的 g 特殊对象中。这个对象只能保存一次请求的信息，并且在每个函数里都可用。不要用其它对象来保存信息，因为在多线程环境下将不可行。特殊的对象 g 在后台有一些神奇的机制来保证它在做正确的事情。</p>
-<h3 id="6-建立视图"><a href="#6-建立视图" class="headerlink" title="6.建立视图"></a>6.建立视图</h3><p>现在数据库连接已经正常工作，可以开始编写视图函数。我们需要四个视图函数：</p>
-<h4 id="显示条目"><a href="#显示条目" class="headerlink" title="显示条目"></a>显示条目</h4><p>这个视图显示所有存储在数据库中的条目。它监听着应用的根地址以及将会从数据库中查询标题和内容。 <code>id</code> 值最大的条目（最新的条目）将在最前面。从游标返回的行是按 <code>select</code> 语句中声明的列组织的元组。对于像我们这样的小应用是足够的，但是你可能要把它们转换成字典，如果你对如何转换成字典感兴趣的话，请查阅<a target="_blank" rel="noopener" href="http://www.pythondoc.com/flask/patterns/sqlite3.html#easy-querying">简化查询</a>例子。</p>
-<p>视图函数将会把条目作为字典传入 <code>show_entries.html</code> 模板并返回渲染结果。</p>
-<p>在 <code>flaskr/flaskr.py</code> 文件中添加如下代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_entries</span>():</span></span><br><span class="line">    cur = g.db.execute(<span class="string">&#x27;select title, text from entries order by id desc&#x27;</span>)   <span class="comment"># 查询语句</span></span><br><span class="line">    entries = [dict(title=row[<span class="number">0</span>], text=row[<span class="number">1</span>]) <span class="keyword">for</span> row <span class="keyword">in</span> cur.fetchall()]   <span class="comment"># 将查询结果转换为字典</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;show_entries.html&#x27;</span>, entries=entries)</span><br></pre></td></tr></table></figure>
-
-<h4 id="添加新条目"><a href="#添加新条目" class="headerlink" title="添加新条目"></a>添加新条目</h4><p>这个视图允许登录的用户添加新的条目。它只回应 <code>POST</code> 请求，实际的表单是显示在 <code>show_entries</code> 页面。如果正常工作的话，我们用 <code>flash()</code> 向下一个请求闪现一条信息并且跳转回 <code>show_entries</code> 页面。</p>
-<p>在 <code>flaskr/flaskr.py</code> 文件中添加如下代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/add&#x27;, methods=[&#x27;POST&#x27;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_entry</span>():</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> session.get(<span class="string">&#x27;logged_in&#x27;</span>):</span><br><span class="line">        abort(<span class="number">401</span>)</span><br><span class="line">    g.db.execute(<span class="string">&#x27;insert into entries (title, text) values (?, ?)&#x27;</span>,[request.form[<span class="string">&#x27;title&#x27;</span>], request.form[<span class="string">&#x27;text&#x27;</span>]])   <span class="comment"># 向数据库中插入数据</span></span><br><span class="line">    g.db.commit()   <span class="comment"># 更新数据</span></span><br><span class="line">    flash(<span class="string">&#x27;New entry was successfully posted&#x27;</span>)   <span class="comment"># 闪现一条消息</span></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;show_entries&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-<p>注意我们这里检查用户登录情况( <code>logged_in</code> 键存在会话中，并且为 <code>True</code> )。向 SQL 语句中传递参数，需要在语句中使用问号 <code>?</code> 来代替参数，并把参数放在列表中进行传递。不要使用字符串格式化的方式直接把参数传入 SQL 语句中，这样可能会有潜在的 SQL 注入风险。</p>
-<h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><p>这些函数是用于用户登录以及注销。登录时依据在配置中的值检查用户名和密码并且在会话中设置 <code>logged_in</code> 键值。如果用户成功登录，<code>logged_in</code> 键值被设置成 <code>True</code> ，并跳转回 <code>show_entries</code> 页面。此外，会有消息闪现来提示用户登录成功。</p>
-<p>如果发生错误，模板会通知，并提示重新登录。在 <code>flaskr/flaskr.py</code> 文件中添加如下代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/login&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>():</span></span><br><span class="line">    error = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        <span class="keyword">if</span> request.form[<span class="string">&#x27;username&#x27;</span>] != app.config[<span class="string">&#x27;USERNAME&#x27;</span>]:   <span class="comment"># 如果用户名不符合</span></span><br><span class="line">            error = <span class="string">&#x27;Invalid username&#x27;</span></span><br><span class="line">        <span class="keyword">elif</span> request.form[<span class="string">&#x27;password&#x27;</span>] != app.config[<span class="string">&#x27;PASSWORD&#x27;</span>]:   <span class="comment"># 如果密码不符合</span></span><br><span class="line">            error = <span class="string">&#x27;Invalid password&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            session[<span class="string">&#x27;logged_in&#x27;</span>] = <span class="literal">True</span>   <span class="comment"># 成功登录，在 session 中添加一个 logged_in 值为 True</span></span><br><span class="line">            flash(<span class="string">&#x27;You were logged in&#x27;</span>)   <span class="comment"># 闪现一条消息</span></span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;show_entries&#x27;</span>))   <span class="comment"># 重定向到首页</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;login.html&#x27;</span>, error=error)   <span class="comment"># 如果没有成功登录则返回登录页面以及错误信息</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="注销"><a href="#注销" class="headerlink" title="注销"></a>注销</h4><p>另一方面，注销函数从会话中移除了 <code>logged_in</code> 键值。这里我们使用一个大绝招：如果你使用字典的 <code>pop()</code> 方法并传入第二个参数（默认），这个方法会从字典中删除这个键，如果这个键不存在则什么都不做。这很有用，因为我们不需要检查用户是否已经登入。</p>
-<p>在 <code>flaskr/flaskr.py</code> 文件中添加如下代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(&#x27;/logout&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logout</span>():</span></span><br><span class="line">    session.pop(<span class="string">&#x27;logged_in&#x27;</span>, <span class="literal">None</span>)   <span class="comment"># 移除 logged_in 键</span></span><br><span class="line">    flash(<span class="string">&#x27;You were logged out&#x27;</span>)   <span class="comment"># 闪现消息</span></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;show_entries&#x27;</span>))   <span class="comment"># 重定向到首页</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="7-模板"><a href="#7-模板" class="headerlink" title="7.模板"></a>7.模板</h3><p>现在我们应该开始编写模板。</p>
-<h4 id="layout-html"><a href="#layout-html" class="headerlink" title="layout.html"></a>layout.html</h4><p>这个模板包含 HTML 主体结构，标题和一个登录链接（或者当用户已登录则提供注销）。如果有闪现信息的话它也将显示闪现信息。<code>&#123;% block body %&#125;</code> 块能够被子模板中的同样名字( <code>body</code> )的块替代。</p>
-<p><code>session</code> 字典在模板中同样可用的，你能用它检查用户是否登录。注意在 Jinja 中你可以访问不存在的对象/字典属性或成员，如同下面的代码，即便 <code>logged_in</code> 键不存在，仍然可以正常工作。</p>
-<p>在 <code>flaskr/templates</code> 目录下新建 <code>layout.html</code> 文件并写入如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Flaskr<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">stylesheet</span> <span class="attr">type</span>=<span class="string">text/css</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(&#x27;static&#x27;, filename=&#x27;style.css&#x27;) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">page</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Flaskr<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">metanav</span>&gt;</span></span><br><span class="line">  &#123;% if not session.logged_in %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(&#x27;login&#x27;) &#125;&#125;&quot;</span>&gt;</span>log in<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  &#123;% else %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(&#x27;logout&#x27;) &#125;&#125;&quot;</span>&gt;</span>log out<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% for message in get_flashed_messages() %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">flash</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line">  &#123;% block body %&#125;&#123;% endblock %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="show-entries-html"><a href="#show-entries-html" class="headerlink" title="show_entries.html"></a>show_entries.html</h4><p>这个模板继承了上面的<code>layout.html</code>模板用来显示信息。注意<code>for</code>遍历了所有我们用<code>render_template()</code>函数传入的信息。我们同样告诉表单提交到<code>add_entry</code>函数通过使用 HTTP 的<code>POST</code>方法。</p>
-<p>在 <code>flaskr/templates</code> 目录下新建 <code>show_entries.html</code> 文件并写入如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &quot;layout.html&quot; %&#125;</span><br><span class="line">&#123;% block body %&#125;</span><br><span class="line">  &#123;% if session.logged_in %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&#123;&#123; url_for(&#x27;add_entry&#x27;) &#125;&#125;&quot;</span> <span class="attr">method</span>=<span class="string">post</span> <span class="attr">class</span>=<span class="string">add-entry</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Title:</span><br><span class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">text</span> <span class="attr">size</span>=<span class="string">30</span> <span class="attr">name</span>=<span class="string">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Text:</span><br><span class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">text</span> <span class="attr">rows</span>=<span class="string">5</span> <span class="attr">cols</span>=<span class="string">40</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">submit</span> <span class="attr">value</span>=<span class="string">Share</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">entries</span>&gt;</span></span><br><span class="line">  &#123;% for entry in entries %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123; entry.title &#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>&#123;&#123; entry.text|safe &#125;&#125;</span><br><span class="line">  &#123;% else %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>Unbelievable.  No entries here so far<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="login-html"><a href="#login-html" class="headerlink" title="login.html"></a>login.html</h4><p>最后是登录模板，基本上只显示一个允许用户登录的表单。</p>
-<p>在 <code>flaskr/templates</code> 目录下新建 <code>login.html</code> 文件并写入如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &quot;layout.html&quot; %&#125;</span><br><span class="line">&#123;% block body %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  &#123;% if error %&#125;<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">error</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>Error:<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> &#123;&#123; error &#125;&#125;&#123;% endif %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&#123;&#123; url_for(&#x27;login&#x27;) &#125;&#125;&quot;</span> <span class="attr">method</span>=<span class="string">post</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Username:</span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">text</span> <span class="attr">name</span>=<span class="string">username</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Password:</span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">password</span> <span class="attr">name</span>=<span class="string">password</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dd</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">submit</span> <span class="attr">value</span>=<span class="string">Login</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h4><p>现在其它一切都正常工作，是时候给应用添加些样式。</p>
-<p>在 <code>Code/flaskr/static</code> 目录下新建 <code>style.css</code> 样式文件并写入如下代码：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>            &#123; <span class="attribute">font-family</span>: sans-serif; <span class="attribute">background</span>: <span class="number">#eee</span>; &#125;</span><br><span class="line"><span class="selector-tag">a</span>, <span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>       &#123; <span class="attribute">color</span>: <span class="number">#377BA8</span>; &#125;</span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>          &#123; <span class="attribute">font-family</span>: <span class="string">&#x27;Georgia&#x27;</span>, serif; <span class="attribute">margin</span>: <span class="number">0</span>; &#125;</span><br><span class="line"><span class="selector-tag">h1</span>              &#123; <span class="attribute">border-bottom</span>: <span class="number">2px</span> solid <span class="number">#eee</span>; &#125;</span><br><span class="line"><span class="selector-tag">h2</span>              &#123; <span class="attribute">font-size</span>: <span class="number">1.2em</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.page</span>           &#123; <span class="attribute">margin</span>: <span class="number">2em</span> auto; <span class="attribute">width</span>: <span class="number">35em</span>; <span class="attribute">border</span>: <span class="number">5px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">                  <span class="attribute">padding</span>: <span class="number">0.8em</span>; <span class="attribute">background</span>: white; &#125;</span><br><span class="line"><span class="selector-class">.entries</span>        &#123; <span class="attribute">list-style</span>: none; <span class="attribute">margin</span>: <span class="number">0</span>; <span class="attribute">padding</span>: <span class="number">0</span>; &#125;</span><br><span class="line"><span class="selector-class">.entries</span> <span class="selector-tag">li</span>     &#123; <span class="attribute">margin</span>: <span class="number">0.8em</span> <span class="number">1.2em</span>; &#125;</span><br><span class="line"><span class="selector-class">.entries</span> <span class="selector-tag">li</span> <span class="selector-tag">h2</span>  &#123; <span class="attribute">margin-left</span>: -<span class="number">1em</span>; &#125;</span><br><span class="line"><span class="selector-class">.add-entry</span>      &#123; <span class="attribute">font-size</span>: <span class="number">0.9em</span>; <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>; &#125;</span><br><span class="line"><span class="selector-class">.add-entry</span> <span class="selector-tag">dl</span>   &#123; <span class="attribute">font-weight</span>: bold; &#125;</span><br><span class="line"><span class="selector-class">.metanav</span>        &#123; <span class="attribute">text-align</span>: right; <span class="attribute">font-size</span>: <span class="number">0.8em</span>; <span class="attribute">padding</span>: <span class="number">0.3em</span>;</span><br><span class="line">                  <span class="attribute">margin-bottom</span>: <span class="number">1em</span>; <span class="attribute">background</span>: <span class="number">#fafafa</span>; &#125;</span><br><span class="line"><span class="selector-class">.flash</span>          &#123; <span class="attribute">background</span>: <span class="number">#CEE5F5</span>; <span class="attribute">padding</span>: <span class="number">0.5em</span>;</span><br><span class="line">                  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#AACBE2</span>; &#125;</span><br><span class="line"><span class="selector-class">.error</span>          &#123; <span class="attribute">background</span>: <span class="number">#F0D6D6</span>; <span class="attribute">padding</span>: <span class="number">0.5em</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="8-运行应用"><a href="#8-运行应用" class="headerlink" title="8.运行应用"></a>8.运行应用</h3><p>这样我们就完成了简单博客应用的代码编写</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python3 flaskr.py</span><br><span class="line"> * Serving Flask app <span class="string">&quot;flaskr&quot;</span> (lazy loading)</span><br><span class="line"> * Environment: development</span><br><span class="line"> * Debug mode: on</span><br><span class="line"> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</span><br><span class="line"> * Restarting with <span class="built_in">stat</span></span><br><span class="line"> * Debugger is active!</span><br><span class="line"> * Debugger PIN: 183-564-157</span><br></pre></td></tr></table></figure>
-
-<p>访问首页 <code>http://127.0.0.1:5000</code> ，即可开启博客</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1742,7 +2358,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
