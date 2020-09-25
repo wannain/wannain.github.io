@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="数学算法本节内容将介绍数学算法。主要包含数学上几个基本问题，最大公约数问题，算术分析方法，斐波那契数列问题。 知识点 数学几个基本问题 最大公约数问题 算术分析方法 斐波那契数列问题  数学上几个基本问题在编程界，有这么几个经典的数学问题，这里给大家简单介绍下。 3n+1 问题对于任意大于 1 的自然数 n，若该数为偶数则将其变为原来的一半，若为奇数则将其变为 3n+1。反复进行上述过程，直到结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="search in python">
+<meta property="og:url" content="http://example.com/2019/03/23/search-in-python/index.html">
+<meta property="og:site_name" content="寒冰小站">
+<meta property="og:description" content="数学算法本节内容将介绍数学算法。主要包含数学上几个基本问题，最大公约数问题，算术分析方法，斐波那契数列问题。 知识点 数学几个基本问题 最大公约数问题 算术分析方法 斐波那契数列问题  数学上几个基本问题在编程界，有这么几个经典的数学问题，这里给大家简单介绍下。 3n+1 问题对于任意大于 1 的自然数 n，若该数为偶数则将其变为原来的一半，若为奇数则将其变为 3n+1。反复进行上述过程，直到结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/03/2962728352.jpg">
+<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/03/1163674900.gif">
+<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/03/4286667703.jpg">
+<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/03/3443253852.png">
+<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/03/3185361022.gif">
+<meta property="article:published_time" content="2019-03-23T06:35:56.000Z">
+<meta property="article:modified_time" content="2020-09-25T06:36:25.463Z">
+<meta property="article:author" content="罗子建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.luozijian.com/usr/uploads/2019/03/2962728352.jpg">
+
+<link rel="canonical" href="http://example.com/2019/03/23/search-in-python/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>search in python | 寒冰小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">寒冰小站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/23/search-in-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="罗子建">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寒冰小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          search in python
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-23 14:35:56" itemprop="dateCreated datePublished" datetime="2019-03-23T14:35:56+08:00">2019-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-25 14:36:25" itemprop="dateModified" datetime="2020-09-25T14:36:25+08:00">2020-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="http://www.luozijian.com/usr/uploads/2019/03/2962728352.jpg" alt="math_7.jpg"></p>
+<h2 id="数学算法"><a href="#数学算法" class="headerlink" title="数学算法"></a>数学算法</h2><p>本节内容将介绍数学算法。主要包含数学上几个基本问题，最大公约数问题，算术分析方法，斐波那契数列问题。</p>
+<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ul>
+<li>数学几个基本问题</li>
+<li>最大公约数问题</li>
+<li>算术分析方法</li>
+<li>斐波那契数列问题</li>
+</ul>
+<h2 id="数学上几个基本问题"><a href="#数学上几个基本问题" class="headerlink" title="数学上几个基本问题"></a>数学上几个基本问题</h2><p>在编程界，有这么几个经典的数学问题，这里给大家简单介绍下。</p>
+<h4 id="3n-1-问题"><a href="#3n-1-问题" class="headerlink" title="3n+1 问题"></a>3n+1 问题</h4><p>对于任意大于 1 的自然数 n，若该数为偶数则将其变为原来的一半，若为奇数则将其变为 3n+1。反复进行上述过程，直到结果为 1 时停止。这就是著名的“3n+1”问题。要求输入 n，输出按“3n+1”规则变换到 1 所需要的数字变换次数。（n&lt;=10^9）</p>
+<p>题目描述：</p>
+<p>3n+1 问题是一个简单有趣而又没有解决的数学问题。这个问题是由 L. Collatz 在 1937 年提出的。克拉兹问题（Collatz problem）也被叫做 hailstone 问题、3n+1 问题、Hasse 算法问题、Kakutani 算法问题、Thwaites 猜想或者 Ulam 问题。克拉兹问题的特殊之处在于：尽管很容易将这个问题讲清楚，但直到今天仍不能保证这个问题的算法对所有可能的输入都有效——即至今没有人证明对所有的正整数该过程都终止。</p>
+<p>问题如下：</p>
+<ol>
+<li>输入一个正整数 n；</li>
+<li>如果 n=1 则结束；</li>
+<li>如果 n 是奇数，则 n 变为 3n+1，否则 n 变为 n/2；</li>
+<li>转入第 2 步。</li>
+</ol>
+<p>请大家编程，构造一个 3n+1 函数，该函数完成对 43 的 3n+1 的演化,建立一个列表储存演化过程，最终返回该列表及演化步骤数</p>
+<p>例子：</p>
+<p>input:7</p>
+<p>output:[7,22,11,34,17,52,26,13,40,20,10,5,16,8,4,2,1] 16</p>
+<p>参考代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span>(<span class="params">num</span>):</span></span><br><span class="line">    mylist=[num]</span><br><span class="line">    <span class="keyword">while</span> num!=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> num%<span class="number">2</span>==<span class="number">1</span>: <span class="comment">#如果为奇数</span></span><br><span class="line">            num=<span class="number">3</span>*num+<span class="number">1</span></span><br><span class="line">            mylist.append(num)</span><br><span class="line">        <span class="keyword">else</span>: <span class="comment">#为偶数</span></span><br><span class="line">            num=num//<span class="number">2</span></span><br><span class="line">            mylist.append(num)</span><br><span class="line">    <span class="keyword">return</span> mylist,len(mylist)<span class="number">-1</span></span><br><span class="line">print(function(<span class="number">43</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="寻找最值问题"><a href="#寻找最值问题" class="headerlink" title="寻找最值问题"></a>寻找最值问题</h4><p>在诸多数学问题，最值问题一直是争论的主题。在求最值的探索的过程，如何更快更好地得到最值，一代又一代理论科学家做出很大的贡献，逐渐衍化出来很多排序算法。关于排序算法的知识点，我们将在接下来的章节里介绍，这里将只对最大值，最小值进行简单讨论。</p>
+<p><strong>最大值求解</strong></p>
+<p>给定一个列表 [2, 4, 9, 7, 19, 94, 5]，请编写 find_max 函数，该函数返回列表的最大值。</p>
+<p>这个函数很容易，相信大家一定能够自行编写出来。</p>
+<p>参考代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_max</span>(<span class="params">nums</span>):</span></span><br><span class="line">    max = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> nums:</span><br><span class="line">      <span class="keyword">if</span> x &gt; max:</span><br><span class="line">        max = x</span><br><span class="line">    print(max)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">  find_max([<span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">19</span>, <span class="number">94</span>, <span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">  main()</span><br></pre></td></tr></table></figure>
+
+<p><strong>最小值求解</strong></p>
+<p>定一个列表 [2, 4, 9, 7, 19, 94, 5]，请编写 find_min 函数，该函数返回列表的最小值。</p>
+<p>这个函数也很容易，相信大家一定能够自行编写出来。</p>
+<p>参考代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_min</span>(<span class="params">nums</span>):</span></span><br><span class="line">    min=nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> nums:</span><br><span class="line">        <span class="keyword">if</span> x&lt;min:</span><br><span class="line">            min=x</span><br><span class="line">    pritn(min)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">  find_max([<span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">19</span>, <span class="number">94</span>, <span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">  main()</span><br></pre></td></tr></table></figure>
+
+<h4 id="最大公约数-最小公倍数"><a href="#最大公约数-最小公倍数" class="headerlink" title="最大公约数/最小公倍数"></a>最大公约数/最小公倍数</h4><p>在介绍最大公约数和最小公倍数之前，我们先来介绍下欧几里得算法</p>
+<p><strong>欧几里得算法</strong></p>
+<p>欧几里得算法又称辗转相除法，用来求两个正整数的最大公约数。以 1997 和 615 为例，用欧几里得算法求解如下：</p>
+<p>1997=615*3+152</p>
+<p>615=152*4+7</p>
+<p>152=7*21+5</p>
+<p>7=5*1+2</p>
+<p>5=2*2+1</p>
+<p>2=1*2+0</p>
+<p>当被加的数为 0 时，可以得出，1997 和 615 的最大公约数为 1。</p>
+<p>以上做法的依据是以下定理：</p>
+<p><strong>两个整数的最大公约数等于其中较小的那个数和两数相除余数的最大公约数。</strong></p>
+<p>用数学表示为：gcd(a,b)=gcd(b,amodb)</p>
+<p>并可以证明欧几里得算法一定能在有限步内结束。</p>
+<p>利用图形可以更直观地理解欧几里得算法</p>
+<p><img src="http://www.luozijian.com/usr/uploads/2019/03/1163674900.gif" alt="oujilide_show.gif"></p>
+<p>程序设计：</p>
+<p><img src="http://www.luozijian.com/usr/uploads/2019/03/4286667703.jpg" alt="oujilide.jpg"></p>
+<p>算法思想：a,b 始终扮演被除数和除数的角色。</p>
+<p>最大公约数（greatest common divisor）缩写为 gcd</p>
+<p>参考代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        r=a%b</span><br><span class="line">        a=b <span class="comment">#经过一次求余数，进入第二轮相除，即b的值扮演了被除数的角色</span></span><br><span class="line">        b=r <span class="comment">#r的值扮演了余数的角色</span></span><br><span class="line">    <span class="keyword">return</span> a <span class="comment">#这里return a的原因是，b作为在最后一轮的除数已经幅值给了a</span></span><br></pre></td></tr></table></figure>
+
+<p>而对于最小公倍数则有以下思路求解：</p>
+<p>a,b 两个数的最小公倍数乘以他们的最大公约数约等于 a 和 b 本身的乘积</p>
+<p>即<strong>LCM(a,b)<em>GCD(a,b)=a</em>b</strong></p>
+<p>所以最小公倍数的求解代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lcm</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="keyword">return</span> a*b//gcd(a,b)</span><br></pre></td></tr></table></figure>
+
+<p>请大家编程，构造一个 three_gcd 和 three_lcm 函数，该函数完成三个数的最大公因数和最小公倍数的求解</p>
+<p>例子：</p>
+<p>input:2,7,6</p>
+<p>output:gcd:1 lcm:84</p>
+<p>思路：</p>
+<p>计算<strong>三个数的最大公约数</strong>时，利用之前写好的计算 2 个数的最大公约数的方法，先算出 a,b 的公约数，再用 a,b 的公约数与 c 再代入方法，此时返回的值就是三个数的最大公约数了。对于<strong>三个数的最小公倍数</strong>，继续嵌套，先求出两个数的，再求与第三个数的最小公倍数。</p>
+<p>参考代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gcd</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        r=a%b</span><br><span class="line">        a=b <span class="comment">#经过一次求余数，进入第二轮相除，即b的值扮演了被除数的角色</span></span><br><span class="line">        b=r <span class="comment">#r的值扮演了余数的角色</span></span><br><span class="line">    <span class="keyword">return</span> a <span class="comment">#这里return a的原因是，b作为在最后一轮的除数已经幅值给了a</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lcm</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    <span class="keyword">return</span> a*b//gcd(a,b)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">three_gcd</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">return</span> gcd(gcd(a,b),c)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">three_lcm</span>(<span class="params">a,b,c</span>):</span></span><br><span class="line">    <span class="keyword">return</span> lcm(a,b)*c//gcd(gcd(a,b),c)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    a=<span class="number">2</span></span><br><span class="line">    b=<span class="number">7</span></span><br><span class="line">    c=<span class="number">6</span></span><br><span class="line">    print(<span class="string">&quot;a:&quot;</span>,a)</span><br><span class="line">    print(<span class="string">&quot;b:&quot;</span>,b)</span><br><span class="line">    print(<span class="string">&quot;c:&quot;</span>,c)</span><br><span class="line">    print(<span class="string">&quot;gcd(&quot;</span>,a,<span class="string">&quot;,&quot;</span>,b,<span class="string">&quot;,&quot;</span>,c,<span class="string">&quot;):&quot;</span>,three_gcd(a,b,c))</span><br><span class="line">    print(<span class="string">&quot;lcm(&quot;</span>,a,<span class="string">&quot;,&quot;</span>,b,<span class="string">&quot;,&quot;</span>,c,<span class="string">&quot;):&quot;</span>,three_lcm(a,b,c))</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h2 id="算术分析方法"><a href="#算术分析方法" class="headerlink" title="算术分析方法"></a>算术分析方法</h2><p>在数学问题中，有很多算术分析方法。包括二分法，牛顿递归等等。我们将在接下来的章节里，逐一介绍这两种种方法。</p>
+<h4 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h4><p>二分法：对于区间[a，b]上连续不断且 f（a）·f（b）&lt;0 的函数 y=f（x），通过不断地把函数 f（x）的零点所在的区间一分为二，使区间的两个端点逐步逼近零点，进而得到零点近似值的方法叫二分法。</p>
+<p>注：定义来自百度百科。</p>
+<p>给定精确度 flex,用二分法求函数 f(x) 零点近似值的步骤如下：</p>
+<ol>
+<li><p>确定区间 [a,b],验证 f(a)*f(b)&lt;0,给定精确度 flex</p>
+</li>
+<li><p>求区间 (a,b) 的中点 c</p>
+</li>
+<li><p>计算 f(c):</p>
+<ul>
+<li><p>如果 f(c)=0,则 c 就是函数的零点</p>
+</li>
+<li><p>如果 f(a)*f(c)&lt;0，则令 b=c</p>
+</li>
+<li><p>如果 f(c)*f(b)&lt;0, 则令 a=c</p>
+</li>
+<li><p>判断是否达到精确度 flex,即若 |a-b|&lt; flex,则得到零点近似值 a(或 b),否则重复 2-3 步骤</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>例子：请在[1,1000]区间内，找到 x^3-2*x-5 的零点</p>
+<p>参考代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bisection</span>(<span class="params">function, a, b</span>):</span>  <span class="comment">#指定函数function,指定区间[a,b]</span></span><br><span class="line">    start = a</span><br><span class="line">    end = b</span><br><span class="line">    <span class="keyword">if</span> function(a) == <span class="number">0</span>:  <span class="comment">#a即为零点</span></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    <span class="keyword">elif</span> function(b) == <span class="number">0</span>: <span class="comment">#b即为零点</span></span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    <span class="keyword">elif</span> function(a) * function(b) &gt; <span class="number">0</span>: <span class="comment">#二分法无法在该区间找到零点</span></span><br><span class="line">        print(<span class="string">&quot;couldn&#x27;t find root in [a,b]&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>: <span class="comment">#f(a)*f(b)&lt;0 的情况</span></span><br><span class="line">        mid = (start + end) / <span class="number">2</span></span><br><span class="line">        <span class="keyword">while</span> abs(start - mid) &gt; <span class="number">10</span>**<span class="number">-7</span>:  <span class="comment"># 精确度设置为10**-7</span></span><br><span class="line">            <span class="keyword">if</span> function(mid) == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> function(mid) * function(start) &lt; <span class="number">0</span>:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid</span><br><span class="line">            mid = (start + end) / <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> mid</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> math.pow(x, <span class="number">3</span>) - <span class="number">2</span>*x - <span class="number">5</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print(bisection(f, <span class="number">1</span>, <span class="number">1000</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h4><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Newton%27s_method">牛顿递归原理</a></p>
+<p>在数值分析里面, 牛顿法(亦称牛顿拉弗森法)是一种方法，用于查找更好的根(或零点)的例子寻根算法。牛顿法也被用于求函数的最值。由于函数取最值的点处的导数值为零，故可用牛顿法求导函数的零点，其迭代式为<img src="http://www.luozijian.com/usr/uploads/2019/03/3443253852.png" alt="newton_递归.png"></p>
+<p>关于牛顿法和拟牛顿法的区别，请参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/46536960">牛顿法和拟牛顿法</a>这篇回答</p>
+<p>例子：请用牛顿法，求函数 x*<em>3-2</em>x-5 在 3 附近的零点</p>
+<p>参考代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">newton</span>(<span class="params">function,function1,start</span>):</span></span><br><span class="line">    <span class="comment">#function 是 f(x) function1 是 f(x)的导函数，即f&#x27;(x)</span></span><br><span class="line">    x_n=start</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x_n1=x_n-function(x_n)/function1(x_n) <span class="comment">#递归式</span></span><br><span class="line">        <span class="keyword">if</span> abs(x_n-x_n1) &lt; <span class="number">10</span>**<span class="number">-5</span>:</span><br><span class="line">            <span class="keyword">return</span> x_n1</span><br><span class="line">        x_n=x_n1</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (x**<span class="number">3</span>)<span class="number">-2</span>*x<span class="number">-5</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>*(x**<span class="number">2</span>)<span class="number">-2</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print(newton(f,f1,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+<p>问题升级：如果题目不提供导函数，只提供本函数表达式，但是提供一个合理区间，如何求解该区间内的零点？</p>
+<p>还是采用牛顿法的思路，导函数可以采用斜率不断递归的方式。</p>
+<p><img src="http://www.luozijian.com/usr/uploads/2019/03/3185361022.gif" alt="newton_show.gif"></p>
+<p>参考代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">intersection</span>(<span class="params">function,start1,start2</span>):</span></span><br><span class="line">    <span class="comment">#function 是 f(x),start1,start2 是区间端点</span></span><br><span class="line">    x_n=start1</span><br><span class="line">    x_n1=start2</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x_n2=x_n1-(function(x_n1)/((function(x_n1)-function(x_n))/(x_n1-x_n))) <span class="comment"># 递归式</span></span><br><span class="line">        <span class="keyword">if</span> abs(x_n2-x_n1) &lt; <span class="number">10</span>**<span class="number">-5</span>:</span><br><span class="line">            <span class="keyword">return</span> x_n2</span><br><span class="line">        x_n=x_n1</span><br><span class="line">        x_n1=x_n2</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (x**<span class="number">3</span>)<span class="number">-2</span>*x<span class="number">-5</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print(intersection(f,<span class="number">3</span>,<span class="number">3.5</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="斐波那契数列问题"><a href="#斐波那契数列问题" class="headerlink" title="斐波那契数列问题"></a>斐波那契数列问题</h2><p>斐波那契数列（Fibonacci sequence），又称黄金分割数列、因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：1、1、2、3、5、8、13、21、34…</p>
+<p>在数学上，费波那契数列是以递归的方法来定义的：</p>
+<ul>
+<li><p>F(0) = 0</p>
+</li>
+<li><p>F(1) = 1</p>
+</li>
+<li><p>F(n) = F(n - 1) + F(n - 2) (n &gt;= 2)</p>
+</li>
+</ul>
+<p>注：定义来自百度百科。</p>
+<p>从数列上看，我们能看到这是一个典型的递归函数，python 递归方法实现。</p>
+<p>我们在这里将介绍斐波那契数列的 3 种用 python 方法实现。</p>
+<ol>
+<li>使用 python 递归方法实现斐波那契数列</li>
+</ol>
+<p>思路：f(n)=f(n-1)+f(n)，我们直接使用 python 递归方法实现斐波那契数列</p>
+<p>参考代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibo</span>(<span class="params">num</span>):</span></span><br><span class="line">    <span class="keyword">if</span> num==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> num==<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> num&gt;<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> fibo(num<span class="number">-1</span>)+fibo(num<span class="number">-2</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&quot;False&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>代码分析：递归函数特点，在函数内部调用自身本身；所以函数必须要求调用有底线，不能无穷向下调用，斐波那契数列的底线在 n=1 与 n=2</p>
+<ol start="2">
+<li>使用 python 独特的列表实现斐波那契数列</li>
+</ol>
+<p>很多递归函数对于 python 来说非常简单，因为 python 有个独特的数据类型 list 列表，list 是动态的我们可以在尾部追加数据，这样一来斐波那契数列就是简单的加法游戏了。</p>
+<p>参考代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibo</span>(<span class="params">num</span>):</span></span><br><span class="line">    <span class="keyword">if</span> num==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">elif</span> num==<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> [<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">    l=[<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,num):</span><br><span class="line">        l.append(l[<span class="number">-2</span>]+l[<span class="number">-1</span>]) <span class="comment">#将列表最后两项的值求和，将值添加到列表最后</span></span><br><span class="line">    <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line">print(fibo(<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用 while 循环实现</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibo</span>(<span class="params">num</span>):</span></span><br><span class="line">    a=<span class="number">1</span></span><br><span class="line">    b=<span class="number">1</span></span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    l=[]</span><br><span class="line">    <span class="keyword">while</span> i &lt; num:</span><br><span class="line">        l.append(a)</span><br><span class="line">        a,b=a+b,a</span><br><span class="line">        i=i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> l</span><br><span class="line">print(fibo(<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+<p>关于斐波那契数列还可以用矩阵分解的思路，这里就不详述了，如果大家对矩阵分解的思路感兴趣，请自行探索。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/17/Hash-in-Python/" rel="prev" title="Hash in Python">
+      <i class="fa fa-chevron-left"></i> Hash in Python
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/22/Go-%E8%AF%AD%E8%A8%80/" rel="next" title="Go 语言">
+      Go 语言 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">数学算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.0.1.</span> <span class="nav-text">知识点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E4%B8%8A%E5%87%A0%E4%B8%AA%E5%9F%BA%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">数学上几个基本问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3n-1-%E9%97%AE%E9%A2%98"><span class="nav-number">2.0.1.</span> <span class="nav-text">3n+1 问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE%E6%9C%80%E5%80%BC%E9%97%AE%E9%A2%98"><span class="nav-number">2.0.2.</span> <span class="nav-text">寻找最值问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="nav-number">2.0.3.</span> <span class="nav-text">最大公约数&#x2F;最小公倍数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">算术分析方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">3.0.1.</span> <span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95"><span class="nav-number">3.0.2.</span> <span class="nav-text">牛顿法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">斐波那契数列问题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="罗子建"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">罗子建</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wannain" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wannain" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1519327048@qq.com" title="E-Mail → mailto:1519327048@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">罗子建</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
