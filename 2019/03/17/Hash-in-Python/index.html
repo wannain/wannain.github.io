@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="哈希的介绍哈希本节内容从介绍哈希的基本概念 。主要包含数论基础，介绍哈希表的介绍及实现，双哈希，混沌机，以及摘要算法。 知识点 哈希的概念 数论基础 哈希表的介绍及实现 双哈希 混沌机 摘要算法  哈希的概念什么是哈希哈希(Hash)，一般翻译做散列、杂凑，或音译为哈希，是把任意长度的输入（又叫做预映射 pre-image）通过散列算法变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hash in Python">
+<meta property="og:url" content="http://example.com/2019/03/17/Hash-in-Python/index.html">
+<meta property="og:site_name" content="寒冰小站">
+<meta property="og:description" content="哈希的介绍哈希本节内容从介绍哈希的基本概念 。主要包含数论基础，介绍哈希表的介绍及实现，双哈希，混沌机，以及摘要算法。 知识点 哈希的概念 数论基础 哈希表的介绍及实现 双哈希 混沌机 摘要算法  哈希的概念什么是哈希哈希(Hash)，一般翻译做散列、杂凑，或音译为哈希，是把任意长度的输入（又叫做预映射 pre-image）通过散列算法变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/03/759404728.jpg">
+<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/03/2935310098.jpg">
+<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/03/4185659393.png">
+<meta property="article:published_time" content="2019-03-17T06:31:11.000Z">
+<meta property="article:modified_time" content="2020-09-25T06:32:41.592Z">
+<meta property="article:author" content="罗子建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.luozijian.com/usr/uploads/2019/03/759404728.jpg">
+
+<link rel="canonical" href="http://example.com/2019/03/17/Hash-in-Python/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hash in Python | 寒冰小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">寒冰小站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/17/Hash-in-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="罗子建">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="寒冰小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hash in Python
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-17 14:31:11" itemprop="dateCreated datePublished" datetime="2019-03-17T14:31:11+08:00">2019-03-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-25 14:32:41" itemprop="dateModified" datetime="2020-09-25T14:32:41+08:00">2020-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="http://www.luozijian.com/usr/uploads/2019/03/759404728.jpg" alt="20190307174500.jpg"></p>
+<h1 id="哈希的介绍"><a href="#哈希的介绍" class="headerlink" title="哈希的介绍"></a>哈希的介绍</h1><h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h2><p>本节内容从介绍哈希的基本概念 。主要包含数论基础，介绍哈希表的介绍及实现，双哈希，混沌机，以及摘要算法。</p>
+<h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ul>
+<li>哈希的概念</li>
+<li>数论基础</li>
+<li>哈希表的介绍及实现</li>
+<li>双哈希</li>
+<li>混沌机</li>
+<li>摘要算法</li>
+</ul>
+<h2 id="哈希的概念"><a href="#哈希的概念" class="headerlink" title="哈希的概念"></a>哈希的概念</h2><h4 id="什么是哈希"><a href="#什么是哈希" class="headerlink" title="什么是哈希"></a>什么是哈希</h4><p>哈希(Hash)，一般翻译做散列、杂凑，或音译为哈希，是把任意长度的输入（又叫做预映射 pre-image）通过散列算法变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来确定唯一的输入值。简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。</p>
+<h4 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h4><p>若结构中存在和关键字 K 相等的记录，则必定在 f(K)的存储位置上。由此，不需比较便可直接取得所查记录。称这个对应关系 f 为<strong>散列函数(Hash function)**，按这个事先建立的表为</strong>散列表**.</p>
+<p>对不同的关键字可能得到同一散列地址，即 key1≠key2，而 f(key1)=f(key2)，这种现象称<strong>碰撞</strong>。具有相同函数值的关键字对该散列函数来说称做<strong>同义词</strong>。综上所述，根据散列函数 H(key)和处理冲突的方法将一组关键字映象到一个有限的连续的地址集（区间）上，并以关键字在地址集中的“象” 作为记录在表中的存储位置，这种表便称为<strong>散列表</strong>，这一映象过程称为散列造表或散列，所得的存储位置称<strong>散列地址</strong>。</p>
+<p>若对于关键字集合中的任一个关键字，经散列函数映象到地址集合中任何一个地址的概率是相等的，则称此类散列函数为**均匀散列函数(Uniform Hash function)**，这就是使关键字经过散列函数得到一个“随机的地址”，从而减少冲突。</p>
+<p>注：定义来自百度百科。</p>
+<h2 id="数论基础"><a href="#数论基础" class="headerlink" title="数论基础"></a>数论基础</h2><p>素数，也称质数，只包含两个因数，且一个因数为 1，一个因数为它本身。</p>
+<p>素数有以下性质：</p>
+<ul>
+<li><p>素数 p 的因子有且只有两个：1 和 p</p>
+</li>
+<li><p>素数一定是奇数</p>
+</li>
+<li><p>任意一个大于 1 的正整数 N，一定可以质因式分解为它的有限个质因子之积</p>
+</li>
+<li><p>素数的个数是无限的</p>
+</li>
+<li><p>所有大于 10 的素数中，其个位数只能是 1,3,7,9 其中之一</p>
+</li>
+<li><p>一个充分大的偶数一定可以写成：一个素数加上一个最多由 2 个质因子所组成的合成数</p>
+</li>
+</ul>
+<h4 id="判断素数"><a href="#判断素数" class="headerlink" title="判断素数"></a>判断素数</h4><p>寻找素数算法，有很多种，包括短除法，筛选法两种。</p>
+<p><strong>短除法</strong></p>
+<p>设计思想：最直接的方法就是从定义出发，对于任意整数 p，用[2，p-1]去整除 p，如果发现 p 可以被整除，p 就不是素数</p>
+<p>下面给出短除法的参考代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_prime</span>(<span class="params">num</span>):</span></span><br><span class="line">    <span class="keyword">if</span> num &gt; <span class="number">1</span>:<span class="comment"># 查看因子</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,num):</span><br><span class="line">            <span class="keyword">if</span> (num % i) == <span class="number">0</span>:</span><br><span class="line">                print(num,<span class="string">&quot;不是质数&quot;</span>)</span><br><span class="line">                print(i,<span class="string">&quot;乘于&quot;</span>,num//i,<span class="string">&quot;是&quot;</span>,num)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(num,<span class="string">&quot;是质数&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(num,<span class="string">&quot;不是质数&quot;</span>)<span class="comment"># 如果输入的数字小于或等于 1，不是</span></span><br><span class="line">num = int(input(<span class="string">&quot;请输入一个数字: &quot;</span>))</span><br><span class="line">find_prime(num)</span><br></pre></td></tr></table></figure>
+
+<p>显然，这个方法的效率简直低的让人难以接受，优化空间非常大</p>
+<p><strong>筛选法</strong></p>
+<p>设计思想：</p>
+<ol>
+<li><p>将 n 个数字全部放进数组，并都置为肯定状态</p>
+</li>
+<li><p>将数组下标是偶数的数字全部置为否定状态</p>
+</li>
+<li><p>依次遍历数组长度的平方根个数字</p>
+</li>
+<li><p>如果当前数字处于被肯定的状态，则将其倍数的数字状态置为否定</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_prime_2</span>(<span class="params">num</span>):</span></span><br><span class="line">    primes_bool=[<span class="literal">False</span>,<span class="literal">False</span>]+[<span class="literal">True</span>]*(num<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>,len(primes_bool)):</span><br><span class="line">        <span class="keyword">if</span> i&amp;<span class="number">1</span>==<span class="number">0</span>:</span><br><span class="line">            prims_bool[i]=<span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>,int(math.sqrt(num))+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> prims_bool[i] <span class="keyword">is</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i+j,num+<span class="number">1</span>,i):</span><br><span class="line">                prims_bool[j]=<span class="literal">False</span></span><br><span class="line">    prims=[]</span><br><span class="line">    [prims.append(i) <span class="keyword">for</span> i,v <span class="keyword">in</span> enumerate(prims_bool) <span class="keyword">if</span> v <span class="keyword">is</span> <span class="literal">True</span>]</span><br><span class="line">    <span class="keyword">return</span> prims</span><br></pre></td></tr></table></figure>
+
+<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p>哈希表（Hash table，也叫散列表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做<strong>散列函数</strong>，存放记录的数组叫做<strong>散列表</strong>。</p>
+<p>给定表 M，存在函数 f(key)，对任意给定的关键字值 key，代入函数后若能得到包含该关键字的记录在表中的地址，则称表 M 为<strong>哈希(Hash）表</strong>，函数 f(key)为<strong>哈希(Hash) 函数</strong>。</p>
+<p>在平均情况下，在哈希表中查找一个元素的期望时间是 O(1) ,因此效率极高。Python 中的字典就是采用了哈希表的结构。</p>
+<p>注：定义来自百度百科。</p>
+<h4 id="哈希表特点"><a href="#哈希表特点" class="headerlink" title="哈希表特点"></a>哈希表特点</h4><p>哈希表具有以下特点：</p>
+<ol>
+<li><p>若关键字为 k，则其值存放在 f(k)的存储位置上。由此，不需比较便可直接取得所查记录。称这个对应关系 f 为散列函数，按这个思想建立的表为散列表。</p>
+</li>
+<li><p>对不同的关键字可能得到同一散列地址，即 k1≠k2，而 f(k1)=f(k2)，这种现象称为冲突。具有相同函数值的关键字对该散列函数来说称做同义词。综上所述，根据散列函数 f(k)和处理冲突的方法将一组关键字映射到一个有限的连续的地址集（区间）上，并以关键字在地址集中的“像”作为记录在表中的存储位置，这种表便称为散列表，这一映射过程称为散列造表或散列，所得的存储位置称散列地址。</p>
+</li>
+<li><p>若对于关键字集合中的任一个关键字，经散列函数映象到地址集合中任何一个地址的概率是相等的，则称此类散列函数为均匀散列函数（Uniform Hash function），这就是使关键字经过散列函数得到一个“随机的地址”，从而减少冲突。</p>
+</li>
+</ol>
+<h4 id="哈希表的实现"><a href="#哈希表的实现" class="headerlink" title="哈希表的实现"></a>哈希表的实现</h4><p>总的来说，哈希表就是一个具备映射关系的表，你可以通过映射关系由键找到值。有没有现成的例子？当然有，不过你直接用就没意思了。</p>
+<p>反正就是要实现 f(k)，即实现 key-value 的映射关系。我们试着自己实现一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">hashtable</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.items=[]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span>(<span class="params">self,k,v</span>):</span></span><br><span class="line">        self.items.append((k,v)) <span class="comment">#添加对应关系</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self,k</span>):</span></span><br><span class="line">        <span class="keyword">for</span> key,value <span class="keyword">in</span> self.items:</span><br><span class="line">            <span class="keyword">if</span>(k==key):</span><br><span class="line">                <span class="keyword">return</span> value <span class="comment">#返回正确匹配出的结果</span></span><br></pre></td></tr></table></figure>
+
+<p>这样实现的 hashtable，查找的时间复杂度为 O(n)。 “这太简单了，看上去与 key 没什么关系啊，这不是顺序查找么，逗我呢？” 这只是一个热身，好吧，下面我们根据定义，来搞一个有映射函数的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">hashtable</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.items=[<span class="literal">None</span>]*<span class="number">100</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hash</span>(<span class="params">self,a</span>):</span></span><br><span class="line">        <span class="keyword">return</span> a*<span class="number">1</span>+<span class="number">1</span> <span class="comment">#线性映射关系</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span>(<span class="params">self,k,v</span>):</span></span><br><span class="line">        self.items[self.hash(k)]=v <span class="comment">#根据哈希结果，添加映射关系</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self,k</span>):</span></span><br><span class="line">        hashcode=self.hash(k)</span><br><span class="line">        <span class="keyword">return</span> self.items[hashcode] <span class="comment">#根据哈希结果，返回正确匹配出结果</span></span><br></pre></td></tr></table></figure>
+
+<p>“这 hash 函数有点简单啊” 是的，它是简单，但简单不妨碍它成为一个哈希函数，事实上，它叫直接定址法，是一个线性函数： hash(k)= a*k+b</p>
+<p>直接定址法的优点很明显，就是它不会产生重复的 hash 值。但由于它与键值本身有关系，所以当键值分布很散的时候，会浪费大量的存储空间。所以一般是不会用到直接定址法的。</p>
+<h4 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h4><p>处理冲突假如某个 hash 函数产生了一堆哈希值，而这些哈希值产生了冲突怎么办（实际生产环境中经常发生）？在各种哈希表的实现里，处理冲突是必需的一步。 比如你定义了一个 hash 函数： hash(k)=k mod 10 假设 key 序列为：[15,1,24,32,55,64,42,93,82,76]，一趟下来，冲突的元素有四个，下面有几个办法解决冲突。</p>
+<ul>
+<li>开放寻址法：Hi=(H(key) + di) MOD m,i=1,2,…，k(k&lt;=m-1），其中 H(key）为散列函数，m 为散列表长，di 为增量序列，可有下列三种取法：</li>
+</ul>
+<p><img src="http://www.luozijian.com/usr/uploads/2019/03/2935310098.jpg" alt="hash_开放寻址.jpg"></p>
+<ol>
+<li><p>di=1,2,3,…，m-1，称线性探测再散列；</p>
+</li>
+<li><p>di=1^2,-1^2,2^2,-2^2，⑶^2,…，±（k)^2,(k&lt;=m/2）称平方探测再散列；</p>
+</li>
+<li><p>di=伪随机数序列，称伪随机探测再散列。</p>
+</li>
+</ol>
+<ul>
+<li><p>再散列法：Hi=RHi(key),i=1,2,…，k RHi 均是不同的散列函数，即在同义词产生地址冲突时计算另一个散列函数地址，直到冲突不再发生，这种方法不易产生“聚集”，但增加了计算时间。</p>
+</li>
+<li><p>链地址法（拉链法）</p>
+</li>
+<li><p>建立一个公共溢出区</p>
+</li>
+</ul>
+<p>说了这么一堆，举个例子，用开放地址法（线性探测）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">hashtable</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.hash_table=[[<span class="literal">None</span>,<span class="literal">None</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hash</span>(<span class="params">self,k,i</span>):</span></span><br><span class="line">        h_value=(k+i)%<span class="number">10</span></span><br><span class="line">        <span class="keyword">if</span> self.hash_table[h_value][<span class="number">0</span>]==k:</span><br><span class="line">            <span class="keyword">return</span> h_value</span><br><span class="line">        <span class="keyword">if</span> self.hash_table[h_value][<span class="number">0</span>]!=<span class="literal">None</span>:</span><br><span class="line">            i=i+<span class="number">1</span></span><br><span class="line">            h_value=self.hash(k,i)</span><br><span class="line">        <span class="keyword">return</span> h_value</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span>(<span class="params">self,k,v</span>):</span></span><br><span class="line">        hash_v=self.hash(k,<span class="number">0</span>)</span><br><span class="line">        self.hash_table[hash_v][<span class="number">0</span>]=k</span><br><span class="line">        self.hash_table[hash_v][<span class="number">3</span>]=v</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self,k</span>):</span></span><br><span class="line">        hash_v=self.hash(k,<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> self.hash_table[hash_v][<span class="number">4</span>]</span><br><span class="line">table=hashtable()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</span><br><span class="line">    table.put(i,i)</span><br><span class="line">print(table.get(<span class="number">3</span>))</span><br><span class="line">print(table.hash_table)</span><br></pre></td></tr></table></figure>
+
+<p>“能不能不要定死长度？10 个完全不够用啊”</p>
+<p>这是刚才的问题，所以有了另外一个概念，叫做载荷因子（load factor）。载荷因子的定义为： α= 已有的元素个数/表的长度由于表长是定值， α与“填入表中的元素个数”成正比，所以， α越大，表明填入表中的元素越多，产生冲突的可能性就越大；反之，α越小，表明填入表中的元素越少，产生冲突的可能性就越小。</p>
+<p>实际上，散列表的平均查找长度是载荷因子 α的函数，只是不同处理冲突的方法有不同的函数。所以当到达一定程度，表的长度是要变的，即 resize，载荷因子被设计为 0.75；超过 0.8，cpu 的 cache missing 会急剧上升。具体扩容多少，一般选择扩到已插入元素数量的两倍.</p>
+<p>接着上面，再升级一下我们的 hashtable：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">hashtable</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.capacity=<span class="number">10</span></span><br><span class="line">        self.hash_table=[[<span class="literal">None</span>,<span class="literal">None</span>]<span class="keyword">for</span> i <span class="keyword">in</span> range(self.capacity)]</span><br><span class="line">        self.num=<span class="number">0</span></span><br><span class="line">        self.load_factor=<span class="number">0.75</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hash</span>(<span class="params">self,k,i</span>):</span></span><br><span class="line">        h_value=(k+i)%self.capacity</span><br><span class="line">        <span class="keyword">if</span> self.hash_table[h_value][<span class="number">0</span>]==k:</span><br><span class="line">            <span class="keyword">return</span> h_value</span><br><span class="line">        <span class="keyword">if</span> self.hash_table[h_value][<span class="number">0</span>]!=<span class="literal">None</span>:</span><br><span class="line">            i=i+<span class="number">1</span></span><br><span class="line">            h_value=self.hash(k,i)</span><br><span class="line">        <span class="keyword">return</span> h_value</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">resize</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.capacity=self.num*<span class="number">2</span> <span class="comment">#扩容到原有元素数量的两倍</span></span><br><span class="line">        temp=self.hash_table[:]</span><br><span class="line">        self.hash_table=[[<span class="literal">None</span>,<span class="literal">None</span>]<span class="keyword">for</span> i <span class="keyword">in</span> range(self.capacity)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> temp:</span><br><span class="line">            <span class="keyword">if</span>(i[<span class="number">0</span>]!=<span class="literal">None</span>):  <span class="comment">#把原来已有的元素存入</span></span><br><span class="line">                hash_v=self.hash(i[<span class="number">0</span>],<span class="number">0</span>)</span><br><span class="line">                self.hash_table[hash_v][<span class="number">0</span>]=i[<span class="number">0</span>]</span><br><span class="line">                self.hash_table[hash_v][<span class="number">5</span>]=i[<span class="number">1</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span>(<span class="params">self,k,v</span>):</span></span><br><span class="line">        hash_v=self.hash(k,<span class="number">0</span>)</span><br><span class="line">        self.hash_table[hash_v][<span class="number">0</span>]=k</span><br><span class="line">        self.hash_table[hash_v][<span class="number">6</span>]=v</span><br><span class="line">        self.num=self.num+<span class="number">1</span>                 <span class="comment">#暂不考虑key重复的情况，具体自己可以优化</span></span><br><span class="line">        <span class="keyword">if</span>(self.num/len(self.hash_table)&gt;self.load_factor):<span class="comment"># 如果比例大于载荷因子</span></span><br><span class="line">            self.resize()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self,k</span>):</span></span><br><span class="line">        hash_v=self.hash(k,<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> self.hash_table[hash_v][<span class="number">7</span>]</span><br><span class="line">table=hashtable()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">15</span>):</span><br><span class="line">    table.put(i,i)</span><br><span class="line">print(table.get(<span class="number">3</span>))</span><br><span class="line">print(table.hash_table)</span><br></pre></td></tr></table></figure>
+
+<p>哈希表最终呈现为：<br>[[None, None],<br> [1, 1],<br> [2, 2],<br> [3, 3],<br> [4, 4],<br> [5, 5],<br> [6, 6],<br> [7, 7],<br> [8, 8],<br> [9, 9],<br> [10, 10],<br> [11, 11],<br> [12, 12],<br> [None, None],<br> [None, None],<br> [None, None]]</p>
+<p>添加了一个 resize 函数就不需要担心哈希表的容量问题啦。</p>
+<p>关于哈希表，原理的东西都基本差不多了。可以看到，它本质要解决的是查找时间的问题。如果顺序查找的话，时间复杂度为 O(n)；而哈希表，时间复杂度则为 O(1)！直接甩了一个次元，这也就是为什么在大量数据存储查找的时候，哈希表得到大量应用的原因。</p>
+<h2 id="双重哈希"><a href="#双重哈希" class="headerlink" title="双重哈希"></a>双重哈希</h2><p>双重哈希，也叫一致性哈希，属于开放地址哈希中的一种解决冲突方案，也就是说如果一次哈希不能解决问题的时候，要再次哈希，与再哈希方法不同的是，第二次使用的哈希函数与第一次是不同的：(hash1(key) + i * hash2(key)) % TABLE_SIZE</p>
+<p>一般来讲，</p>
+<ul>
+<li><p>hash1(key) = key % TABLE_SIZE</p>
+</li>
+<li><p>hash2(key) = PRIME – (key % PRIME)</p>
+</li>
+</ul>
+<p>其中 PRIME 一般选一个比 TABLE_SIZE 小的一个质数就可以了，例如如果 TABLE_SIZE=16，那么 PRIME=13。</p>
+<p>注意：第二个哈希函数结果不能为 0，而且第二个哈希函数要覆盖表的每一个单元。</p>
+<p>至于 i 就从 1 开始尝试就是了，如果有冲突，则再尝试 i++。</p>
+<h2 id="混沌机-chaos-machine"><a href="#混沌机-chaos-machine" class="headerlink" title="混沌机 chaos machine"></a>混沌机 chaos machine</h2><p>在数学中，混沌机是一类基于混沌理论（主要是确定性混沌）构造的算法，用于产生伪随机预言。 它代表了创建具有模块化设计和可定制参数的通用方案的想法，可以应用于需要随机性和敏感性的任何地方。</p>
+<p>混沌机的理论模型，它结合了哈希函数和伪随机函数的优点，形成了灵活的单向推挽界面。它提出了创建具有模块化设计和可定制参数的通用工具（设计模式）的想法，可以应用于需要随机性和敏感性的地方（随机预言），以及适当的结构决定了应用的情况，参数的选择提供了首选的属性和安全级别。机器可用于实现许多加密原语，包括加密哈希，消息验证码和伪随机数生成器。</p>
+<p><strong>算法概述：</strong></p>
+<p>chaos machine 模型包含推挽复位功能和缓冲空间的动态系统。 以下组件是成型机接口：</p>
+<ul>
+<li><p>push 功能（输入）。 主要是输入功能，它吸收位串（通常为 32 位或 16 位值，相对较小）并用于系统评估（控制理论，将在后面讨论）。</p>
+</li>
+<li><p>pull 功能（输出）。 它包含混沌映射和伪随机函数的构造，可以自由替换。 拉函数的输出是 xed 长度的比特串（例如，32 或 16 比特）。</p>
+</li>
+<li><p>reset 功能（复位）。 此函数清除缓冲区。</p>
+</li>
+</ul>
+<p>此后，操作机器处于初始状态。</p>
+<p>这里给出 Maciej A. Czyzewski 博士的示例算法，如果大家对混沌机感兴趣的，可以自行学习。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># example of simple chaos machine</span></span><br><span class="line"><span class="comment"># Chaos Machine (K, t, m)</span></span><br><span class="line">K = [<span class="number">0.33</span>, <span class="number">0.44</span>, <span class="number">0.55</span>, <span class="number">0.44</span>, <span class="number">0.33</span>]; t = <span class="number">3</span>; m = <span class="number">5</span></span><br><span class="line"><span class="comment"># Buffer Space (with Parameters Space)</span></span><br><span class="line">buffer_space, params_space = [], []</span><br><span class="line"><span class="comment"># Machine Time</span></span><br><span class="line">machine_time = <span class="number">0</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">push</span>(<span class="params">seed</span>):</span></span><br><span class="line">  <span class="keyword">global</span> buffer_space, params_space, machine_time, \</span><br><span class="line">    K, m, t</span><br><span class="line">  <span class="comment"># Choosing Dynamical Systems (All)</span></span><br><span class="line">  <span class="keyword">for</span> key, value <span class="keyword">in</span> enumerate(buffer_space):</span><br><span class="line">    <span class="comment"># Evolution Parameter</span></span><br><span class="line">    e = float(seed / value)</span><br><span class="line">    <span class="comment"># Control Theory: Orbit Change</span></span><br><span class="line">    value = (buffer_space[(key + <span class="number">1</span>) % m] + e) % <span class="number">1</span></span><br><span class="line">    <span class="comment"># Control Theory: Trajectory Change</span></span><br><span class="line">    r = (params_space[key] + e) % <span class="number">1</span> + <span class="number">3</span></span><br><span class="line">    <span class="comment"># Modification (Transition Function) - Jumps</span></span><br><span class="line">    buffer_space[key] = \</span><br><span class="line">      round(float(r * value * (<span class="number">1</span> - value)), <span class="number">10</span>)</span><br><span class="line">    params_space[key] = \</span><br><span class="line">      r <span class="comment"># Saving to Parameters Space</span></span><br><span class="line">  <span class="comment"># Logistic Map</span></span><br><span class="line">  <span class="keyword">assert</span> max(buffer_space) &lt; <span class="number">1</span></span><br><span class="line">  <span class="keyword">assert</span> max(params_space) &lt; <span class="number">4</span></span><br><span class="line">  <span class="comment"># Machine Time</span></span><br><span class="line">  machine_time += <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pull</span>():</span></span><br><span class="line">  <span class="keyword">global</span> buffer_space, params_space, machine_time, \</span><br><span class="line">    K, m, t</span><br><span class="line">  <span class="comment"># PRNG (Xorshift by George Marsaglia)</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">xorshift</span>(<span class="params">X, Y</span>):</span></span><br><span class="line">    X ^= Y &gt;&gt; <span class="number">13</span></span><br><span class="line">    Y ^= X &lt;&lt; <span class="number">17</span></span><br><span class="line">    X ^= Y &gt;&gt; <span class="number">5</span></span><br><span class="line">    <span class="keyword">return</span> X</span><br><span class="line">  <span class="comment"># Choosing Dynamical Systems (Increment)</span></span><br><span class="line">  key = machine_time % m</span><br><span class="line">  <span class="comment"># Evolution (Time Length)</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, t):</span><br><span class="line">    <span class="comment"># Variables (Position + Parameters)</span></span><br><span class="line">    r     = params_space[key]</span><br><span class="line">    value = buffer_space[key]</span><br><span class="line">    <span class="comment"># Modification (Transition Function) - Flow</span></span><br><span class="line">    buffer_space[key] = \</span><br><span class="line">      round(float(r * value * (<span class="number">1</span> - value)), <span class="number">10</span>)</span><br><span class="line">    params_space[key] = \</span><br><span class="line">      (machine_time * <span class="number">0.01</span> + r * <span class="number">1.01</span>) % <span class="number">1</span> + <span class="number">3</span></span><br><span class="line">  <span class="comment"># Choosing Chaotic Data</span></span><br><span class="line">  X = int(buffer_space[(key + <span class="number">2</span>) % m] * (<span class="number">10</span> ** <span class="number">10</span>))</span><br><span class="line">  Y = int(buffer_space[(key - <span class="number">2</span>) % m] * (<span class="number">10</span> ** <span class="number">10</span>))</span><br><span class="line">  <span class="comment"># Machine Time</span></span><br><span class="line">  machine_time += <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> xorshift(X, Y) % <span class="number">0xFFFFFFFF</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reset</span>():</span></span><br><span class="line">  <span class="keyword">global</span> buffer_space, params_space, machine_time, \</span><br><span class="line">    K, m, t</span><br><span class="line">  buffer_space = K; params_space = [<span class="number">0</span>] * m</span><br><span class="line">  machine_time = <span class="number">0</span></span><br><span class="line"><span class="comment">#######################################</span></span><br><span class="line"><span class="comment"># Initialization</span></span><br><span class="line">reset()</span><br><span class="line"><span class="comment"># Pushing Data (Input)</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">message = random.sample(range(<span class="number">0xFFFFFFFF</span>), <span class="number">100</span>)</span><br><span class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> message:</span><br><span class="line">  push(chunk)</span><br><span class="line"><span class="comment"># for controlling </span></span><br><span class="line">inp = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="comment"># Pulling Data (Output)</span></span><br><span class="line"><span class="keyword">while</span> inp <span class="keyword">in</span> (<span class="string">&quot;e&quot;</span>, <span class="string">&quot;E&quot;</span>):</span><br><span class="line">  print(<span class="string">&quot;%s&quot;</span> % format(pull(), <span class="string">&#x27;#04x&#x27;</span>))</span><br><span class="line">  print(buffer_space); print(params_space)</span><br><span class="line">  inp = input(<span class="string">&quot;(e)exit? &quot;</span>).strip()</span><br></pre></td></tr></table></figure>
+
+<p>创建该算法的主要目的是提出混沌机的实现模型。</p>
+<ul>
+<li><p><strong>伪随机数生成器：</strong>基本设计是维护一个假定为攻击者不知道的随机位的熵池。通过推送功能将新的随机性添加到缓冲区，从而演变机器的状态。</p>
+</li>
+<li><p><strong>哈希函数：</strong>该算法可以有效地用作消息认证码，其中速度不是那么重要。可计算的周期和优异的质量创建了作为哈希函数的窄范围应用。</p>
+</li>
+</ul>
+<h2 id="摘要算法"><a href="#摘要算法" class="headerlink" title="摘要算法"></a>摘要算法</h2><p>Python 的 hashlib 提供了常见的摘要算法，如 MD5，SHA1 等等。</p>
+<p>什么是摘要算法呢？摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用 16 进制的字符串表示）。</p>
+<p>举个例子，你写了一篇文章，内容是一个字符串 <strong>‘how to use python hashlib - by Michael’**，并附上这篇文章的摘要是 **’2d73d4f15c0db7f5ecb321b6a65e5d6d’</strong> 。如果有人篡改了你的文章，并发表为 <strong>‘how to use python hashlib - by Bob’**，你可以一下子指出 Bob 篡改了你的文章，因为根据 **’how to use python hashlib - by Bob’</strong> 计算出的摘要不同于原始文章的摘要。</p>
+<p>可见，摘要算法就是通过摘要函数 f()对任意长度的数据 data 计算出固定长度的摘要 digest，目的是为了发现原始数据是否被人篡改过。</p>
+<p>摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算 f(data)很容易，但通过 digest 反推 data 却非常困难。而且，对原始数据做一个 bit 的修改，都会导致计算出的摘要完全不同。</p>
+<p>注：廖雪峰老师博客中<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319556588648dd1fb0047a34d0c945ee33e8f4c90cc000">摘要算法介绍</a>对摘要算法的相关概念讲得很通彻。</p>
+<h4 id="MD5-算法介绍"><a href="#MD5-算法介绍" class="headerlink" title="MD5 算法介绍"></a>MD5 算法介绍</h4><p>Message Digest Algorithm MD5（中文名为消息摘要算法第五版）为计算机安全领域广泛使用的一种散列函数，用以提供消息的完整性保护。MD5 算法 属 Hash 算法一类。MD5 算法对输入任意长度的消息进行运行，产生一个 128 位的消息摘要。</p>
+<p>以下所描述的消息长度、填充数据都以位(Bit)为单位，字节序为小端字节。</p>
+<p><strong>算法原理：</strong></p>
+<ol>
+<li><p><strong>数据填充：</strong>对消息进行数据填充，使消息的长度对 512 取模得 448，设消息长度为 X，即满足 X mod 512=448。根据此公式得出需要填充的数据长度。填充方法：在消息后面进行填充，填充第一位为 1，其余为 0。</p>
+</li>
+<li><p><strong>添加消息长度：</strong>在第一步结果之后再填充上原消息的长度，可用来进行的存储长度为 64 位。如果消息长度大于 264，则只使用其低 64 位的值，即（消息长度 对 264 取模）。在此步骤进行完毕后，最终消息长度就是 512 的整数倍。</p>
+</li>
+<li><p><strong>数据处理：</strong>准备需要用到的数据：4 个常数： A = 0x67452301, B = 0x0EFCDAB89, C = 0x98BADCFE, D = 0x10325476 ; 4 个函数：F(X,Y,Z)=(X &amp; Y) | ((<del>X) &amp; Z); G(X,Y,Z)=(X &amp; Z) | (Y &amp; (</del>Z));  H(X,Y,Z)=X ^ Y ^ Z; I(X,Y,Z)=Y ^ (X | (~Z)); 把消息分以 512 位为一分组进行处理，每一个分组进行 4 轮变换，以上面所说 4 个常数为起始变量进行计算，重新输出 4 个变量，以这 4 个变量再进行下一分组的运算，如果已经是最后一个分组，则这 4 个变量为最后的结果，即 MD5 值。</p>
+</li>
+</ol>
+<p><img src="http://www.luozijian.com/usr/uploads/2019/03/4185659393.png" alt="md5.png"></p>
+<p>这里写一个利用 md5 进行用户登陆网站进行注册之后密码加密的基本事例，加深理解</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="comment">#hashlib简单使用</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">md5</span>(<span class="params">arg</span>):</span><span class="comment">#这是加密函数，将传进来的函数加密</span></span><br><span class="line">    md5_pwd = hashlib.md5(bytes(<span class="string">&#x27;abd&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    md5_pwd.update(bytes(arg,encoding=<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> md5_pwd.hexdigest()<span class="comment">#返回加密的数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span>(<span class="params">user,pwd</span>):</span><span class="comment">#登陆时候时候的函数，由于md5不能反解，因此登陆的时候用正解</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">&#x27;db&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">            u,p=line.strip().split(<span class="string">&#x27;|&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> u ==user <span class="keyword">and</span> p == md5(pwd):<span class="comment">#登陆的时候验证用户名以及加密的密码跟之前保存的是否一样</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span>(<span class="params">user,pwd</span>):</span><span class="comment">#注册的时候把用户名和加密的密码写进文件，保存起来</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">&#x27;db&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        temp = user+<span class="string">&#x27;|&#x27;</span>+md5(pwd)</span><br><span class="line">        f.write(temp)</span><br><span class="line">i=input(<span class="string">&#x27;1表示登陆，2表示注册：&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> i==<span class="string">&#x27;2&#x27;</span>:</span><br><span class="line">    user = input(<span class="string">&#x27;用户名：&#x27;</span>)</span><br><span class="line">    pwd =input(<span class="string">&#x27;密码：&#x27;</span>)</span><br><span class="line">    register(user,pwd)</span><br><span class="line"><span class="keyword">elif</span> i==<span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">    user = user = input(<span class="string">&#x27;用户名：&#x27;</span>)</span><br><span class="line">    pwd =input(<span class="string">&#x27;密码：&#x27;</span>)</span><br><span class="line">    r=log(user,pwd)<span class="comment">#验证用户名和密码</span></span><br><span class="line">    <span class="keyword">if</span> r ==<span class="literal">True</span>:</span><br><span class="line">        print(<span class="string">&#x27;登陆成功&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&#x27;登陆失败&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&#x27;账号不存在&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="SHA-算法介绍"><a href="#SHA-算法介绍" class="headerlink" title="SHA 算法介绍"></a>SHA 算法介绍</h4><p>SHA 的全称是 Secure Hash Algorithm（安全散列算法）</p>
+<ul>
+<li><p>SHA 家族有五个算法，分别是 SHA-1、SHA-224、SHA-256、SHA-384、SHA-512，由美国国家安全局（NSA）所设计，并由美国国家标准与技术研究院（NIST）发布，是美国的政府标准；</p>
+</li>
+<li><p>SHA-224、SHA-256、SHA-384、SHA-512 有时并称为 SHA-2；</p>
+</li>
+<li><p>SHA-1、SHA-224、SHA-256 适用于长度不超过 2^64 二进制位的消息；</p>
+</li>
+<li><p>SHA 算法主要用于：数字签名、数字时间戳、数字证书等。</p>
+</li>
+</ul>
+<p><strong>SHA-1 算法原理：</strong></p>
+<ol>
+<li><p>将 512 位的明文分组划分为 16 个子明文分组，每个子明文分组为 32 位。</p>
+</li>
+<li><p>申请 5 个 32 位的链接变量，记为 A、B、C、D、E。</p>
+</li>
+<li><p>16 份子明文分组扩展为 80 份。</p>
+</li>
+<li><p>80 份子明文分组进行 4 轮运算。</p>
+</li>
+<li><p>链接变量与初始链接变量进行求和运算。</p>
+</li>
+<li><p>链接变量作为下一个明文分组的输入重复进行以上操作。</p>
+</li>
+<li><p>最后，5 个链接变量里面的数据就是 SHA1 摘要。</p>
+</li>
+</ol>
+<p>注意:这里介绍的两种数据加密算法，已为不安全的数据加密算法。美国已采用 SHA-256 算法，替代传统的 SHA-1 的算法。</p>
+<p>早在 2005 年，山东大学的 王小云教授就发现了对 SHA-1 的有效攻击方法，能在最多 2^69 次运算中发生一次碰撞。 这个时候，对于充足资金、充足计算资源的攻击者 的攻击者，已经不是难题了，比如曾经大名鼎鼎的 Flamme 病毒，就是用碰撞方法破解了微软的更新证书，之后把 Flamme 病毒签名成了微软的更新。这次公开是意味着对于运算能力并非无限的攻击者，也是经济的了。按照 Google 的漏洞公布惯例，最多九十天，Google 就会公开全部的细节，那个时候就意味着 SHA-1 碰撞的方式将为公众所知。</p>
+<h4 id="哈希在信息安全中的应用"><a href="#哈希在信息安全中的应用" class="headerlink" title="哈希在信息安全中的应用"></a>哈希在信息安全中的应用</h4><p>Hash 算法在信息安全方面的应用主要体如今下面的 3 个方面：</p>
+<ol>
+<li><p>文件校验我们比较熟悉的校验算法有奇偶校验和 CRC 校验，这 2 种校验并没有抗数据篡改的能力，它们一定程度上能检測并纠正传输数据中的信道误码，但却不能防止对数据的恶意破坏。MD5 Hash 算法的”数字指纹”特性，使它成为眼下应用最广泛的一种文件完整性校验和(Checksum)算法，不少 Unix 系统有提供计算 md5 checksum 的命令。</p>
+</li>
+<li><p>数字签名 Hash 算法也是现代 password 体系中的一个重要组成部分。因为非对称算法的运算速度较慢，所以在数字签名协议中，单向散列函数扮演了一个重要的角色。 对 Hash 值，又称“数字摘要”进行数字签名，在统计上能够觉得与对文件本身进行数字签名是等效的。并且这种协议还有其它的长处。基于数字签名的不可抵赖性，现如今广泛运用在区块链领域中。</p>
+</li>
+<li><p>鉴权协议例如以下的鉴权协议又被称作挑战–认证模式：在传输信道是可被侦听，但不可被篡改的情况下，这是一种简单而安全的方法。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91/" rel="prev" title="数据结构-树">
+      <i class="fa fa-chevron-left"></i> 数据结构-树
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/22/Go-%E8%AF%AD%E8%A8%80/" rel="next" title="Go 语言">
+      Go 语言 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">哈希的介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C"><span class="nav-number">1.1.</span> <span class="nav-text">哈希</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">知识点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.2.</span> <span class="nav-text">哈希的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%88%E5%B8%8C"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">什么是哈希</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">概念介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-number">1.3.</span> <span class="nav-text">数论基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E7%B4%A0%E6%95%B0"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">判断素数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.4.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%89%B9%E7%82%B9"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">哈希表特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">哈希表的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">处理冲突</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E9%87%8D%E5%93%88%E5%B8%8C"><span class="nav-number">1.5.</span> <span class="nav-text">双重哈希</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B7%E6%B2%8C%E6%9C%BA-chaos-machine"><span class="nav-number">1.6.</span> <span class="nav-text">混沌机 chaos machine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">摘要算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MD5-%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">MD5 算法介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SHA-%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.7.0.2.</span> <span class="nav-text">SHA 算法介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%9C%A8%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.7.0.3.</span> <span class="nav-text">哈希在信息安全中的应用</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="罗子建"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">罗子建</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wannain" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wannain" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1519327048@qq.com" title="E-Mail → mailto:1519327048@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">罗子建</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
