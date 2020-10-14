@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Git 基本操作命令汇总Github 被誉为最大的同性交往社区，当然要学习下基本操作。接下来将介绍一些关于提交上传同步文件的常见命令。 克隆仓库执行 git clone 命令实现克隆 github 仓库 1git clone https:&#x2F;&#x2F;github.com&#x2F;wannain&#x2F;test.git  执行 git remote -v 命令可以查看本地仓库所关联的远程仓库信息 1git remote">
+  <meta name="description" content="Git 基本操作命令汇总Github 被誉为最大的同性交往社区，当然要学习下基本操作。接下来将介绍一些关于提交上传同步文件的常见命令。 克隆仓库执行 git clone 命令实现克隆 github 仓库 1git clone https:&#x2F;&#x2F;github.com&#x2F;wannain&#x2F;test.git  执行 git remote -v 命令可以查看本地仓库所关联的远程仓库信息 1git remot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git基本操作">
 <meta property="og:url" content="http://example.com/2019/02/23/git-%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="寒冰小站">
-<meta property="og:description" content="Git 基本操作命令汇总Github 被誉为最大的同性交往社区，当然要学习下基本操作。接下来将介绍一些关于提交上传同步文件的常见命令。 克隆仓库执行 git clone 命令实现克隆 github 仓库 1git clone https:&#x2F;&#x2F;github.com&#x2F;wannain&#x2F;test.git  执行 git remote -v 命令可以查看本地仓库所关联的远程仓库信息 1git remote">
+<meta property="og:description" content="Git 基本操作命令汇总Github 被誉为最大的同性交往社区，当然要学习下基本操作。接下来将介绍一些关于提交上传同步文件的常见命令。 克隆仓库执行 git clone 命令实现克隆 github 仓库 1git clone https:&#x2F;&#x2F;github.com&#x2F;wannain&#x2F;test.git  执行 git remote -v 命令可以查看本地仓库所关联的远程仓库信息 1git remot">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.luozijian.com/usr/uploads/2019/02/1820493284.jpg">
+<meta property="og:image" content="https://gitee.com/wannain/images/raw/master/img/20201014170645.jpg">
 <meta property="article:published_time" content="2019-02-23T10:43:40.000Z">
-<meta property="article:modified_time" content="2020-09-22T12:17:46.959Z">
+<meta property="article:modified_time" content="2020-10-14T09:07:08.670Z">
 <meta property="article:author" content="罗子建">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.luozijian.com/usr/uploads/2019/02/1820493284.jpg">
+<meta name="twitter:image" content="https://gitee.com/wannain/images/raw/master/img/20201014170645.jpg">
 
 <link rel="canonical" href="http://example.com/2019/02/23/git-%E6%93%8D%E4%BD%9C/">
 
@@ -187,7 +187,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 20:17:46" itemprop="dateModified" datetime="2020-09-22T20:17:46+08:00">2020-09-22</time>
+                <time title="修改时间：2020-10-14 17:07:08" itemprop="dateModified" datetime="2020-10-14T17:07:08+08:00">2020-10-14</time>
               </span>
 
           
@@ -201,7 +201,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="http://www.luozijian.com/usr/uploads/2019/02/1820493284.jpg" alt="Github_logo.jpg"></p>
+        <img src="https://gitee.com/wannain/images/raw/master/img/20201014170645.jpg" alt="img" style="zoom:33%;" />
+
 <h1 id="Git-基本操作命令汇总"><a href="#Git-基本操作命令汇总" class="headerlink" title="Git 基本操作命令汇总"></a>Git 基本操作命令汇总</h1><p>Github 被誉为最大的同性交往社区，当然要学习下基本操作。接下来将介绍一些关于提交上传同步文件的常见命令。</p>
 <h2 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h2><p>执行 <code>git clone</code> 命令实现克隆 github 仓库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/wannain/test.git</span><br></pre></td></tr></table></figure>

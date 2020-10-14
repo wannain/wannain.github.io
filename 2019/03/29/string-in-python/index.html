@@ -20,25 +20,24 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="介绍本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。 知识点 字符串的基本概念 正则表达式 KMP 算法 编辑距离 manacher 算法  基本概念字符串是 Python 中最常见的数据类型。我们可以使用引号 (‘ 或 “)来创建字符串。 创建字符串很简单，只要为变量分配一个值即可。例如： 1var1&#x3D;&amp;#x27;Hello sh">
+  <meta name="description" content="介绍本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。 知识点 字符串的基本概念 正则表达式 KMP 算法 编辑距离 manacher 算法  基本概念字符串是 Python 中最常见的数据类型。我们可以使用引号 (‘ 或 “)来创建字符串。 创建字符串很简单，只要为变量分配一个值即可。例如： 1var1&#x3D;&amp;#x27;Hello shi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="string in python">
 <meta property="og:url" content="http://example.com/2019/03/29/string-in-python/index.html">
 <meta property="og:site_name" content="寒冰小站">
-<meta property="og:description" content="介绍本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。 知识点 字符串的基本概念 正则表达式 KMP 算法 编辑距离 manacher 算法  基本概念字符串是 Python 中最常见的数据类型。我们可以使用引号 (‘ 或 “)来创建字符串。 创建字符串很简单，只要为变量分配一个值即可。例如： 1var1&#x3D;&amp;#x27;Hello sh">
+<meta property="og:description" content="介绍本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。 知识点 字符串的基本概念 正则表达式 KMP 算法 编辑距离 manacher 算法  基本概念字符串是 Python 中最常见的数据类型。我们可以使用引号 (‘ 或 “)来创建字符串。 创建字符串很简单，只要为变量分配一个值即可。例如： 1var1&#x3D;&amp;#x27;Hello shi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">
-<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/3450331248.gif">
-<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/1315438945.png">
-<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/3535294664.png">
-<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/1017039786.png">
-<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/56582860.png">
-<meta property="og:image" content="https://www.luozijian.com/usr/uploads/2019/03/1332232394.png">
+<meta property="og:image" content="https://gitee.com/wannain/images/raw/master/img/20201014215720.gif">
+<meta property="og:image" content="https://gitee.com/wannain/images/raw/master/img/20201014215810.png">
+<meta property="og:image" content="https://gitee.com/wannain/images/raw/master/img/20201014215936.png">
+<meta property="og:image" content="https://gitee.com/wannain/images/raw/master/img/20201014220027.png">
+<meta property="og:image" content="https://gitee.com/wannain/images/raw/master/img/20201014220055.png">
+<meta property="og:image" content="https://gitee.com/wannain/images/raw/master/img/20201014220259.png">
 <meta property="article:published_time" content="2019-03-29T06:39:41.000Z">
-<meta property="article:modified_time" content="2020-09-25T06:40:09.426Z">
+<meta property="article:modified_time" content="2020-10-14T14:03:14.026Z">
 <meta property="article:author" content="罗子建">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">
+<meta name="twitter:image" content="https://gitee.com/wannain/images/raw/master/img/20201014215720.gif">
 
 <link rel="canonical" href="http://example.com/2019/03/29/string-in-python/">
 
@@ -193,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-25 14:40:09" itemprop="dateModified" datetime="2020-09-25T14:40:09+08:00">2020-09-25</time>
+                <time title="修改时间：2020-10-14 22:03:14" itemprop="dateModified" datetime="2020-10-14T22:03:14+08:00">2020-10-14</time>
               </span>
 
           
@@ -207,8 +206,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img src="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg" alt="123.jpg"></p>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。</p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>本节内容将介绍在 Python 里处理字符串的基本概念，以及正则表达式的使用，以及介绍几种常见的字符串处理算法。</p>
 <h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ul>
 <li>字符串的基本概念</li>
 <li>正则表达式</li>
@@ -541,7 +539,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">brute_force_match</span>(<span class="params">t,p</span>):</span></span><br><span class="line">    tlen=len(t)</span><br><span class="line">    plen=len(p)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(tlen):</span><br><span class="line">        j=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> t[i+j]==p[j] <span class="keyword">and</span> j &lt;plen:</span><br><span class="line">            j=j+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> j==plen:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 
 <p>算法复杂度分析：i 在主串上移动 (n-p)次，匹配失败时，j 移动次数最多有 p-1 次。因此复杂度为 O(n*p)</p>
-<p>对于暴力匹配而言，就存在重复匹配的现象。比如，第一次匹配失败时，主串，模式串失败匹配的位置的字符分别为 a 与 c ,下一次匹配时主串，模式串的起始位置分别为 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">1</a> 与 P[0];而在模式串中 c 之前是 ab ,未有重复结构，因此 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/532858145.jpg">1</a>与 P[0]肯定不能匹配上，这样造成了重复匹配。直观上，下一次匹配应从 T<a target="_blank" rel="noopener" href="https://www.luozijian.com/usr/uploads/2019/03/3450331248.gif">2</a> 与 P[0] 开始。</p>
+<p>对于暴力匹配而言，就存在重复匹配的现象。比如，第一次匹配失败时，主串，模式串失败匹配的位置的字符分别为 a 与 c ,下一次匹配时主串，模式串的起始位置分别为 T[1] 与 P[0];而在模式串中 c 之前是 ab ,未有重复结构，因此 T[1]与 P[0]肯定不能匹配上，这样造成了重复匹配。直观上，下一次匹配应从 T[2] 与 P[0] 开始。</p>
 <p>那么如何提高匹配效率呢？那就考虑下 KMP 算法</p>
 <h4 id="KMP-算法原理"><a href="#KMP-算法原理" class="headerlink" title="KMP 算法原理"></a>KMP 算法原理</h4><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">KMP 详细证明</a></p>
 <p>KMP 算法思想归纳如下：将主串 T 的第一个字符与模式串 P 的第一个字符进行匹配。如果相等，则依次比较 T 和 P 的下一个字符。如果不相等，则 主串 T 移动(已匹配字符数-对应的部分匹配值)位，继续匹配。</p>
@@ -583,7 +581,7 @@
 <td>0</td>
 </tr>
 </tbody></table>
-<p><img src="https://www.luozijian.com/usr/uploads/2019/03/3450331248.gif" alt="kmp.gif"></p>
+<p><img src="https://gitee.com/wannain/images/raw/master/img/20201014215720.gif" alt="img"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_failure_array</span>(<span class="params">pattern</span>):</span> <span class="comment">#制作部分匹配表</span></span><br><span class="line">    failure = [<span class="number">0</span>]</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    j = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> j &lt; len(pattern):</span><br><span class="line">        <span class="keyword">if</span> pattern[i] == pattern[j]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> i &gt; <span class="number">0</span>:</span><br><span class="line">            i = failure[i<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">        failure.append(i)</span><br><span class="line">    <span class="keyword">return</span> failure</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">kmp</span>(<span class="params">pattern, text</span>):</span></span><br><span class="line">    failure = get_failure_array(pattern) <span class="comment">#得到部分匹配表</span></span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    j=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(text):</span><br><span class="line">        <span class="keyword">if</span> pattern[j] == text[i]:</span><br><span class="line">            <span class="keyword">if</span> j == (len(pattern) - <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> j &gt; <span class="number">0</span>:</span><br><span class="line">            j = failure[j - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print(kmp(<span class="string">&#x27;123456&#x27;</span>,<span class="string">&#x27;123123456&#x27;</span>))</span><br></pre></td></tr></table></figure>
 
 <h1 id="编辑距离"><a href="#编辑距离" class="headerlink" title="编辑距离"></a>编辑距离</h1><p>编辑距离(levenshtein distance)是针对二个字符串（例如英文字）的差异程度的量化量测，量测方式是看至少需要多少次的处理才能将一个字符串变成另一个字符串。编辑距离可以用在自然语言处理中，例如拼写检查可以根据一个拼错的字和其他正确的字的编辑距离，判断哪一个（或哪几个）是比较可能的字。DNA 也可以视为用 A、C、G 和 T 组成的字符串，因此编辑距离也用在生物信息学中，判断二个 DNA 的类似程度。Unix 下的 diff 及 patch 即是利用编辑距离来进行文本编辑对比的例子。</p>
@@ -615,16 +613,17 @@
 
 <p>上面我们还求了一下 RL[i]-1。通过观察可以发现，RL[i]-1 的值，正是在原本那个没有插入过分隔符的串中，以位置 i 为对称轴的最长回文串的长度。那么只要我们求出了 RL 数组，就能得到最长回文子串的长度。</p>
 <p>于是问题变成了，怎样高效地求的 RL 数组。基本思路是利用回文串的对称性，扩展回文串。</p>
-<p>我们再引入一个辅助变量 MaxRight，表示当前访问到的所有回文子串，所能触及的最右一个字符的位置。另外还要记录下 MaxRight 对应的回文串的对称轴所在的位置，记为 pos，它们的位置关系如下。<img src="https://www.luozijian.com/usr/uploads/2019/03/1315438945.png" alt="manacher1.png"></p>
+<p>我们再引入一个辅助变量 MaxRight，表示当前访问到的所有回文子串，所能触及的最右一个字符的位置。另外还要记录下 MaxRight 对应的回文串的对称轴所在的位置，记为 pos，它们的位置关系如下。<img src="https://gitee.com/wannain/images/raw/master/img/20201014215810.png" alt="img"></p>
 <p>我们从左往右地访问字符串来求 RL，假设当前访问到的位置为 i，即要求 RL[i]，在对应上图，i 必然是在 po 右边的(obviously)。但我们更关注的是，i 是在 MaxRight 的左边还是右边。我们分情况来讨论。</p>
 <p>1） 当 i 在 MaxRight 的左边</p>
-<p><img src="https://www.luozijian.com/usr/uploads/2019/03/3535294664.png" alt="manacher2.png"></p>
+<img src="https://gitee.com/wannain/images/raw/master/img/20201014215936.png" alt="img" style="zoom: 67%;" />
+
 <p>我们知道，图中两个红色块之间（包括红色块）的串是回文的；并且以 i 为对称轴的回文串，是与红色块间的回文串有所重叠的。我们找到 i 关于 pos 的对称位置 j，这个 j 对应的 RL[j]我们是已经算过的。根据回文串的对称性，以 i 为对称轴的回文串和以 j 为对称轴的回文串，有一部分是相同的。这里又有两种细分的情况。</p>
 <p>a.以 j 为对称轴的回文串比较短</p>
-<p><img src="https://www.luozijian.com/usr/uploads/2019/03/1017039786.png" alt="manacher3.png"></p>
+<p><img src="https://gitee.com/wannain/images/raw/master/img/20201014220027.png" alt="img"></p>
 <p>这时我们知道 RL[i]至少不会小于 RL[j]，并且已经知道了部分的以 i 为中心的回文串，于是可以令 RL[i]=RL[j]。但是以 i 为对称轴的回文串可能实际上更长，因此我们试着以 i 为对称轴，继续往左右两边扩展，直到左右两边字符不同，或者到达边界。</p>
 <p>b.以 j 为对称轴的回文串比较长</p>
-<p><img src="https://www.luozijian.com/usr/uploads/2019/03/56582860.png" alt="manacher4.png"></p>
+<p><img src="https://gitee.com/wannain/images/raw/master/img/20201014220055.png" alt="img"></p>
 <p>这时，我们只能确定，两条蓝线之间的部分（即不超过 MaxRight 的部分）是回文的，于是从这个长度开始，尝试以 i 为中心向左右两边扩展，，直到左右两边字符不同，或者到达边界。</p>
 <p>不论以上哪种情况，之后都要尝试更新 MaxRight 和 pos，因为有可能得到更大的 MaxRight。</p>
 <p>具体操作如下：</p>
@@ -636,7 +635,7 @@
 <ol start="2">
 <li>当 i 在 MaxRight 的右边</li>
 </ol>
-<p><img src="https://www.luozijian.com/usr/uploads/2019/03/1332232394.png" alt="manacher5.png"></p>
+<p><img src="https://gitee.com/wannain/images/raw/master/img/20201014220259.png" alt="img"></p>
 <p>遇到这种情况，说明以 i 为对称轴的回文串还没有任何一个部分被访问过，于是只能从 i 的左右两边开始尝试扩展了，当左右两边字符不同，或者到达字符串边界时停止。然后更新 MaxRight 和 pos</p>
 <p>参考代码如下；</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">manacher</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="comment">#预处理</span></span><br><span class="line">    s=<span class="string">&#x27;#&#x27;</span>+<span class="string">&#x27;#&#x27;</span>.join(s)+<span class="string">&#x27;#&#x27;</span></span><br><span class="line"></span><br><span class="line">    RL=[<span class="number">0</span>]*len(s)</span><br><span class="line">    MaxRight=<span class="number">0</span></span><br><span class="line">    pos=<span class="number">0</span></span><br><span class="line">    MaxLen=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">        <span class="keyword">if</span> i&lt;MaxRight:</span><br><span class="line">            RL[i]=min(RL[<span class="number">2</span>*pos-i], MaxRight-i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            RL[i]=<span class="number">1</span></span><br><span class="line">        <span class="comment">#尝试扩展，注意处理边界</span></span><br><span class="line">        <span class="keyword">while</span> i-RL[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+RL[i]&lt;len(s) <span class="keyword">and</span> s[i-RL[i]]==s[i+RL[i]]:</span><br><span class="line">            RL[i]+=<span class="number">1</span></span><br><span class="line">        <span class="comment">#更新MaxRight,pos</span></span><br><span class="line">        <span class="keyword">if</span> RL[i]+i<span class="number">-1</span>&gt;MaxRight:</span><br><span class="line">            MaxRight=RL[i]+i<span class="number">-1</span></span><br><span class="line">            pos=i</span><br><span class="line">        <span class="comment">#更新最长回文串的长度</span></span><br><span class="line">        MaxLen=max(MaxLen, RL[i])</span><br><span class="line">    <span class="keyword">return</span> MaxLen<span class="number">-1</span></span><br></pre></td></tr></table></figure>
